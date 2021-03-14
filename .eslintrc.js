@@ -37,6 +37,7 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'react/display-name': 'error',
     'react-hooks/rules-of-hooks': 'error',
+    'react/prop-types': 0,
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
   },
 };
