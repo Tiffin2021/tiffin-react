@@ -1,10 +1,16 @@
 import React from 'react';
 import './App.css';
-import axios from 'axios';
+import Axios from 'axios';
+import { SampleView } from 'src/views/Sample/SampleView';
+
+Axios.defaults.baseURL = 'http://localhost:4000/api/';
 
 const App: React.FC = () => {
-  axios.get('http://localhost:4000/api/shop_accounts/');
-  return <h1>tiffin</h1>;
+  return (
+    <>
+      <SampleView />
+    </>
+  );
 };
 
 export default App;
