@@ -17,9 +17,11 @@ export const SampleView: React.FC = () => {
     <>
       <h1>tiffin</h1>
       {shopAccounts.map((shopAccount) => {
-        <p key={shopAccount.id}>
-          {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
-        </p>;
+        return (
+          <p key={shopAccount.id}>
+            {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
+          </p>
+        );
       })}
     </>
   );
