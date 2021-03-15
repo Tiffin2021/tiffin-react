@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TiffinContext } from 'src/context/TiffinContext';
+import { TiffinContext } from 'src/context/Provider';
 import { Link } from 'react-router-dom';
 
 export const About: React.FC = () => {

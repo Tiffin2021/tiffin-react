@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import './SampleView.css';
 import Axios from 'axios';
 import { ShopAccount } from 'src/model/ShopAccount';
-import { TiffinContext } from 'src/context/TiffinContext';
+import { TiffinContext } from 'src/context/Provider';
 import { Link } from 'react-router-dom';
 
 export const SampleView: React.FC = () => {
