@@ -10,7 +10,7 @@ export const About: React.FC = () => {
       <p>
         {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
       </p>
-      <Link to="/">About</Link>
+      <Link to="/">Home</Link>
     </>
   );
 };
