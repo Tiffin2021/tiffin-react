@@ -2,11 +2,11 @@ import React, { useEffect, useContext } from 'react';
 import './SampleView.css';
 import Axios from 'axios';
 import { ShopAccount } from 'src/model/ShopAccount';
-import { TiffinContext } from 'src/context/Provider';
+import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { Link } from 'react-router-dom';
 
 export const SampleView: React.FC = () => {
-  const { shopAccount, setShopAccount } = useContext(TiffinContext);
+  const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
 
   useEffect(() => {
     (async () => {

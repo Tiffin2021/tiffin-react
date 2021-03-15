@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { TiffinContext } from 'src/context/Provider';
+import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { Link } from 'react-router-dom';
 
 export const About: React.FC = () => {
-  const { shopAccount } = useContext(TiffinContext);
+  const { shopAccount } = useContext(ShopAccountContext);
   return (
     <>
       <h1>About Page!!</h1>
