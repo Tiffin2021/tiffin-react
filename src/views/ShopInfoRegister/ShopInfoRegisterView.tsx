@@ -74,6 +74,7 @@ export const ShopInfoRegisterView: React.FC = () => {
 
   const clickRegister = () => {
     //バックエンドと連携し、登録する
+    //アカウントも一緒に登録するのを忘れない
   };
 
   return (
