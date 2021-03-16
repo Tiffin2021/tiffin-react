@@ -21,6 +21,7 @@ export const ShopInfoRegisterView: React.FC = () => {
       setStationMaster(response.data);
     })();
   }, [setStationMaster]);
+
   const changeShopName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newShopInfo = Object.assign({}, shopInfo);
     newShopInfo.name = e.target.value;
