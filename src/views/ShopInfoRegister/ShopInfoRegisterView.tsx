@@ -60,6 +60,22 @@ export const ShopInfoRegisterView: React.FC = () => {
     setShopInfo(newShopInfo);
   };
 
+  const changeShopAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newShopInfo = Object.assign({}, shopInfo);
+    newShopInfo.address = e.target.value;
+    setShopInfo(newShopInfo);
+  };
+
+  const changeShopTel = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newShopInfo = Object.assign({}, shopInfo);
+    newShopInfo.tel = e.target.value;
+    setShopInfo(newShopInfo);
+  };
+
+  const clickRegister = () => {
+    //バックエンドと連携し、登録する
+  };
+
   return (
     <>
       <h3>新規店舗登録②</h3>
@@ -122,16 +138,26 @@ export const ShopInfoRegisterView: React.FC = () => {
 
       <div>
         <div>住所</div>
-        <input className={styles.todoTitleInput} placeholder="住所" />
+        <input
+          className={styles.todoTitleInput}
+          placeholder="住所"
+          onChange={changeShopAddress}
+        />
       </div>
 
       <div>
         <div>電話番号</div>
-        <input className={styles.todoTitleInput} placeholder="tel" />
+        <input
+          className={styles.todoTitleInput}
+          placeholder="tel"
+          onChange={changeShopTel}
+        />
       </div>
 
       <div>
-        <button className={styles.todoAddButton}>登録</button>
+        <button className={styles.todoAddButton} onClick={clickRegister}>
+          登録
+        </button>
       </div>
     </>
   );
