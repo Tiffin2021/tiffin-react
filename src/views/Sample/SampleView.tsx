@@ -21,7 +21,7 @@ export const SampleView: React.FC = () => {
       <p>
         {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
       </p>
-      <Link to="/about">About</Link>
+      <Link to="/shop_account_edit">ShopAccountInfo</Link>
     </>
   );
 };
