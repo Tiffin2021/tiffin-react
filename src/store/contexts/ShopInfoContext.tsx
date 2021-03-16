@@ -22,9 +22,7 @@ const initialShopInfo: ShopInfo = {
 /** 店舗情報のContext */
 export const ShopInfoContext = createContext<ShopInfoContextProps>({
   shopInfo: initialShopInfo,
-  setShopInfo: () => {
-    return console.warn('no function');
-  },
+  setShopInfo: () => console.warn('no function'),
 });
 
 /** 店舗情報ContextのProvider */
