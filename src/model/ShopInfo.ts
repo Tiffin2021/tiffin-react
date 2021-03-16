@@ -1,5 +1,5 @@
 export type ShopInfo = {
-  id: number;
+  id?: number;
   shop_accounts_id: number;
   name: string;
   address: string;

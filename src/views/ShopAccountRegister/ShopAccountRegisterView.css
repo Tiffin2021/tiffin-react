@@ -1,0 +1,39 @@
+.todoForm {
+  width: 400px;
+  margin: 8px 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #aaa;
+}
+
+.todoTitleInput {
+  line-height: 20px;
+  width: 500px;
+  margin: 6px 0;
+}
+
+.todoDescriptionInput {
+  width: 500px;
+  margin: 0 0 6px 0;
+}
+
+.todoAddButton {
+  margin-bottom: 20px;
+  padding: 8px;
+  border: none;
+  box-sizing: border-box;
+  width: 500px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  border: 3px solid #5f5f5f;
+  border-radius: 5px;
+  background-color: #5f5f5f;
+  color: #fff;
+  transition: 0.3s all;
+}
+.todoAddButton:hover {
+  border: 3px solid #5f5f5f;
+  background-color: #efefef;
+  color: #2f2f2f;
+}
