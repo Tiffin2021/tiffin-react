@@ -24,11 +24,13 @@ export const TiffinContext = createContext<TiffinContextProps>({
     id: 0,
     shop_accounts_id: 0,
     name: '',
-    address: '',
+    prefecture: '',
+    area: '',
     station: '',
-    tel: '',
     opentime: '',
     closetime: '',
+    address: '',
+    tel: '',
   },
   setShopInfo: () => {
     return console.warn('no function');
@@ -45,11 +47,13 @@ export const TiffinProvider: React.FC = ({ children }) => {
     id: 0,
     shop_accounts_id: 0,
     name: '',
-    address: '',
+    prefecture: '',
+    area: '',
     station: '',
-    tel: '',
     opentime: '',
     closetime: '',
+    address: '',
+    tel: '',
   });
   return (
     <TiffinContext.Provider
