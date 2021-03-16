@@ -7,4 +7,5 @@ export type ShopInfo = {
   tel: string;
   opentime: string;
   closetime: string;
+  aaaaaaaaaaaaaaaaaaaaaaaa;
 };
