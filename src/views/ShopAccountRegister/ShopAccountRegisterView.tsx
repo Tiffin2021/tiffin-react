@@ -29,7 +29,7 @@ export const ShopAccountRegisterView: React.FC = () => {
     const newShopAccount = Object.assign({}, shopAccount);
     newShopAccount.pass = e.target.value;
     setShopAccount(newShopAccount);
-    // showButton();
+    showButton();
   };
 
   const passCheck = (e: React.ChangeEvent<HTMLInputElement>) => {

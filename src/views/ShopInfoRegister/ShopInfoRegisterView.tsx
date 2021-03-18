@@ -3,24 +3,38 @@ import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { TiffinContext } from 'src/context/TiffinContext';
 import Axios from 'axios';
 import { StationMaster } from 'src/model/StationMaster';
+import { TimeMaster } from 'src/model/TimeMaster';
 
 export const ShopInfoRegisterView: React.FC = () => {
   const { shopInfo, setShopInfo } = useContext(TiffinContext);
   //初期化
   const initStationMaster: StationMaster = {
-    prefectures: [],
-    areas: [],
-    stations: [],
+    prefectures: ['選択肢1', '選択肢2', '選択肢3'],
+    areas: ['選択肢A', '選択肢B', '選択肢C'],
+    stations: ['選択肢α', '選択肢β', '選択肢γ'],
   };
+  const initTimeMaster: TimeMaster = {
+    open: ['11時00分', '11時30分', '12時00分'],
+    close: ['13時00分', '13時30分', '14時00分'],
+  };
+
   //都道府県、エリア、駅名のマスターを格納しておくステートを定義
   const [stationMaster, setStationMaster] = useState(initStationMaster);
-  //まずは都道府県のみとってくる
+  const [timeMaster, setTimeMaster] = useState(initTimeMaster);
+
   useEffect(() => {
     (async () => {
       const response = await Axios.get<StationMaster>('stations');
       setStationMaster(response.data);
     })();
   }, [setStationMaster]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await Axios.get<TimeMaster>('times');
+      setTimeMaster(response.data);
+    })();
+  }, [setTimeMaster]);
 
   const changeShopName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newShopInfo = Object.assign({}, shopInfo);
@@ -81,79 +95,113 @@ export const ShopInfoRegisterView: React.FC = () => {
     <>
       <h3>新規店舗登録②</h3>
 
-      <div className={styles.todoForm}>
-        <div>店舗名</div>
-        <input
-          className={styles.todoTitleInput}
-          placeholder="店舗名"
-          onChange={changeShopName}
-        />
-      </div>
+      <dl>
+        <dt>店舗名</dt>
+        <dd>
+          <input
+            className={styles.todoTitleInput}
+            placeholder="店舗名"
+            onChange={changeShopName}
+          />
+        </dd>
+      </dl>
 
-      <div>
-        <div>開店時間</div>
-        <select name="開店時間" onChange={changeShopOpen}>
-          {/* map関数でopenTime一覧を表示 */}
-          <option value="選択肢1">選択肢1</option>
-          <option value="選択肢2">選択肢2</option>
-          <option value="選択肢3">選択肢3</option>
-        </select>
-      </div>
+      <dl>
+        <dt>開店時間</dt>
+        <dd>
+          <select name="開店時間" onChange={changeShopOpen}>
+            {timeMaster.open.map((time) => {
+              return (
+                <option key="1" value={time}>
+                  {time}
+                </option>
+              );
+            })}
+          </select>
+        </dd>
+      </dl>
 
-      <div>
-        <div>閉店時間</div>
-        <select name="閉店時間" onChange={changeShopClose}>
-          {/* map関数でcloseTime一覧を表示 */}
-          <option value="選択肢1">選択肢1</option>
-          <option value="選択肢2">選択肢2</option>
-          <option value="選択肢3">選択肢3</option>
-        </select>
-      </div>
+      <dl>
+        <dt>閉店時間</dt>
+        <dd>
+          <select name="閉店時間" onChange={changeShopClose}>
+            {timeMaster.close.map((time) => {
+              return (
+                <option key="1" value={time}>
+                  {time}
+                </option>
+              );
+            })}
+          </select>
+        </dd>
+      </dl>
 
-      <div>
-        <div>都道府県</div>
-        <select name="都道府県" onChange={changeShopPrefecture}>
-          <option value="選択肢1">選択肢1</option>
-          <option value="選択肢2">選択肢2</option>
-          <option value="選択肢3">選択肢3</option>
-        </select>
-      </div>
+      <dl>
+        <dt>都道府県</dt>
+        <dd>
+          <select name="都道府県" onChange={changeShopPrefecture}>
+            {stationMaster.prefectures.map((prefecture) => {
+              return (
+                <option key="1" value={prefecture}>
+                  {prefecture}
+                </option>
+              );
+            })}
+          </select>
+        </dd>
+      </dl>
 
-      <div>
-        <div>エリア</div>
-        <select name="エリア" onChange={changeShopArea}>
-          <option value="選択肢1">選択肢1</option>
-          <option value="選択肢2">選択肢2</option>
-          <option value="選択肢3">選択肢3</option>
-        </select>
-      </div>
+      <dl>
+        <dt>エリア</dt>
+        <dd>
+          <select name="エリア" onChange={changeShopArea}>
+            {stationMaster.areas.map((area) => {
+              return (
+                <option key="1" value={area}>
+                  {area}
+                </option>
+              );
+            })}
+          </select>
+        </dd>
+      </dl>
 
-      <div>
-        <div>最寄り駅</div>
-        <select name="最寄り駅" onChange={changeShopStation}>
-          <option value="選択肢1">選択肢1</option>
-          <option value="選択肢2">選択肢2</option>
-          <option value="選択肢3">選択肢3</option>
-        </select>
-      </div>
+      <dl>
+        <dt>最寄り駅</dt>
+        <dd>
+          <select name="最寄り駅" onChange={changeShopStation}>
+            {stationMaster.stations.map((station) => {
+              return (
+                <option key="1" value={station}>
+                  {station}
+                </option>
+              );
+            })}
+          </select>
+        </dd>
+      </dl>
 
-      <div>
-        <div>住所</div>
-        <input
-          className={styles.todoTitleInput}
-          placeholder="住所"
-          onChange={changeShopAddress}
-        />
-      </div>
+      <dl>
+        <dt>住所</dt>
+        <dd>
+          <input
+            className={styles.todoTitleInput}
+            placeholder="住所"
+            onChange={changeShopAddress}
+          />
+        </dd>
+      </dl>
 
-      <div>
-        <div>電話番号</div>
-        <input
-          className={styles.todoTitleInput}
-          placeholder="tel"
-          onChange={changeShopTel}
-        />
-      </div>
+      <dl>
+        <dt>電話番号</dt>
+        <dd>
+          <input
+            className={styles.todoTitleInput}
+            placeholder="電話番号"
+            onChange={changeShopTel}
+          />
+        </dd>
+      </dl>
 
       <div>
         <button className={styles.todoAddButton} onClick={clickRegister}>
