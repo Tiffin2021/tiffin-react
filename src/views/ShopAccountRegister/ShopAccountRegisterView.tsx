@@ -50,7 +50,6 @@ export const ShopAccountRegisterView: React.FC = () => {
           className={styles.todoTitleInput}
           placeholder="パスワード"
           onChange={changePass}
-          value={shopAccount.pass}
         />
         <input
           className={styles.todoTitleInput}
