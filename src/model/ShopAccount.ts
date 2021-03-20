@@ -1,5 +1,5 @@
 export type ShopAccount = {
-  id?: number;
+  id: number;
   email: string;
   pass: string;
 };

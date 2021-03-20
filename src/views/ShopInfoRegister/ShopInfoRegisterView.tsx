@@ -1,11 +1,16 @@
 import styles from './ShopInfoRegisterView.css';
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { TiffinContext } from 'src/context/TiffinContext';
-import Axios from 'axios';
+import Axios, { AxiosResponse } from 'axios';
 import { StationMaster } from 'src/model/StationMaster';
 import { TimeMaster } from 'src/model/TimeMaster';
+import { ShopAccount } from 'src/model/ShopAccount';
+import { ShopInfo } from 'src/model/ShopInfo';
 
 export const ShopInfoRegisterView: React.FC = () => {
+  const { shopAccount } = useContext(TiffinContext);
+  // eslint-disable-next-line no-console
+  console.log('YEAH' + shopAccount.email);
   const { shopInfo, setShopInfo } = useContext(TiffinContext);
   //初期化
   const initStationMaster: StationMaster = {
@@ -54,19 +59,13 @@ export const ShopInfoRegisterView: React.FC = () => {
     setShopInfo(newShopInfo);
   };
 
-  const changeShopPrefecture = (e: ChangeEvent<HTMLSelectElement>) => {
-    const newShopInfo = Object.assign({}, shopInfo);
-    newShopInfo.prefecture = e.target.value;
-    setShopInfo(newShopInfo);
-    //ここで再度データベースに接続し、エリアを取得
-  };
+  // const changeShopPrefecture = (e: ChangeEvent<HTMLSelectElement>) => {
+  //   //ここで再度データベースに接続し、エリアを取得
+  // };
 
-  const changeShopArea = (e: ChangeEvent<HTMLSelectElement>) => {
-    const newShopInfo = Object.assign({}, shopInfo);
-    newShopInfo.area = e.target.value;
-    setShopInfo(newShopInfo);
-    //ここで再度データベースに接続し、駅名を取得
-  };
+  // const changeShopArea = (e: ChangeEvent<HTMLSelectElement>) => {
+  //   //ここで再度データベースに接続し、駅名を取得
+  // };
 
   const changeShopStation = (e: ChangeEvent<HTMLSelectElement>) => {
     const newShopInfo = Object.assign({}, shopInfo);
@@ -86,9 +85,15 @@ export const ShopInfoRegisterView: React.FC = () => {
     setShopInfo(newShopInfo);
   };
 
-  const clickRegister = () => {
+  const clickRegister = async () => {
     //バックエンドと連携し、登録する
     //アカウントも一緒に登録するのを忘れない
+    const response = await Axios.post<
+      [ShopAccount, ShopInfo],
+      AxiosResponse<string>
+    >('shop', [shopAccount, shopInfo]);
+    // eslint-disable-next-line no-console
+    console.log(response.data);
   };
 
   return (
@@ -139,7 +144,10 @@ export const ShopInfoRegisterView: React.FC = () => {
       <dl>
         <dt>都道府県</dt>
         <dd>
-          <select name="都道府県" onChange={changeShopPrefecture}>
+          <select
+            name="都道府県"
+            // onChange={changeShopPrefecture}
+          >
             {stationMaster.prefectures.map((prefecture) => {
               return (
                 <option key="1" value={prefecture}>
@@ -154,7 +162,10 @@ export const ShopInfoRegisterView: React.FC = () => {
       <dl>
         <dt>エリア</dt>
         <dd>
-          <select name="エリア" onChange={changeShopArea}>
+          <select
+            name="エリア"
+            // onChange={changeShopArea}
+          >
             {stationMaster.areas.map((area) => {
               return (
                 <option key="1" value={area}>
