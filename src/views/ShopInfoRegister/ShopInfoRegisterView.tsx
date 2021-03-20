@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import styles from './ShopInfoRegisterView.css';
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { TiffinContext } from 'src/context/TiffinContext';
@@ -9,8 +10,6 @@ import { ShopInfo } from 'src/model/ShopInfo';
 
 export const ShopInfoRegisterView: React.FC = () => {
   const { shopAccount } = useContext(TiffinContext);
-  // eslint-disable-next-line no-console
-  console.log('YEAH' + shopAccount.email);
   const { shopInfo, setShopInfo } = useContext(TiffinContext);
   //初期化
   const initStationMaster: StationMaster = {
@@ -86,13 +85,12 @@ export const ShopInfoRegisterView: React.FC = () => {
   };
 
   const clickRegister = async () => {
-    //バックエンドと連携し、登録する
-    //アカウントも一緒に登録するのを忘れない
+    // バックエンドと連携し、登録する
+    // アカウントも一緒に登録するのを忘れない
     const response = await Axios.post<
       [ShopAccount, ShopInfo],
       AxiosResponse<string>
     >('shop', [shopAccount, shopInfo]);
-    // eslint-disable-next-line no-console
     console.log(response.data);
   };
 
