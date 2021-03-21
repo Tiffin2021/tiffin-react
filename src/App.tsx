@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { SampleView } from 'src/views/Sample/SampleView';
 import { About } from 'src/views/About/About';
-import { TiffinProvider } from 'src/context/TiffinContext';
+import { Provider } from 'src/store/Provider';
 import { ShopAccountRegisterView } from './views/ShopAccountRegister/ShopAccountRegisterView';
 import { ShopInfoRegisterView } from './views/ShopInfoRegister/ShopInfoRegisterView';
 
@@ -13,7 +13,7 @@ Axios.defaults.baseURL = 'http://localhost:4000/api/';
 const App: React.FC = () => {
   return (
     <>
-      <TiffinProvider>
+      <Provider>
         <Router>
           <Route exact path="/" component={SampleView} />
           <Route path="/about" component={About} />
@@ -23,7 +23,7 @@ const App: React.FC = () => {
           />
           <Route path="/shopInfoRegister" component={ShopInfoRegisterView} />
         </Router>
-      </TiffinProvider>
+      </Provider>
     </>
   );
 };
