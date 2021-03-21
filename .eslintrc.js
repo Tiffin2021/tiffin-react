@@ -15,12 +15,7 @@ module.exports = {
     jest: true,
     node: true,
   },
-  plugins: [
-    'react-hooks',
-    'react',
-    '@typescript-eslint',
-    'eslint-plugin-prettier',
-  ],
+  plugins: ['react-hooks', 'react', '@typescript-eslint', 'eslint-plugin-prettier'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -33,7 +28,6 @@ module.exports = {
     'no-console': ['error', { allow: ['warn', 'info', 'error'] }],
     'prefer-arrow-callback': 'error',
     'func-style': ['error', 'expression'],
-    'arrow-body-style': ['error', 'always'],
     'react/react-in-jsx-scope': 0,
     'react/display-name': 'error',
     'react-hooks/rules-of-hooks': 'error',
