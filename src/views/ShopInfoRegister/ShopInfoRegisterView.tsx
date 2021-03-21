@@ -87,11 +87,12 @@ export const ShopInfoRegisterView: React.FC = () => {
   const clickRegister = async () => {
     // バックエンドと連携し、登録する
     // アカウントも一緒に登録するのを忘れない
-    const response = await Axios.post<
-      [ShopAccount, ShopInfo],
-      AxiosResponse<string>
-    >('shop', [shopAccount, shopInfo]);
-    console.log(response.data);
+    const test = {
+      shopAccount: shopAccount,
+      shopInfo: shopInfo,
+    };
+    console.log(test);
+    await Axios.post<any, AxiosResponse<string>>('shop', test);
   };
 
   return (
@@ -194,6 +195,7 @@ export const ShopInfoRegisterView: React.FC = () => {
         <dt>住所</dt>
         <dd>
           <input
+            type="address"
             className={styles.todoTitleInput}
             placeholder="住所"
             onChange={changeShopAddress}
@@ -205,6 +207,7 @@ export const ShopInfoRegisterView: React.FC = () => {
         <dt>電話番号</dt>
         <dd>
           <input
+            type="tel"
             className={styles.todoTitleInput}
             placeholder="電話番号"
             onChange={changeShopTel}
