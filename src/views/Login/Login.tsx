@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
-import { TiffinContext } from 'src/context/TiffinContext';
+import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { Link } from 'react-router-dom';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const { shopAccount, setShopAccount } = useContext(TiffinContext);
+  const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
 
   const changeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);

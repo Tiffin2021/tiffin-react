@@ -15,7 +15,12 @@ module.exports = {
     jest: true,
     node: true,
   },
-  plugins: ['react-hooks', 'react', '@typescript-eslint', 'eslint-plugin-prettier'],
+  plugins: [
+    'react-hooks',
+    'react',
+    '@typescript-eslint',
+    'eslint-plugin-prettier',
+  ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',

@@ -17,14 +17,6 @@ export const SampleView: React.FC = () => {
 
   return (
     <>
-<<<<<<< HEAD
-      <h1>tiffin</h1>
-      <p>
-        {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
-      </p>
-      <Link to="/about">About</Link>
-      <Link to="/login">Login</Link>
-=======
       <h1>Home</h1>
       <h2>Counter</h2>
       <div>
@@ -32,9 +24,10 @@ export const SampleView: React.FC = () => {
         <button onClick={clickedPlusButton}>+</button>
         <button onClick={clickedMinusButton}>-</button>
       </div>
-      <Link to="/about">Aboutに移動しても、カウンターの値が保持されているはず！</Link>
+      <Link to="/about">
+        Aboutに移動しても、カウンターの値が保持されているはず！
+      </Link>
       <Link to="/login">Login</Link>
->>>>>>> main
     </>
   );
 };
