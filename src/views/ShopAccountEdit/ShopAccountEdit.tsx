@@ -1,16 +1,14 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './ShopAccountEdit.css';
-import Axios, { AxiosResponse } from 'axios';
+import Axios from 'axios';
 import { ShopInfo } from 'src/model/ShopInfo';
 import { TiffinContext } from 'src/context/TiffinContext';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const ShopAccountEdit: React.FC = () => {
   // const id = useParams<{ id: string }>().id;
   const id = 1;
   const { shopInfo, setShopInfo } = useContext(TiffinContext);
-
-  const history = useHistory();
 
   useEffect(() => {
     (async () => {
@@ -56,7 +54,7 @@ export const ShopAccountEdit: React.FC = () => {
   };
 
   const updateClick = async () => {
-    const response = await Axios.put<ShopInfo[]>('shop_info');
+    const response = await Axios.put(`shop_info/${id}`, shopInfo);
     if (response.status !== 200) {
       alert('更新に失敗しました');
       // history.push('/');
@@ -70,36 +68,60 @@ export const ShopAccountEdit: React.FC = () => {
     <>
       <h1>店舗情報の編集</h1>
       <form>
-        <input type="text" value={shopInfo.name} onChange={changedName} />
-        <br />
-        <input type="text" value={shopInfo.address} onChange={changedAddress} />
-        <br />
-        <input type="text" value={shopInfo.station} onChange={changedStation} />
-        <br />
-        <input type="text" value={shopInfo.tel} onChange={changedTel} />
-        <br />
-        <input
-          type="text"
-          value={shopInfo.opentime}
-          onChange={changedOpentime}
-        />
-        <br />
-        <input
-          type="text"
-          value={shopInfo.closetime}
-          onChange={changedClosetime}
-        />
+        <table>
+          <tr>
+            <td>店舗名</td>
+            <td>
+              <input type="text" value={shopInfo.name} onChange={changedName} />
+            </td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td>
+              <input
+                type="text"
+                value={shopInfo.address}
+                onChange={changedAddress}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>最寄駅</td>
+            <td>
+              <input
+                type="text"
+                value={shopInfo.station}
+                onChange={changedStation}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>TEL</td>
+            <td>
+              <input type="text" value={shopInfo.tel} onChange={changedTel} />
+            </td>
+          </tr>
+          <tr>
+            <td>営業時間</td>
+            <td>
+              <input
+                type="text"
+                value={shopInfo.opentime}
+                onChange={changedOpentime}
+              />
+              <input
+                type="text"
+                value={shopInfo.closetime}
+                onChange={changedClosetime}
+              />
+            </td>
+          </tr>
+        </table>
       </form>
-      <p>店舗ID : {shopInfo.id}</p>
-      <p>店舗アカウントID: {shopInfo.shop_accounts_id}</p>
-      <p>店舗名 : {shopInfo.name}</p>
-      <p>住所 : {shopInfo.address}</p>
-      <p>最寄駅 : {shopInfo.station}</p>
-      <p>TEL : {shopInfo.tel}</p>
-      <p>
-        営業時間 : {shopInfo.opentime}〜{shopInfo.closetime}
-      </p>
+
+      <br />
       <button onClick={updateClick}>更新</button>
+      <br />
       <br />
       <Link to="/">戻る</Link>
     </>
