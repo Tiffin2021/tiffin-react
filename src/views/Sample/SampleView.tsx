@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import './SampleView.css';
 import { SampleCounterContext } from 'src/store/contexts/SampleCounterContext';
+import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { Link } from 'react-router-dom';
 
 export const SampleView: React.FC = () => {
@@ -8,6 +9,7 @@ export const SampleView: React.FC = () => {
   // useContextでグローバルに定義している、createContextで作成された
   // (どのコンポーネントでも使える、useStateのセットが手に入るイメージ)
   const { count, setCount } = useContext(SampleCounterContext);
+  const { shopAccount } = useContext(ShopAccountContext);
 
   /** +ボタンが押されたときに カウントを1プラスする */
   const clickedPlusButton = () => setCount(count + 1);
@@ -21,12 +23,13 @@ export const SampleView: React.FC = () => {
       <h2>Counter</h2>
       <div>
         <p>{count}</p>
+        <p>
+          {shopAccount.email} : {shopAccount.pass}
+        </p>
         <button onClick={clickedPlusButton}>+</button>
         <button onClick={clickedMinusButton}>-</button>
       </div>
-      <Link to="/about">
-        Aboutに移動しても、カウンターの値が保持されているはず！
-      </Link>
+      <Link to="/about">Aboutに移動しても、カウンターの値が保持されているはず！</Link>
       <Link to="/login">Login</Link>
     </>
   );
