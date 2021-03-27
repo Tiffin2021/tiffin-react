@@ -102,8 +102,6 @@ export const ShopInfoRegisterView: React.FC = () => {
       return stationMaster.prefecture;
     });
 
-  console.log(prefectures);
-
   const changeShopName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newShopInfo = Object.assign({}, shopInfo);
     newShopInfo.name = e.target.value;
@@ -122,32 +120,32 @@ export const ShopInfoRegisterView: React.FC = () => {
     setShopInfo(newShopInfo);
   };
 
-  const [areas, setAreas] = useState(['']);
+  const [areas, setAreas] = useState(['選択してください']);
   const changeShopPrefecture = (e: ChangeEvent<HTMLSelectElement>) => {
     //選ばれた都道府県を取得
     const selectedPrefecture = e.target.value;
     //選ばれた都道府県を条件にエリアを絞る
-    //※undefined型を排除できない！
-    const findAreas = stationMasters.map((stationMaster) => {
-      if (stationMaster.prefecture == selectedPrefecture) {
+    const findAreas = stationMasters
+      .filter((stationMaster) => stationMaster.prefecture == selectedPrefecture)
+      .filter((element, index, self) => self.findIndex((e) => e.area === element.area) === index)
+      .map((stationMaster) => {
         return stationMaster.area;
-      }
-    });
-    console.log(findAreas);
+      });
     //絞った情報をエリアのステートに代入し、更新する
-    // setAreas(findAreas);
+    setAreas(findAreas);
   };
 
-  const [stations, setStations] = useState(['']);
+  const [stations, setStations] = useState(['選択してください']);
   const changeShopArea = (e: ChangeEvent<HTMLSelectElement>) => {
     const selectedArea = e.target.value;
     //選ばれたエリアを条件に駅名を絞る
-    const findStations = stationMasters.map((stationMaster) => {
-      if (stationMaster.prefecture == selectedArea) {
-        return stationMaster.area;
-      }
-    });
+    const findStations = stationMasters
+      .filter((stationMaster) => stationMaster.area == selectedArea)
+      .map((stationMaster) => {
+        return stationMaster.station;
+      });
     //絞った情報を駅名のステートに代入し、更新する
+    setStations(findStations);
   };
 
   const changeShopStation = (e: ChangeEvent<HTMLSelectElement>) => {
