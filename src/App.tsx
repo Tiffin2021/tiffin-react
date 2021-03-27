@@ -5,18 +5,20 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { SampleView } from 'src/views/Sample/SampleView';
 import { TiffinProvider } from 'src/context/TiffinContext';
 import { ShopAccountEdit } from 'src/views/ShopAccountEdit/ShopAccountEdit';
+import { About } from 'src/views/About/About';
+import { Provider } from 'src/store/Provider';
 
 Axios.defaults.baseURL = 'http://localhost:4000/api/';
 
 const App: React.FC = () => {
   return (
     <>
-      <TiffinProvider>
+      <Provider>
         <Router>
           <Route exact path="/" component={SampleView} />
           <Route path="/shop_account_edit" component={ShopAccountEdit} />
         </Router>
-      </TiffinProvider>
+      </Provider>
     </>
   );
 };
