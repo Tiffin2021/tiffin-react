@@ -1,44 +1,108 @@
 /* eslint-disable no-console */
 import styles from './ShopInfoRegisterView.css';
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { TiffinContext } from 'src/context/TiffinContext';
+import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
+import { ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
 import Axios, { AxiosResponse } from 'axios';
-import { StationMaster } from 'src/model/StationMaster';
-import { TimeMaster } from 'src/model/TimeMaster';
+import { StationMaster } from 'src/model/Master/StationMaster';
+import { TimeMaster } from 'src/model/Master/TimeMaster';
 import { ShopAccount } from 'src/model/ShopAccount';
 import { ShopInfo } from 'src/model/ShopInfo';
 
+type Shop = {
+  shopAccount: ShopAccount;
+  shopInfo: ShopInfo;
+};
+
 export const ShopInfoRegisterView: React.FC = () => {
-  const { shopAccount } = useContext(TiffinContext);
-  const { shopInfo, setShopInfo } = useContext(TiffinContext);
-  //初期化
-  const initStationMaster: StationMaster = {
-    prefectures: ['選択肢1', '選択肢2', '選択肢3'],
-    areas: ['選択肢A', '選択肢B', '選択肢C'],
-    stations: ['選択肢α', '選択肢β', '選択肢γ'],
-  };
-  const initTimeMaster: TimeMaster = {
-    open: ['11時00分', '11時30分', '12時00分'],
-    close: ['13時00分', '13時30分', '14時00分'],
-  };
+  const { shopAccount } = useContext(ShopAccountContext);
+  const { shopInfo, setShopInfo } = useContext(ShopInfoContext);
 
-  //都道府県、エリア、駅名のマスターを格納しておくステートを定義
-  const [stationMaster, setStationMaster] = useState(initStationMaster);
-  const [timeMaster, setTimeMaster] = useState(initTimeMaster);
+  //要修正
+  //べた書きデータをマスターからとってきたものに修正
+  const initStationMasters: StationMaster[] = [
+    {
+      id: 0,
+      prefecture: '東京都',
+      area: '新宿・代々木・大久保',
+      station: '新宿',
+    },
+    {
+      id: 1,
+      prefecture: '東京都',
+      area: '新宿・代々木・大久保',
+      station: '代々木',
+    },
+    {
+      id: 2,
+      prefecture: '東京都',
+      area: '上野・浅草・日暮里',
+      station: '上野',
+    },
+    {
+      id: 3,
+      prefecture: '東京都',
+      area: '上野・浅草・日暮里',
+      station: '浅草',
+    },
+    {
+      id: 4,
+      prefecture: '東京都',
+      area: '秋葉原・神田・水道橋',
+      station: '秋葉原',
+    },
+    {
+      id: 5,
+      prefecture: '東京都',
+      area: '秋葉原・神田・水道橋',
+      station: '神田',
+    },
+    {
+      id: 6,
+      prefecture: '北海道',
+      area: '札幌市',
+      station: '札幌',
+    },
+  ];
+  //要修正
+  //べた書きデータをマスターからとってきたものに修正
+  const initTimeMasters: TimeMaster[] = [
+    {
+      id: 0,
+      time: new Date(),
+    },
+    {
+      id: 1,
+      time: new Date(),
+    },
+    {
+      id: 2,
+      time: new Date(),
+    },
+  ];
 
-  useEffect(() => {
-    (async () => {
-      const response = await Axios.get<StationMaster>('stations');
-      setStationMaster(response.data);
-    })();
-  }, [setStationMaster]);
+  //都道府県とエリアと駅名のマスターを格納しておくステートを定義
+  const [stationMasters, setStationMasters] = useState(initStationMasters);
+  const [timeMasters, setTimeMasters] = useState(initTimeMasters);
 
-  useEffect(() => {
-    (async () => {
-      const response = await Axios.get<TimeMaster>('times');
-      setTimeMaster(response.data);
-    })();
-  }, [setTimeMaster]);
+  //後ほどマスターから取得する
+  // useEffect(() => {
+  //   (async () => {
+  //     const stations = await Axios.get<StationMaster[]>('stations');
+  //     setStationMaster(stations.data);
+  //     const times = await Axios.get<TimeMaster[]>('times');
+  //     setTimeMaster(times.data);
+  //   })();
+  // }, [setStationMaster, setTimeMaster]);
+
+  //都道府県名の重複を含まないMasterを作成し、それに対しmap関数を用いて、都道府県名の一覧を作る
+  const prefectures = stationMasters
+    .filter((element, index, self) => self.findIndex((e) => e.prefecture === element.prefecture) === index)
+    .map((stationMaster) => {
+      return stationMaster.prefecture;
+    });
+
+  console.log(prefectures);
 
   const changeShopName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newShopInfo = Object.assign({}, shopInfo);
@@ -58,13 +122,33 @@ export const ShopInfoRegisterView: React.FC = () => {
     setShopInfo(newShopInfo);
   };
 
-  // const changeShopPrefecture = (e: ChangeEvent<HTMLSelectElement>) => {
-  //   //ここで再度データベースに接続し、エリアを取得
-  // };
+  const [areas, setAreas] = useState(['']);
+  const changeShopPrefecture = (e: ChangeEvent<HTMLSelectElement>) => {
+    //選ばれた都道府県を取得
+    const selectedPrefecture = e.target.value;
+    //選ばれた都道府県を条件にエリアを絞る
+    //※undefined型を排除できない！
+    const findAreas = stationMasters.map((stationMaster) => {
+      if (stationMaster.prefecture == selectedPrefecture) {
+        return stationMaster.area;
+      }
+    });
+    console.log(findAreas);
+    //絞った情報をエリアのステートに代入し、更新する
+    // setAreas(findAreas);
+  };
 
-  // const changeShopArea = (e: ChangeEvent<HTMLSelectElement>) => {
-  //   //ここで再度データベースに接続し、駅名を取得
-  // };
+  const [stations, setStations] = useState(['']);
+  const changeShopArea = (e: ChangeEvent<HTMLSelectElement>) => {
+    const selectedArea = e.target.value;
+    //選ばれたエリアを条件に駅名を絞る
+    const findStations = stationMasters.map((stationMaster) => {
+      if (stationMaster.prefecture == selectedArea) {
+        return stationMaster.area;
+      }
+    });
+    //絞った情報を駅名のステートに代入し、更新する
+  };
 
   const changeShopStation = (e: ChangeEvent<HTMLSelectElement>) => {
     const newShopInfo = Object.assign({}, shopInfo);
@@ -87,12 +171,11 @@ export const ShopInfoRegisterView: React.FC = () => {
   const clickRegister = async () => {
     // バックエンドと連携し、登録する
     // アカウントも一緒に登録するのを忘れない
-    const test = {
+    const shop: Shop = {
       shopAccount: shopAccount,
       shopInfo: shopInfo,
     };
-    console.log(test);
-    await Axios.post<any, AxiosResponse<string>>('shop', test);
+    await Axios.post<Shop, AxiosResponse<string>>('shop', shop);
   };
 
   return (
@@ -102,11 +185,7 @@ export const ShopInfoRegisterView: React.FC = () => {
       <dl>
         <dt>店舗名</dt>
         <dd>
-          <input
-            className={styles.todoTitleInput}
-            placeholder="店舗名"
-            onChange={changeShopName}
-          />
+          <input className={styles.todoTitleInput} placeholder="店舗名" onChange={changeShopName} />
         </dd>
       </dl>
 
@@ -114,10 +193,10 @@ export const ShopInfoRegisterView: React.FC = () => {
         <dt>開店時間</dt>
         <dd>
           <select name="開店時間" onChange={changeShopOpen}>
-            {timeMaster.open.map((time) => {
+            {timeMasters.map((time) => {
               return (
-                <option key="1" value={time}>
-                  {time}
+                <option key={time.id} value={time.time.toString()}>
+                  {time.time.toString()}
                 </option>
               );
             })}
@@ -129,10 +208,10 @@ export const ShopInfoRegisterView: React.FC = () => {
         <dt>閉店時間</dt>
         <dd>
           <select name="閉店時間" onChange={changeShopClose}>
-            {timeMaster.close.map((time) => {
+            {timeMasters.map((time) => {
               return (
-                <option key="1" value={time}>
-                  {time}
+                <option key={time.id} value={time.time.toString()}>
+                  {time.time.toString()}
                 </option>
               );
             })}
@@ -143,13 +222,10 @@ export const ShopInfoRegisterView: React.FC = () => {
       <dl>
         <dt>都道府県</dt>
         <dd>
-          <select
-            name="都道府県"
-            // onChange={changeShopPrefecture}
-          >
-            {stationMaster.prefectures.map((prefecture) => {
+          <select name="都道府県" onChange={changeShopPrefecture}>
+            {prefectures.map((prefecture) => {
               return (
-                <option key="1" value={prefecture}>
+                <option key={prefecture} value={prefecture}>
                   {prefecture}
                 </option>
               );
@@ -161,13 +237,10 @@ export const ShopInfoRegisterView: React.FC = () => {
       <dl>
         <dt>エリア</dt>
         <dd>
-          <select
-            name="エリア"
-            // onChange={changeShopArea}
-          >
-            {stationMaster.areas.map((area) => {
+          <select name="エリア" onChange={changeShopArea}>
+            {areas.map((area) => {
               return (
-                <option key="1" value={area}>
+                <option key={area} value={area}>
                   {area}
                 </option>
               );
@@ -180,9 +253,9 @@ export const ShopInfoRegisterView: React.FC = () => {
         <dt>最寄り駅</dt>
         <dd>
           <select name="最寄り駅" onChange={changeShopStation}>
-            {stationMaster.stations.map((station) => {
+            {stations.map((station) => {
               return (
-                <option key="1" value={station}>
+                <option key={station} value={station}>
                   {station}
                 </option>
               );
@@ -194,24 +267,14 @@ export const ShopInfoRegisterView: React.FC = () => {
       <dl>
         <dt>住所</dt>
         <dd>
-          <input
-            type="address"
-            className={styles.todoTitleInput}
-            placeholder="住所"
-            onChange={changeShopAddress}
-          />
+          <input type="address" className={styles.todoTitleInput} placeholder="住所" onChange={changeShopAddress} />
         </dd>
       </dl>
 
       <dl>
         <dt>電話番号</dt>
         <dd>
-          <input
-            type="tel"
-            className={styles.todoTitleInput}
-            placeholder="電話番号"
-            onChange={changeShopTel}
-          />
+          <input type="tel" className={styles.todoTitleInput} placeholder="電話番号" onChange={changeShopTel} />
         </dd>
       </dl>
 

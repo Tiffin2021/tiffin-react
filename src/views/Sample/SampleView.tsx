@@ -26,9 +26,7 @@ export const SampleView: React.FC = () => {
         <button onClick={clickedPlusButton}>+</button>
         <button onClick={clickedMinusButton}>-</button>
       </div>
-      <Link to="/about">
-        Aboutに移動しても、カウンターの値が保持されているはず！
-      </Link>
+      <Link to="/about">Aboutに移動しても、カウンターの値が保持されているはず！</Link>
     </>
   );
 };

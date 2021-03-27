@@ -17,10 +17,7 @@ const App: React.FC = () => {
         <Router>
           <Route exact path="/" component={SampleView} />
           <Route path="/about" component={About} />
-          <Route
-            path="/shopAccountRegister"
-            component={ShopAccountRegisterView}
-          />
+          <Route path="/shopAccountRegister" component={ShopAccountRegisterView} />
           <Route path="/shopInfoRegister" component={ShopInfoRegisterView} />
         </Router>
       </Provider>
