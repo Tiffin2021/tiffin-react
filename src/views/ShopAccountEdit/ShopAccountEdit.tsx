@@ -2,13 +2,13 @@ import React, { useEffect, useContext } from 'react';
 import './ShopAccountEdit.css';
 import Axios from 'axios';
 import { ShopInfo } from 'src/model/ShopInfo';
-import { TiffinContext } from 'src/context/TiffinContext';
 import { Link } from 'react-router-dom';
+import { ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
 
 export const ShopAccountEdit: React.FC = () => {
   // const id = useParams<{ id: string }>().id;
   const id = 1;
-  const { shopInfo, setShopInfo } = useContext(TiffinContext);
+  const { shopInfo, setShopInfo } = useContext(ShopInfoContext);
 
   useEffect(() => {
     (async () => {
@@ -78,21 +78,13 @@ export const ShopAccountEdit: React.FC = () => {
           <tr>
             <td>住所</td>
             <td>
-              <input
-                type="text"
-                value={shopInfo.address}
-                onChange={changedAddress}
-              />
+              <input type="text" value={shopInfo.address} onChange={changedAddress} />
             </td>
           </tr>
           <tr>
             <td>最寄駅</td>
             <td>
-              <input
-                type="text"
-                value={shopInfo.station}
-                onChange={changedStation}
-              />
+              <input type="text" value={shopInfo.station} onChange={changedStation} />
             </td>
           </tr>
           <tr>
@@ -104,16 +96,8 @@ export const ShopAccountEdit: React.FC = () => {
           <tr>
             <td>営業時間</td>
             <td>
-              <input
-                type="text"
-                value={shopInfo.opentime}
-                onChange={changedOpentime}
-              />
-              <input
-                type="text"
-                value={shopInfo.closetime}
-                onChange={changedClosetime}
-              />
+              <input type="text" value={shopInfo.opentime} onChange={changedOpentime} />
+              <input type="text" value={shopInfo.closetime} onChange={changedClosetime} />
             </td>
           </tr>
         </table>

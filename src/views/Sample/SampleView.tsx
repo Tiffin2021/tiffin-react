@@ -18,9 +18,7 @@ export const SampleView: React.FC = () => {
   return (
     <>
       <h1>tiffin</h1>
-      <p>
-        {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
-      </p>
+      <p></p>
       <Link to="/shop_account_edit">ShopAccountInfo</Link>
       <h1>Home</h1>
       <h2>Counter</h2>
@@ -29,9 +27,7 @@ export const SampleView: React.FC = () => {
         <button onClick={clickedPlusButton}>+</button>
         <button onClick={clickedMinusButton}>-</button>
       </div>
-      <Link to="/about">
-        Aboutに移動しても、カウンターの値が保持されているはず！
-      </Link>
+      <Link to="/about">Aboutに移動しても、カウンターの値が保持されているはず！</Link>
     </>
   );
 };
