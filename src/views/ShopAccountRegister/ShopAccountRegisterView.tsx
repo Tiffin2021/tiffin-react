@@ -1,8 +1,10 @@
 /* eslint-disable no-console */
-import styles from './ShopAccountRegisterView.css';
+import './ShopAccountRegisterView.css';
 import React, { useContext, useState } from 'react';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
+import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Link } from 'react-router-dom';
+import { relative } from 'node:path';
 
 export const ShopAccountRegisterView: React.FC = () => {
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
@@ -35,18 +37,25 @@ export const ShopAccountRegisterView: React.FC = () => {
     showButton();
   };
   return (
-    <>
-      <h3>新規店舗登録①</h3>
-      <div>
-        <input type="email" className={styles.todoTitleInput} placeholder="メールアドレス" onChange={changeMail} />
-        <input type="password" className={styles.todoTitleInput} placeholder="パスワード" onChange={changePass} />
-        <input type="password" className={styles.todoTitleInput} placeholder="パスワードの確認" onChange={passCheck} />
+    <div style={{ position: 'relative' }}>
+      <img src={backgroundImage} width="100%" />
+      <h2 style={{ position: 'absolute', top: '10%', left: '45%' }}>新規店舗登録①</h2>
+      <div style={{ position: 'absolute', top: '30%', left: '44%' }}>
+        <div style={{ margin: 20 }}>
+          <input type="email" className="todoTitleInput" placeholder="メールアドレス" onChange={changeMail} />
+        </div>
+        <div style={{ margin: 20 }}>
+          <input type="password" className="todoTitleInput" placeholder="パスワード" onChange={changePass} />
+        </div>
+        <div style={{ margin: 20 }}>
+          <input type="password" className="todoTitleInput" placeholder="パスワードの確認" onChange={passCheck} />
+        </div>
       </div>
       {(() => {
         if (show === true) {
           return (
             <Link to="/shopInfoRegister">
-              <button>次へ</button>
+              <button style={{ position: 'absolute', bottom: '30%', left: '49%' }}>次へ</button>
             </Link>
           );
         }
@@ -58,6 +67,6 @@ export const ShopAccountRegisterView: React.FC = () => {
       ) : (
         <></>
       )} */}
-    </>
+    </div>
   );
 };

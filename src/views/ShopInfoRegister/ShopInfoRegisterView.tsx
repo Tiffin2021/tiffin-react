@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import styles from './ShopInfoRegisterView.css';
+import './ShopInfoRegisterView.css';
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
@@ -8,6 +8,7 @@ import { StationMaster } from 'src/model/Master/StationMaster';
 import { TimeMaster } from 'src/model/Master/TimeMaster';
 import { ShopAccount } from 'src/model/ShopAccount';
 import { ShopInfo } from 'src/model/ShopInfo';
+import backgroundImage from 'src/pictures/businessBackground.jpg';
 
 type Shop = {
   shopAccount: ShopAccount;
@@ -178,108 +179,114 @@ export const ShopInfoRegisterView: React.FC = () => {
 
   return (
     <>
-      <h3>新規店舗登録②</h3>
+      <div style={{ position: 'relative' }}>
+        <img src={backgroundImage} width="100%" />
+        <div style={{ width: '70%' }}>
+          <h2 style={{ position: 'absolute', top: '5%', left: '46%' }}>新規店舗登録②</h2>
+          <div style={{ position: 'absolute', top: '15%', left: '40%' }}>
+            <dl>
+              <dt>店舗名</dt>
+              <dd>
+                <input className="todoTitleInput" placeholder="店舗名" onChange={changeShopName} />
+              </dd>
+            </dl>
 
-      <dl>
-        <dt>店舗名</dt>
-        <dd>
-          <input className={styles.todoTitleInput} placeholder="店舗名" onChange={changeShopName} />
-        </dd>
-      </dl>
+            <dl>
+              <dt>開店時間</dt>
+              <dd>
+                <select name="開店時間" onChange={changeShopOpen}>
+                  {timeMasters.map((time) => {
+                    return (
+                      <option key={time.id} value={time.time.toString()}>
+                        {time.time.toString()}
+                      </option>
+                    );
+                  })}
+                </select>
+              </dd>
+            </dl>
 
-      <dl>
-        <dt>開店時間</dt>
-        <dd>
-          <select name="開店時間" onChange={changeShopOpen}>
-            {timeMasters.map((time) => {
-              return (
-                <option key={time.id} value={time.time.toString()}>
-                  {time.time.toString()}
-                </option>
-              );
-            })}
-          </select>
-        </dd>
-      </dl>
+            <dl>
+              <dt>閉店時間</dt>
+              <dd>
+                <select name="閉店時間" onChange={changeShopClose}>
+                  {timeMasters.map((time) => {
+                    return (
+                      <option key={time.id} value={time.time.toString()}>
+                        {time.time.toString()}
+                      </option>
+                    );
+                  })}
+                </select>
+              </dd>
+            </dl>
 
-      <dl>
-        <dt>閉店時間</dt>
-        <dd>
-          <select name="閉店時間" onChange={changeShopClose}>
-            {timeMasters.map((time) => {
-              return (
-                <option key={time.id} value={time.time.toString()}>
-                  {time.time.toString()}
-                </option>
-              );
-            })}
-          </select>
-        </dd>
-      </dl>
+            <dl>
+              <dt>都道府県</dt>
+              <dd>
+                <select name="都道府県" onChange={changeShopPrefecture}>
+                  {prefectures.map((prefecture) => {
+                    return (
+                      <option key={prefecture} value={prefecture}>
+                        {prefecture}
+                      </option>
+                    );
+                  })}
+                </select>
+              </dd>
+            </dl>
 
-      <dl>
-        <dt>都道府県</dt>
-        <dd>
-          <select name="都道府県" onChange={changeShopPrefecture}>
-            {prefectures.map((prefecture) => {
-              return (
-                <option key={prefecture} value={prefecture}>
-                  {prefecture}
-                </option>
-              );
-            })}
-          </select>
-        </dd>
-      </dl>
+            <dl>
+              <dt>エリア</dt>
+              <dd>
+                <select name="エリア" onChange={changeShopArea}>
+                  {areas.map((area) => {
+                    return (
+                      <option key={area} value={area}>
+                        {area}
+                      </option>
+                    );
+                  })}
+                </select>
+              </dd>
+            </dl>
 
-      <dl>
-        <dt>エリア</dt>
-        <dd>
-          <select name="エリア" onChange={changeShopArea}>
-            {areas.map((area) => {
-              return (
-                <option key={area} value={area}>
-                  {area}
-                </option>
-              );
-            })}
-          </select>
-        </dd>
-      </dl>
+            <dl>
+              <dt>最寄り駅</dt>
+              <dd>
+                <select name="最寄り駅" onChange={changeShopStation}>
+                  {stations.map((station) => {
+                    return (
+                      <option key={station} value={station}>
+                        {station}
+                      </option>
+                    );
+                  })}
+                </select>
+              </dd>
+            </dl>
 
-      <dl>
-        <dt>最寄り駅</dt>
-        <dd>
-          <select name="最寄り駅" onChange={changeShopStation}>
-            {stations.map((station) => {
-              return (
-                <option key={station} value={station}>
-                  {station}
-                </option>
-              );
-            })}
-          </select>
-        </dd>
-      </dl>
+            <dl>
+              <dt>住所</dt>
+              <dd>
+                <input type="address" className="todoTitleInput" placeholder="住所" onChange={changeShopAddress} />
+              </dd>
+            </dl>
 
-      <dl>
-        <dt>住所</dt>
-        <dd>
-          <input type="address" className={styles.todoTitleInput} placeholder="住所" onChange={changeShopAddress} />
-        </dd>
-      </dl>
+            <dl>
+              <dt>電話番号</dt>
+              <dd>
+                <input type="tel" className="todoTitleInput" placeholder="電話番号" onChange={changeShopTel} />
+              </dd>
+            </dl>
 
-      <dl>
-        <dt>電話番号</dt>
-        <dd>
-          <input type="tel" className={styles.todoTitleInput} placeholder="電話番号" onChange={changeShopTel} />
-        </dd>
-      </dl>
-
-      <div>
-        <button className={styles.todoAddButton} onClick={clickRegister}>
-          登録
-        </button>
+            <div>
+              <button className="todoAddButton" onClick={clickRegister} style={{ position: 'absolute', left: '40%' }}>
+                登録
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
