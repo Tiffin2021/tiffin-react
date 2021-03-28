@@ -70,15 +70,15 @@ export const ShopInfoRegisterView: React.FC = () => {
   const initTimeMasters: TimeMaster[] = [
     {
       id: 0,
-      time: new Date(),
+      time: 1100,
     },
     {
       id: 1,
-      time: new Date(),
+      time: 1130,
     },
     {
       id: 2,
-      time: new Date(),
+      time: 1200,
     },
   ];
 
@@ -111,13 +111,13 @@ export const ShopInfoRegisterView: React.FC = () => {
 
   const changeShopOpen = (e: ChangeEvent<HTMLSelectElement>) => {
     const newShopInfo = Object.assign({}, shopInfo);
-    newShopInfo.opentime = e.target.value;
+    newShopInfo.opentime = parseInt(e.target.value);
     setShopInfo(newShopInfo);
   };
 
   const changeShopClose = (e: ChangeEvent<HTMLSelectElement>) => {
     const newShopInfo = Object.assign({}, shopInfo);
-    newShopInfo.closetime = e.target.value;
+    newShopInfo.closetime = parseInt(e.target.value);
     setShopInfo(newShopInfo);
   };
 
@@ -182,33 +182,33 @@ export const ShopInfoRegisterView: React.FC = () => {
       <div style={{ position: 'relative' }}>
         <img src={backgroundImage} width="100%" />
         <div style={{ width: '70%' }}>
-          <h2 style={{ position: 'absolute', top: '5%', left: '46%' }}>新規店舗登録②</h2>
-          <div style={{ position: 'absolute', top: '15%', left: '40%' }}>
-            <dl>
-              <dt>店舗名</dt>
-              <dd>
+          <h2 style={{ position: 'absolute', top: '5%', left: '45%' }}>新規店舗登録②</h2>
+          <div style={{ position: 'absolute', top: '15%', left: '35%' }}>
+            <div>
+              <div>店舗名</div>
+              <div>
                 <input className="todoTitleInput" placeholder="店舗名" onChange={changeShopName} />
-              </dd>
-            </dl>
+              </div>
+            </div>
 
-            <dl>
-              <dt>開店時間</dt>
-              <dd>
+            <div>
+              <div>開店時間</div>
+              <div>
                 <select name="開店時間" onChange={changeShopOpen}>
                   {timeMasters.map((time) => {
                     return (
-                      <option key={time.id} value={time.time.toString()}>
-                        {time.time.toString()}
+                      <option key={time.id} value={time.time}>
+                        {time.time}
                       </option>
                     );
                   })}
                 </select>
-              </dd>
-            </dl>
+              </div>
+            </div>
 
-            <dl>
-              <dt>閉店時間</dt>
-              <dd>
+            <div>
+              <div>閉店時間</div>
+              <div>
                 <select name="閉店時間" onChange={changeShopClose}>
                   {timeMasters.map((time) => {
                     return (
@@ -218,12 +218,12 @@ export const ShopInfoRegisterView: React.FC = () => {
                     );
                   })}
                 </select>
-              </dd>
-            </dl>
+              </div>
+            </div>
 
-            <dl>
-              <dt>都道府県</dt>
-              <dd>
+            <div>
+              <div>都道府県</div>
+              <div>
                 <select name="都道府県" onChange={changeShopPrefecture}>
                   {prefectures.map((prefecture) => {
                     return (
@@ -233,12 +233,12 @@ export const ShopInfoRegisterView: React.FC = () => {
                     );
                   })}
                 </select>
-              </dd>
-            </dl>
+              </div>
+            </div>
 
-            <dl>
-              <dt>エリア</dt>
-              <dd>
+            <div>
+              <div>エリア</div>
+              <div>
                 <select name="エリア" onChange={changeShopArea}>
                   {areas.map((area) => {
                     return (
@@ -248,12 +248,12 @@ export const ShopInfoRegisterView: React.FC = () => {
                     );
                   })}
                 </select>
-              </dd>
-            </dl>
+              </div>
+            </div>
 
-            <dl>
-              <dt>最寄り駅</dt>
-              <dd>
+            <div>
+              <div>最寄り駅</div>
+              <div>
                 <select name="最寄り駅" onChange={changeShopStation}>
                   {stations.map((station) => {
                     return (
@@ -263,25 +263,25 @@ export const ShopInfoRegisterView: React.FC = () => {
                     );
                   })}
                 </select>
-              </dd>
-            </dl>
-
-            <dl>
-              <dt>住所</dt>
-              <dd>
-                <input type="address" className="todoTitleInput" placeholder="住所" onChange={changeShopAddress} />
-              </dd>
-            </dl>
-
-            <dl>
-              <dt>電話番号</dt>
-              <dd>
-                <input type="tel" className="todoTitleInput" placeholder="電話番号" onChange={changeShopTel} />
-              </dd>
-            </dl>
+              </div>
+            </div>
 
             <div>
-              <button className="todoAddButton" onClick={clickRegister} style={{ position: 'absolute', left: '40%' }}>
+              <div>住所</div>
+              <div>
+                <input type="address" className="todoTitleInput" placeholder="住所" onChange={changeShopAddress} />
+              </div>
+            </div>
+
+            <div>
+              <div>電話番号</div>
+              <div>
+                <input type="tel" className="todoTitleInput" placeholder="電話番号" onChange={changeShopTel} />
+              </div>
+            </div>
+
+            <div>
+              <button className="todoAddButton" onClick={clickRegister} style={{ position: 'absolute', marginTop: 80 }}>
                 登録
               </button>
             </div>

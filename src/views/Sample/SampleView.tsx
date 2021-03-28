@@ -11,10 +11,9 @@ export const SampleView: React.FC = () => {
       <header style={{ fontSize: 30, position: 'absolute', top: '2%', left: '0' }}>🍴tiffin🍴</header>
       <h1 style={{ position: 'absolute', top: '20%', left: '46%' }}>Home</h1>
       <img src={headerImage} width="100%" />
-      <div style={{ marginBottom: 20 }}></div>
-      <div style={{ textAlign: 'center', position: 'absolute', bottom: '50%', left: '46%' }}>
+      <div>
         <Link to="/shopAccountRegister">
-          <button style={{ fontSize: 15 }}>新規登録</button>
+          <button style={{ textAlign: 'center', position: 'absolute', bottom: '50%', left: '32%' }}>新規登録</button>
         </Link>
       </div>
     </div>

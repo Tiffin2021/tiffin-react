@@ -39,34 +39,29 @@ export const ShopAccountRegisterView: React.FC = () => {
   return (
     <div style={{ position: 'relative' }}>
       <img src={backgroundImage} width="100%" />
-      <h2 style={{ position: 'absolute', top: '10%', left: '45%' }}>新規店舗登録①</h2>
-      <div style={{ position: 'absolute', top: '30%', left: '44%' }}>
-        <div style={{ margin: 20 }}>
-          <input type="email" className="todoTitleInput" placeholder="メールアドレス" onChange={changeMail} />
+      <div style={{ backgroundColor: 'white' }}>
+        <h2 style={{ position: 'absolute', top: '5%', left: '45%' }}>新規店舗登録①</h2>
+        <div style={{ position: 'absolute', top: '30%', left: '32%' }}>
+          <div style={{ margin: 20 }}>
+            <input type="email" className="todoTitleInput" placeholder="メールアドレス" onChange={changeMail} />
+          </div>
+          <div style={{ margin: 20 }}>
+            <input type="password" className="todoTitleInput" placeholder="パスワード" onChange={changePass} />
+          </div>
+          <div style={{ margin: 20 }}>
+            <input type="password" className="todoTitleInput" placeholder="パスワードの確認" onChange={passCheck} />
+          </div>
         </div>
-        <div style={{ margin: 20 }}>
-          <input type="password" className="todoTitleInput" placeholder="パスワード" onChange={changePass} />
-        </div>
-        <div style={{ margin: 20 }}>
-          <input type="password" className="todoTitleInput" placeholder="パスワードの確認" onChange={passCheck} />
-        </div>
+        {(() => {
+          if (show === true) {
+            return (
+              <Link to="/shopInfoRegister">
+                <button style={{ position: 'absolute', bottom: '30%', left: '33%' }}>次へ</button>
+              </Link>
+            );
+          }
+        })()}
       </div>
-      {(() => {
-        if (show === true) {
-          return (
-            <Link to="/shopInfoRegister">
-              <button style={{ position: 'absolute', bottom: '30%', left: '49%' }}>次へ</button>
-            </Link>
-          );
-        }
-      })()}
-      {/* {show ? (
-        <Link to="/shopInfoRegister">
-          <button>次へ</button>
-        </Link>
-      ) : (
-        <></>
-      )} */}
     </div>
   );
 };

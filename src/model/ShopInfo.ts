@@ -3,8 +3,8 @@ export type ShopInfo = {
   shop_accounts_id: number;
   name: string;
   station: string;
-  opentime: string;
-  closetime: string;
   address: string;
   tel: string;
+  opentime: number;
+  closetime: number;
 };

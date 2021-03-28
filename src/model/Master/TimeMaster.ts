@@ -1,4 +1,4 @@
 export type TimeMaster = {
   id: number;
-  time: Date;
+  time: number;
 };
