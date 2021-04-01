@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './SampleView.css';
 import { SampleCounterContext } from 'src/store/contexts/SampleCounterContext';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
+import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountloginShopAccountState';
 import { Link } from 'react-router-dom';
 
 export const SampleView: React.FC = () => {
@@ -10,6 +11,7 @@ export const SampleView: React.FC = () => {
   // (どのコンポーネントでも使える、useStateのセットが手に入るイメージ)
   const { count, setCount } = useContext(SampleCounterContext);
   const { shopAccount } = useContext(ShopAccountContext);
+  const { loginShopAccountState } = useContext(LoginShopAccountStateContext);
 
   /** +ボタンが押されたときに カウントを1プラスする */
   const clickedPlusButton = () => setCount(count + 1);
@@ -24,7 +26,8 @@ export const SampleView: React.FC = () => {
       <div>
         <p>{count}</p>
         <p>
-          {shopAccount.email} : {shopAccount.pass}
+          {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
+          {console.info(loginShopAccountState)}
         </p>
         <button onClick={clickedPlusButton}>+</button>
         <button onClick={clickedMinusButton}>-</button>
