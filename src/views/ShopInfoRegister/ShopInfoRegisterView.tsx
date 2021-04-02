@@ -19,66 +19,19 @@ export const ShopInfoRegisterView: React.FC = () => {
   const { shopAccount } = useContext(ShopAccountContext);
   const { shopInfo, setShopInfo } = useContext(ShopInfoContext);
 
-  //要修正
-  //べた書きデータをマスターからとってきたものに修正
+  //初期化
   const initStationMasters: StationMaster[] = [
     {
       id: 0,
-      prefecture: '東京都',
-      area: '新宿・代々木・大久保',
-      station: '新宿',
-    },
-    {
-      id: 1,
-      prefecture: '東京都',
-      area: '新宿・代々木・大久保',
-      station: '代々木',
-    },
-    {
-      id: 2,
-      prefecture: '東京都',
-      area: '上野・浅草・日暮里',
-      station: '上野',
-    },
-    {
-      id: 3,
-      prefecture: '東京都',
-      area: '上野・浅草・日暮里',
-      station: '浅草',
-    },
-    {
-      id: 4,
-      prefecture: '東京都',
-      area: '秋葉原・神田・水道橋',
-      station: '秋葉原',
-    },
-    {
-      id: 5,
-      prefecture: '東京都',
-      area: '秋葉原・神田・水道橋',
-      station: '神田',
-    },
-    {
-      id: 6,
-      prefecture: '北海道',
-      area: '札幌市',
-      station: '札幌',
+      prefecture: '',
+      area: '',
+      station: '',
     },
   ];
-  //要修正
-  //べた書きデータをマスターからとってきたものに修正
   const initTimeMasters: TimeMaster[] = [
     {
       id: 0,
-      time: 1100,
-    },
-    {
-      id: 1,
-      time: 1130,
-    },
-    {
-      id: 2,
-      time: 1200,
+      time: 0,
     },
   ];
 
@@ -86,15 +39,15 @@ export const ShopInfoRegisterView: React.FC = () => {
   const [stationMasters, setStationMasters] = useState(initStationMasters);
   const [timeMasters, setTimeMasters] = useState(initTimeMasters);
 
-  //後ほどマスターから取得する
-  // useEffect(() => {
-  //   (async () => {
-  //     const stations = await Axios.get<StationMaster[]>('stations');
-  //     setStationMaster(stations.data);
-  //     const times = await Axios.get<TimeMaster[]>('times');
-  //     setTimeMaster(times.data);
-  //   })();
-  // }, [setStationMaster, setTimeMaster]);
+  //マスターから取得
+  useEffect(() => {
+    (async () => {
+      const stations = await Axios.get<StationMaster[]>('station_master');
+      setStationMasters(stations.data);
+      const times = await Axios.get<TimeMaster[]>('time_master');
+      setTimeMasters(times.data);
+    })();
+  }, [setStationMasters, setTimeMasters]);
 
   //都道府県名の重複を含まないMasterを作成し、それに対しmap関数を用いて、都道府県名の一覧を作る
   const prefectures = stationMasters
@@ -169,7 +122,6 @@ export const ShopInfoRegisterView: React.FC = () => {
 
   const clickRegister = async () => {
     // バックエンドと連携し、登録する
-    // アカウントも一緒に登録するのを忘れない
     const shop: Shop = {
       shopAccount: shopAccount,
       shopInfo: shopInfo,
