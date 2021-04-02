@@ -20,34 +20,23 @@ export const ShopInfoRegisterView: React.FC = () => {
   const { shopInfo, setShopInfo } = useContext(ShopInfoContext);
 
   //初期化
-  const initStationMasters: StationMaster[] = [
-    {
-      id: 0,
-      prefecture: '',
-      area: '',
-      station: '',
-    },
-  ];
-  const initTimeMasters: TimeMaster[] = [
-    {
-      id: 0,
-      time: 0,
-    },
-  ];
+  const initStationMasters: StationMaster[] = [];
+  const initTimeMasters: TimeMaster[] = [];
 
   //都道府県とエリアと駅名のマスターを格納しておくステートを定義
   const [stationMasters, setStationMasters] = useState(initStationMasters);
-  const [timeMasters, setTimeMasters] = useState(initTimeMasters);
+  const [openTimeMasters, setOpenTimeMasters] = useState(initTimeMasters);
+  const [closeTimeMasters, setCloseTimeMasters] = useState(initTimeMasters);
 
-  //マスターから取得
+  //マスターテーブル取得
   useEffect(() => {
     (async () => {
       const stations = await Axios.get<StationMaster[]>('station_master');
       setStationMasters(stations.data);
       const times = await Axios.get<TimeMaster[]>('time_master');
-      setTimeMasters(times.data);
+      setOpenTimeMasters(times.data);
     })();
-  }, [setStationMasters, setTimeMasters]);
+  }, [setStationMasters, setOpenTimeMasters]);
 
   //都道府県名の重複を含まないMasterを作成し、それに対しmap関数を用いて、都道府県名の一覧を作る
   const prefectures = stationMasters
@@ -66,6 +55,8 @@ export const ShopInfoRegisterView: React.FC = () => {
     const newShopInfo = Object.assign({}, shopInfo);
     newShopInfo.opentime = parseInt(e.target.value);
     setShopInfo(newShopInfo);
+    const newCloseTimeMasters = openTimeMasters.filter((timeMaster) => timeMaster.time > parseInt(e.target.value));
+    setCloseTimeMasters(newCloseTimeMasters);
   };
 
   const changeShopClose = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -147,7 +138,7 @@ export const ShopInfoRegisterView: React.FC = () => {
               <div>開店時間</div>
               <div>
                 <select name="開店時間" onChange={changeShopOpen}>
-                  {timeMasters.map((time) => {
+                  {openTimeMasters.map((time) => {
                     return (
                       <option key={time.id} value={time.time}>
                         {time.time}
@@ -162,7 +153,7 @@ export const ShopInfoRegisterView: React.FC = () => {
               <div>閉店時間</div>
               <div>
                 <select name="閉店時間" onChange={changeShopClose}>
-                  {timeMasters.map((time) => {
+                  {closeTimeMasters.map((time) => {
                     return (
                       <option key={time.id} value={time.time.toString()}>
                         {time.time.toString()}
