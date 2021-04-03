@@ -3,6 +3,7 @@ import './App.css';
 import Axios from 'axios';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { SampleView } from 'src/views/Sample/SampleView';
+import { ShopInfoEdit } from 'src/views/ShopInfoEdit/ShopInfoEdit';
 import { ShopAccountEdit } from 'src/views/ShopAccountEdit/ShopAccountEdit';
 import { Provider } from 'src/store/Provider';
 import { About } from './views/About/About';
@@ -16,7 +17,8 @@ const App: React.FC = () => {
         <Router>
           <Route exact path="/" component={SampleView} />
           <Route path="/about" component={About} />
-          <Route path="/shop_account_edit" component={ShopAccountEdit} />
+          <Route path="/shop_accounts_edit" component={ShopAccountEdit} />
+          <Route path="/shop_info_edit" component={ShopInfoEdit} />
         </Router>
       </Provider>
     </>

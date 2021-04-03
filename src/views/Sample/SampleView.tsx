@@ -19,7 +19,9 @@ export const SampleView: React.FC = () => {
     <>
       <h1>tiffin</h1>
       <p></p>
-      <Link to="/shop_account_edit">ShopAccountInfo</Link>
+      <Link to="/shop_accounts_edit">アカウントの編集</Link>
+      <p></p>
+      <Link to="/shop_info_edit">店舗の編集</Link>
       <h1>Home</h1>
       <h2>Counter</h2>
       <div>

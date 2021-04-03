@@ -1,103 +1,65 @@
 import React, { useEffect, useContext } from 'react';
 import './ShopAccountEdit.css';
 import Axios from 'axios';
-import { ShopInfo } from 'src/model/ShopInfo';
+import { ShopAccount } from 'src/model/ShopAccount';
 import { Link } from 'react-router-dom';
-import { ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
+import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 
 export const ShopAccountEdit: React.FC = () => {
-  // const id = useParams<{ id: string }>().id;
-  const id = 1;
-  const { shopInfo, setShopInfo } = useContext(ShopInfoContext);
+  const id = 2;
+  const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
 
   useEffect(() => {
     (async () => {
-      const response = await Axios.get<ShopInfo>(`shop_info/${id}`);
-      setShopInfo(response.data);
+      const response = await Axios.get<ShopAccount>(`shop_accounts/${id}`);
+      setShopAccount(response.data);
     })();
-  }, [id, setShopInfo]);
+  }, [id, setShopAccount]);
 
-  const changedName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newShopInfo = Object.assign({}, shopInfo);
-    newShopInfo.name = e.target.value;
-    setShopInfo(newShopInfo);
+  const changedEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newShopAccount = Object.assign({}, shopAccount);
+    newShopAccount.email = e.target.value;
+    setShopAccount(newShopAccount);
   };
 
-  const changedAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newShopInfo = Object.assign({}, shopInfo);
-    newShopInfo.address = e.target.value;
-    setShopInfo(newShopInfo);
-  };
-
-  const changedStation = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newShopInfo = Object.assign({}, shopInfo);
-    newShopInfo.station = e.target.value;
-    setShopInfo(newShopInfo);
-  };
-
-  const changedTel = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newShopInfo = Object.assign({}, shopInfo);
-    newShopInfo.tel = e.target.value;
-    setShopInfo(newShopInfo);
-  };
-
-  const changedOpentime = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newShopInfo = Object.assign({}, shopInfo);
-    newShopInfo.opentime = e.target.value;
-    setShopInfo(newShopInfo);
-  };
-
-  const changedClosetime = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newShopInfo = Object.assign({}, shopInfo); // HTMLTextAreaElementとは?
-    newShopInfo.closetime = e.target.value;
-    setShopInfo(newShopInfo);
+  const changedPass = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newShopAccount = Object.assign({}, shopAccount);
+    newShopAccount.pass = e.target.value;
+    setShopAccount(newShopAccount);
   };
 
   const updateClick = async () => {
-    const response = await Axios.put(`shop_info/${id}`, shopInfo);
+    const response = await Axios.put(`shop_accounts/${id}`, shopAccount);
     if (response.status !== 200) {
       alert('更新に失敗しました');
-      // history.push('/');
+
       return;
     }
+  };
 
-    // history.push('/');
+  const deleteClick = async () => {
+    const response = await Axios.delete(`shop_accounts/${id}`);
+    if (response.status !== 200) {
+      alert('更新に失敗しました');
+      return;
+    }
   };
 
   return (
     <>
-      <h1>店舗情報の編集</h1>
+      <h1>アカウント情報の編集</h1>
       <form>
         <table>
           <tr>
-            <td>店舗名</td>
+            <td>Email</td>
             <td>
-              <input type="text" value={shopInfo.name} onChange={changedName} />
+              <input type="text" value={shopAccount.email} onChange={changedEmail} />
             </td>
           </tr>
           <tr>
-            <td>住所</td>
+            <td>パスワード</td>
             <td>
-              <input type="text" value={shopInfo.address} onChange={changedAddress} />
-            </td>
-          </tr>
-          <tr>
-            <td>最寄駅</td>
-            <td>
-              <input type="text" value={shopInfo.station} onChange={changedStation} />
-            </td>
-          </tr>
-          <tr>
-            <td>TEL</td>
-            <td>
-              <input type="text" value={shopInfo.tel} onChange={changedTel} />
-            </td>
-          </tr>
-          <tr>
-            <td>営業時間</td>
-            <td>
-              <input type="text" value={shopInfo.opentime} onChange={changedOpentime} />
-              <input type="text" value={shopInfo.closetime} onChange={changedClosetime} />
+              <input type="text" value={shopAccount.pass} onChange={changedPass} />
             </td>
           </tr>
         </table>
@@ -105,6 +67,7 @@ export const ShopAccountEdit: React.FC = () => {
 
       <br />
       <button onClick={updateClick}>更新</button>
+      <button onClick={deleteClick}>このアカウントを削除</button>
       <br />
       <br />
       <Link to="/">戻る</Link>
