@@ -13,6 +13,8 @@ const initialShopInfo: ShopInfo = {
   shop_accounts_id: 0,
   name: '',
   address: '',
+  prefecture: '',
+  area: '',
   station: '',
   tel: '',
   opentime: 0,

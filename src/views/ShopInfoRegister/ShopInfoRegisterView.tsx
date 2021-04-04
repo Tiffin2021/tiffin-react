@@ -78,6 +78,10 @@ export const ShopInfoRegisterView: React.FC = () => {
       });
     //絞った情報をエリアのステートに代入し、更新する
     setAreas(findAreas);
+    //店舗情報の内容を更新
+    const newShopInfo = Object.assign({}, shopInfo);
+    newShopInfo.prefecture = selectedPrefecture;
+    setShopInfo(newShopInfo);
   };
 
   const [stations, setStations] = useState(['選択してください']);
@@ -91,6 +95,10 @@ export const ShopInfoRegisterView: React.FC = () => {
       });
     //絞った情報を駅名のステートに代入し、更新する
     setStations(findStations);
+    //店舗情報の内容を更新
+    const newShopInfo = Object.assign({}, shopInfo);
+    newShopInfo.area = selectedArea;
+    setShopInfo(newShopInfo);
   };
 
   const changeShopStation = (e: ChangeEvent<HTMLSelectElement>) => {

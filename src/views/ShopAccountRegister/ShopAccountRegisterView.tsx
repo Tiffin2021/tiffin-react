@@ -4,7 +4,6 @@ import React, { useContext, useState } from 'react';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Link } from 'react-router-dom';
-import { relative } from 'node:path';
 
 export const ShopAccountRegisterView: React.FC = () => {
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
