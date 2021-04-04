@@ -29,6 +29,18 @@ export const ShopInfoEdit: React.FC = () => {
     setShopInfo(newShopInfo);
   };
 
+  const changedPrefecture = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newShopInfo = Object.assign({}, shopInfo);
+    newShopInfo.prefecture = e.target.value;
+    setShopInfo(newShopInfo);
+  };
+
+  const changedArea = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newShopInfo = Object.assign({}, shopInfo);
+    newShopInfo.area = e.target.value;
+    setShopInfo(newShopInfo);
+  };
+
   const changedStation = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newShopInfo = Object.assign({}, shopInfo);
     newShopInfo.station = e.target.value;
@@ -87,6 +99,18 @@ export const ShopInfoEdit: React.FC = () => {
             <td>住所</td>
             <td>
               <input type="text" value={shopInfo.address} onChange={changedAddress} />
+            </td>
+          </tr>
+          <tr>
+            <td>都道府県</td>
+            <td>
+              <input type="text" value={shopInfo.prefecture} onChange={changedPrefecture} />
+            </td>
+          </tr>
+          <tr>
+            <td>エリア</td>
+            <td>
+              <input type="text" value={shopInfo.area} onChange={changedArea} />
             </td>
           </tr>
           <tr>
