@@ -1,5 +1,4 @@
 import './SampleView.css';
-import './SampleView.css';
 import { Link } from 'react-router-dom';
 import headerImage from 'src/pictures/businessBackground2.jpg';
 // import React, { useContext } from 'react';
@@ -7,14 +6,18 @@ import headerImage from 'src/pictures/businessBackground2.jpg';
 
 export const SampleView: React.FC = () => {
   return (
-    <div style={{ position: 'relative' }}>
-      <header style={{ fontSize: 30, position: 'absolute', top: '2%', left: '0' }}>🍴tiffin🍴</header>
-      <h1 style={{ position: 'absolute', top: '20%', left: '46%' }}>Home</h1>
-      <img src={headerImage} width="100%" />
-      <div>
-        <Link to="/shopAccountRegister">
-          <button style={{ textAlign: 'center', position: 'absolute', bottom: '50%', left: '32%' }}>新規登録</button>
-        </Link>
+    <div>
+      <img src={headerImage} className="backgroundImage" />
+      <div className="onImage">
+        <div className="logo">🍴tiffin🍴</div>
+        <div className="backgroundForm">
+          <h1 className="pageTitle">Home</h1>
+          <div className="buttonCenter">
+            <Link to="/shopAccountRegister">
+              <button>新規登録</button>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

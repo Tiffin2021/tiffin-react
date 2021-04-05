@@ -36,30 +36,38 @@ export const ShopAccountRegisterView: React.FC = () => {
     showButton();
   };
   return (
-    <div style={{ position: 'relative' }}>
-      <img src={backgroundImage} width="100%" />
-      <div style={{ backgroundColor: 'white' }}>
-        <h2 style={{ position: 'absolute', top: '5%', left: '45%' }}>新規店舗登録①</h2>
-        <div style={{ position: 'absolute', top: '30%', left: '32%' }}>
-          <div style={{ margin: 20 }}>
-            <input type="email" className="todoTitleInput" placeholder="メールアドレス" onChange={changeMail} />
+    <div>
+      <img src={backgroundImage} className="backgroundImage" />
+      <div className="onImage">
+        <div className="logo">🍴tiffin🍴</div>
+        <div className="backgroundForm">
+          <h2 className="pageTitle">新規店舗登録①</h2>
+          <div>
+            <div className="formItem">
+              <div>メールアドレス</div>
+              <input type="email" className="formInput" placeholder="メールアドレス" onChange={changeMail} />
+            </div>
+            <div className="formItem">
+              <div>パスワード</div>
+              <input type="password" className="formInput" placeholder="パスワード" onChange={changePass} />
+            </div>
+            <div className="formItem">
+              <div>パスワードの確認</div>
+              <input type="password" className="formInput" placeholder="パスワードの確認" onChange={passCheck} />
+            </div>
           </div>
-          <div style={{ margin: 20 }}>
-            <input type="password" className="todoTitleInput" placeholder="パスワード" onChange={changePass} />
-          </div>
-          <div style={{ margin: 20 }}>
-            <input type="password" className="todoTitleInput" placeholder="パスワードの確認" onChange={passCheck} />
+          <div className="buttonCenter">
+            {(() => {
+              if (show === true) {
+                return (
+                  <Link to="/shopInfoRegister">
+                    <button>次へ</button>
+                  </Link>
+                );
+              }
+            })()}
           </div>
         </div>
-        {(() => {
-          if (show === true) {
-            return (
-              <Link to="/shopInfoRegister">
-                <button style={{ position: 'absolute', bottom: '30%', left: '33%' }}>次へ</button>
-              </Link>
-            );
-          }
-        })()}
       </div>
     </div>
   );

@@ -130,111 +130,94 @@ export const ShopInfoRegisterView: React.FC = () => {
 
   return (
     <>
-      <div style={{ position: 'relative' }}>
-        <img src={backgroundImage} width="100%" />
-        <div style={{ width: '70%' }}>
-          <h2 style={{ position: 'absolute', top: '5%', left: '45%' }}>新規店舗登録②</h2>
-          <div style={{ position: 'absolute', top: '15%', left: '35%' }}>
-            <div>
+      <div>
+        <img src={backgroundImage} className="backgroundImage" />
+        <div className="onImage">
+          <div className="logo">🍴tiffin🍴</div>
+          <div className="backgroundForm">
+            <h2 className="pageTitle">新規店舗登録②</h2>
+            <div className="formItem">
               <div>店舗名</div>
-              <div>
-                <input className="todoTitleInput" placeholder="店舗名" onChange={changeShopName} />
-              </div>
+              <input placeholder="店舗名" className="formInput" onChange={changeShopName} />
             </div>
 
-            <div>
+            <div className="formItem">
               <div>開店時間</div>
-              <div>
-                <select name="開店時間" onChange={changeShopOpen}>
-                  {openTimeMasters.map((time) => {
-                    return (
-                      <option key={time.id} value={time.time}>
-                        {time.time}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
+              <select name="開店時間" className="formInput" onChange={changeShopOpen}>
+                {openTimeMasters.map((time) => {
+                  return (
+                    <option key={time.id} value={time.time}>
+                      {time.time}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
 
-            <div>
+            <div className="formItem">
               <div>閉店時間</div>
-              <div>
-                <select name="閉店時間" onChange={changeShopClose}>
-                  {closeTimeMasters.map((time) => {
-                    return (
-                      <option key={time.id} value={time.time.toString()}>
-                        {time.time.toString()}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
+              <select name="閉店時間" className="formInput" onChange={changeShopClose}>
+                {closeTimeMasters.map((time) => {
+                  return (
+                    <option key={time.id} value={time.time.toString()}>
+                      {time.time.toString()}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
 
-            <div>
+            <div className="formItem">
               <div>都道府県</div>
-              <div>
-                <select name="都道府県" onChange={changeShopPrefecture}>
-                  {prefectures.map((prefecture) => {
-                    return (
-                      <option key={prefecture} value={prefecture}>
-                        {prefecture}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
+              <select name="都道府県" className="formInput" onChange={changeShopPrefecture}>
+                {prefectures.map((prefecture) => {
+                  return (
+                    <option key={prefecture} value={prefecture}>
+                      {prefecture}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
 
-            <div>
+            <div className="formItem">
               <div>エリア</div>
-              <div>
-                <select name="エリア" onChange={changeShopArea}>
-                  {areas.map((area) => {
-                    return (
-                      <option key={area} value={area}>
-                        {area}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
+              <select name="エリア" className="formInput" onChange={changeShopArea}>
+                {areas.map((area) => {
+                  return (
+                    <option key={area} value={area}>
+                      {area}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
 
-            <div>
+            <div className="formItem">
               <div>最寄り駅</div>
-              <div>
-                <select name="最寄り駅" onChange={changeShopStation}>
-                  {stations.map((station) => {
-                    return (
-                      <option key={station} value={station}>
-                        {station}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
+              <select name="最寄り駅" onChange={changeShopStation} className="formInput">
+                {stations.map((station) => {
+                  return (
+                    <option key={station} value={station}>
+                      {station}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
 
-            <div>
+            <div className="formItem">
               <div>住所</div>
-              <div>
-                <input type="address" className="todoTitleInput" placeholder="住所" onChange={changeShopAddress} />
-              </div>
+              <input type="address" placeholder="住所" className="formInput" onChange={changeShopAddress} />
             </div>
 
-            <div>
+            <div className="formItem">
               <div>電話番号</div>
-              <div>
-                <input type="tel" className="todoTitleInput" placeholder="電話番号" onChange={changeShopTel} />
-              </div>
+              <input type="tel" placeholder="電話番号" className="formInput" onChange={changeShopTel} />
             </div>
 
-            <div>
-              <button className="todoAddButton" onClick={clickRegister} style={{ position: 'absolute', marginTop: 80 }}>
-                登録
-              </button>
+            <div className="buttonCenter">
+              <button onClick={clickRegister}>登録</button>
             </div>
           </div>
         </div>
