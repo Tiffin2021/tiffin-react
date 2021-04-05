@@ -144,6 +144,9 @@ export const ShopInfoRegisterView: React.FC = () => {
             <div className="formItem">
               <div>開店時間</div>
               <select name="開店時間" className="formInput" onChange={changeShopOpen}>
+                <option key="選択してください" value="選択してください">
+                  選択してください
+                </option>
                 {openTimeMasters.map((time) => {
                   return (
                     <option key={time.id} value={time.time}>
@@ -157,6 +160,9 @@ export const ShopInfoRegisterView: React.FC = () => {
             <div className="formItem">
               <div>閉店時間</div>
               <select name="閉店時間" className="formInput" onChange={changeShopClose}>
+                <option key="選択してください" value="選択してください">
+                  選択してください
+                </option>
                 {closeTimeMasters.map((time) => {
                   return (
                     <option key={time.id} value={time.time.toString()}>
@@ -170,6 +176,9 @@ export const ShopInfoRegisterView: React.FC = () => {
             <div className="formItem">
               <div>都道府県</div>
               <select name="都道府県" className="formInput" onChange={changeShopPrefecture}>
+                <option key="選択してください" value="選択してください">
+                  選択してください
+                </option>
                 {prefectures.map((prefecture) => {
                   return (
                     <option key={prefecture} value={prefecture}>
@@ -183,6 +192,9 @@ export const ShopInfoRegisterView: React.FC = () => {
             <div className="formItem">
               <div>エリア</div>
               <select name="エリア" className="formInput" onChange={changeShopArea}>
+                <option key="選択してください" value="選択してください">
+                  選択してください
+                </option>
                 {areas.map((area) => {
                   return (
                     <option key={area} value={area}>
@@ -196,6 +208,9 @@ export const ShopInfoRegisterView: React.FC = () => {
             <div className="formItem">
               <div>最寄り駅</div>
               <select name="最寄り駅" onChange={changeShopStation} className="formInput">
+                <option key="選択してください" value="選択してください">
+                  選択してください
+                </option>
                 {stations.map((station) => {
                   return (
                     <option key={station} value={station}>
