@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
-import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountloginShopAccountState';
+import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountloginShopAccountStateContext';
+import { ShopAccount } from 'src/model/ShopAccount';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { ShopAccount } from '../../model/ShopAccount';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -23,7 +23,6 @@ export const Login: React.FC = () => {
     if (response.status != 200) {
       return console.info(loginShopAccountState);
     }
-    console.info(response.data);
     const id = response.data;
     const newShopAccount = Object.assign({}, shopAccount);
     newShopAccount.id = id;
@@ -31,15 +30,16 @@ export const Login: React.FC = () => {
     newShopAccount.pass = pass;
     setShopAccount(newShopAccount);
     setLoginShopAccountState(true);
-    console.info(loginShopAccountState);
   };
 
-  const checkLogin = () => {
-    console.info('loginShopAccountState');
-    // if (loginShopAccountState === false) {
-    //   return <p>ログインしろ!!!</p>;
-    // }
-    // return <p>ログアウトしろ!!!</p>;
+  const logoutAccount = () => {
+    const delShopAccount: ShopAccount = {
+      id: 0,
+      email: '',
+      pass: '',
+    };
+    setShopAccount(delShopAccount);
+    setLoginShopAccountState(false);
   };
 
   return (
@@ -50,8 +50,9 @@ export const Login: React.FC = () => {
       <p>
         {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
       </p>
-      <p>{checkLogin}</p>
+      <p>loginShopAccountState : {loginShopAccountState ? 'true' : 'false'}</p>
       <button onClick={loginAccount}>Login</button>
+      <button onClick={logoutAccount}>Logout</button>
       <Link to="/">Home</Link>
     </>
   );

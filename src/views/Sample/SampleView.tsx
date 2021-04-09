@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './SampleView.css';
 import { SampleCounterContext } from 'src/store/contexts/SampleCounterContext';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
-import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountloginShopAccountState';
+import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountloginShopAccountStateContext';
 import { Link } from 'react-router-dom';
 
 export const SampleView: React.FC = () => {
@@ -27,8 +27,8 @@ export const SampleView: React.FC = () => {
         <p>{count}</p>
         <p>
           {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
-          {console.info(loginShopAccountState)}
         </p>
+        <p>loginShopAccountState : {loginShopAccountState ? 'true' : 'false'}</p>
         <button onClick={clickedPlusButton}>+</button>
         <button onClick={clickedMinusButton}>-</button>
       </div>
