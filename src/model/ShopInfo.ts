@@ -7,6 +7,6 @@ export type ShopInfo = {
   area: string;
   station: string;
   tel: string;
-  opentime: string;
-  closetime: string;
+  opentime: number;
+  closetime: number;
 };

@@ -17,8 +17,8 @@ const initialShopInfo: ShopInfo = {
   area: '',
   station: '',
   tel: '',
-  opentime: '',
-  closetime: '',
+  opentime: 0,
+  closetime: 0,
 };
 
 /** 店舗情報のContext */
