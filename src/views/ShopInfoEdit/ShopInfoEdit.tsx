@@ -16,8 +16,10 @@ export const ShopInfoEdit: React.FC = () => {
   const initTimeMasters: TimeMaster[] = [];
 
   const [stationMasters, setStationMasters] = useState(initStationMasters);
-  const [openTimeMasters, setOpenTimeMasters] = useState(initTimeMasters); //の中身が変わるだけ
+  const [openTimeMasters, setOpenTimeMasters] = useState(initTimeMasters);
   const [closeTimeMasters, setCloseTimeMasters] = useState(initTimeMasters);
+  const [areas, setAreas] = useState([shopInfo.area]);
+  const [stations, setStations] = useState([shopInfo.station]);
 
   useEffect(() => {
     (async () => {
@@ -37,7 +39,6 @@ export const ShopInfoEdit: React.FC = () => {
       return stationMaster.prefecture;
     });
 
-  const [areas, setAreas] = useState(['選択してください']);
   const changeShopPrefecture = (e: ChangeEvent<HTMLSelectElement>) => {
     //選ばれた都道府県を取得
     const selectedPrefecture = e.target.value;
@@ -56,7 +57,6 @@ export const ShopInfoEdit: React.FC = () => {
     setShopInfo(newShopInfo);
   };
 
-  const [stations, setStations] = useState(['選択してください']);
   const changeShopArea = (e: ChangeEvent<HTMLSelectElement>) => {
     const selectedArea = e.target.value;
     //選ばれたエリアを条件に駅名を絞る
@@ -105,41 +105,11 @@ export const ShopInfoEdit: React.FC = () => {
     setShopInfo(newShopInfo);
   };
 
-  // const changedPrefecture = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const newShopInfo = Object.assign({}, shopInfo);
-  //   newShopInfo.prefecture = e.target.value;
-  //   setShopInfo(newShopInfo);
-  // };
-
-  // const changedArea = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const newShopInfo = Object.assign({}, shopInfo);
-  //   newShopInfo.area = e.target.value;
-  //   setShopInfo(newShopInfo);
-  // };
-
-  // const changedStation = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const newShopInfo = Object.assign({}, shopInfo);
-  //   newShopInfo.station = e.target.value;
-  //   setShopInfo(newShopInfo);
-  // };
-
   const changedTel = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newShopInfo = Object.assign({}, shopInfo);
     newShopInfo.tel = e.target.value;
     setShopInfo(newShopInfo);
   };
-
-  // const changedOpentime = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const newShopInfo = Object.assign({}, shopInfo);
-  //   newShopInfo.opentime = e.target.value;
-  //   setShopInfo(newShopInfo);
-  // };
-
-  // const changedClosetime = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const newShopInfo = Object.assign({}, shopInfo); // HTMLTextAreaElementとは?
-  //   newShopInfo.closetime = e.target.value;
-  //   setShopInfo(newShopInfo);
-  // };
 
   const updateClick = async () => {
     const response = await Axios.put(`shop_info/${id}`, shopInfo);
@@ -160,26 +130,6 @@ export const ShopInfoEdit: React.FC = () => {
     }
   };
 
-  // const initGenreMasters: GenreMaster[] = [];
-
-  // const [genreMasters, setGenreMasters] = useState(initGenreMasters);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const genres = await Axios.get<GenreMaster[]>('genre');
-  //     setGenreMasters(genres.data);
-  //   })();
-  // }, [setGenreMasters]);
-
-  // const testShowUp = (e: ChangeEvent<HTMLSelectElement>) => {
-  //   const newShopInfo = Object.assign({}, shopInfo);
-  //   newShopInfo.station = e.target.value;
-  //   setShopInfo(newShopInfo);
-  // };
-
-  // 営業時間をプルダウンにする
-  // 都道府県、エリア、最寄駅の3つも
-  // cssの追加(写真も含め)
   return (
     <>
       <h1>店舗情報の編集</h1>
@@ -201,10 +151,7 @@ export const ShopInfoEdit: React.FC = () => {
             <td>都道府県</td>
             <td>
               {/* <input type="text" value={shopInfo.prefecture} onChange={changedPrefecture} /> */}
-              <select name="都道府県" className="formInput" onChange={changeShopPrefecture}>
-                <option key={shopInfo.prefecture} value={shopInfo.prefecture}>
-                  {shopInfo.prefecture}
-                </option>
+              <select name="都道府県" value={shopInfo.prefecture} className="formInput" onChange={changeShopPrefecture}>
                 {prefectures.map((prefecture) => {
                   return (
                     <option key={prefecture} value={prefecture}>
@@ -219,10 +166,7 @@ export const ShopInfoEdit: React.FC = () => {
             <td>エリア</td>
             <td>
               {/* <input type="text" value={shopInfo.area} onChange={changedArea} /> */}
-              <select name="エリア" className="formInput" onChange={changeShopArea}>
-                <option key="選択してください" value="選択してください">
-                  {shopInfo.area}
-                </option>
+              <select name="エリア" value={shopInfo.area} className="formInput" onChange={changeShopArea}>
                 {areas.map((area) => {
                   return (
                     <option key={area} value={area}>
@@ -237,10 +181,7 @@ export const ShopInfoEdit: React.FC = () => {
             <td>最寄駅</td>
             <td>
               {/* <input type="text" value={shopInfo.station} onChange={changedStation} /> */}
-              <select name="最寄り駅" onChange={changeShopStation} className="formInput">
-                <option key="選択してください" value="選択してください">
-                  {shopInfo.station}
-                </option>
+              <select name="最寄り駅" value={shopInfo.station} onChange={changeShopStation} className="formInput">
                 {stations.map((station) => {
                   return (
                     <option key={station} value={station}>
@@ -261,7 +202,6 @@ export const ShopInfoEdit: React.FC = () => {
             <td>営業時間</td>
             <td>
               <select name="開店時間" value={shopInfo.opentime} onChange={changeShopOpen}>
-                <option key="選択してください" value="選択してください"></option>
                 {openTimeMasters.map((time) => {
                   return (
                     <option key={time.id} value={time.time}>
@@ -271,7 +211,6 @@ export const ShopInfoEdit: React.FC = () => {
                 })}
               </select>
               <select name="閉店時間" value={shopInfo.closetime} onChange={changeShopClose}>
-                <option key="選択してください" value="選択してください"></option>
                 {closeTimeMasters.map((time) => {
                   return (
                     <option key={time.id} value={time.time}>
