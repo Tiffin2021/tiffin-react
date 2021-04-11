@@ -1,16 +1,15 @@
-import React, { useEffect, useContext, useState, ChangeEvent } from 'react';
+import React, { useEffect, useState, ChangeEvent } from 'react';
 import './ShopInfoEdit.css';
 import Axios from 'axios';
 import { ShopInfo } from 'src/model/ShopInfo';
 import { Link } from 'react-router-dom';
-import { ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
+import { initialShopInfo } from 'src/store/contexts/ShopInfoContext';
 import { TimeMaster } from 'src/model/Master/TimeMaster';
 import { StationMaster } from 'src/model/Master/StationMaster';
 
 export const ShopInfoEdit: React.FC = () => {
-  // const id = useParams<{ id: string }>().id;
   const id = 2;
-  const { shopInfo, setShopInfo } = useContext(ShopInfoContext);
+  const [shopInfo, setShopInfo] = useState<ShopInfo>(initialShopInfo);
 
   const initStationMasters: StationMaster[] = [];
   const initTimeMasters: TimeMaster[] = [];
@@ -18,20 +17,31 @@ export const ShopInfoEdit: React.FC = () => {
   const [stationMasters, setStationMasters] = useState(initStationMasters);
   const [openTimeMasters, setOpenTimeMasters] = useState(initTimeMasters);
   const [closeTimeMasters, setCloseTimeMasters] = useState(initTimeMasters);
-  const [areas, setAreas] = useState([shopInfo.area]);
-  const [stations, setStations] = useState([shopInfo.station]);
+  const [areas, setAreas] = useState<string[]>([]);
+  const [stations, setStations] = useState<string[]>([]);
 
   useEffect(() => {
     (async () => {
       const response = await Axios.get<ShopInfo>(`shop_info/${id}`);
       setShopInfo(response.data);
-      const stations = await Axios.get<StationMaster[]>('station_master');
-      setStationMasters(stations.data);
+
+      const stationMasters = await Axios.get<StationMaster[]>('station_master');
+      setStationMasters(stationMasters.data);
+
+      //選ばれた都道府県を条件に絞られたエリアをstateにセットする
+      const areas = searchAreaByPrefecture(response.data.prefecture, stationMasters.data);
+      setAreas(areas);
+
+      //上で絞り込んだエリアの配列1番目を条件に最寄駅をstateにセットする
+      const stations = searchStationByArea(areas[0], stationMasters.data);
+      setStations(stations);
+
       const times = await Axios.get<TimeMaster[]>('time_master');
       setOpenTimeMasters(times.data);
       setCloseTimeMasters(times.data);
     })();
-  }, [id, setStationMasters, setShopInfo, setOpenTimeMasters, setCloseTimeMasters]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const prefectures = stationMasters
     .filter((element, index, self) => self.findIndex((e) => e.prefecture === element.prefecture) === index)
@@ -42,35 +52,53 @@ export const ShopInfoEdit: React.FC = () => {
   const changeShopPrefecture = (e: ChangeEvent<HTMLSelectElement>) => {
     //選ばれた都道府県を取得
     const selectedPrefecture = e.target.value;
-    //選ばれた都道府県を条件にエリアを絞る
-    const findAreas = stationMasters
-      .filter((stationMaster) => stationMaster.prefecture == selectedPrefecture)
-      .filter((element, index, self) => self.findIndex((e) => e.area === element.area) === index)
-      .map((stationMaster) => {
-        return stationMaster.area;
-      });
-    //絞った情報をエリアのステートに代入し、更新する
-    setAreas(findAreas);
+
+    //選ばれた都道府県を条件に絞られたエリアをstateにセットする
+    const areas = searchAreaByPrefecture(selectedPrefecture, stationMasters);
+    setAreas(areas);
+
+    //上で絞り込んだエリアの配列1番目を条件に最寄駅をstateにセットする
+    const stations = searchStationByArea(areas[0], stationMasters);
+    setStations(stations);
+
     //店舗情報の内容を更新
     const newShopInfo = Object.assign({}, shopInfo);
     newShopInfo.prefecture = selectedPrefecture;
     setShopInfo(newShopInfo);
   };
 
+  const searchAreaByPrefecture = (prefecture: string, stationMasters: StationMaster[]): string[] => {
+    //選ばれた都道府県を条件にエリアを絞る
+    const findAreas = stationMasters
+      .filter((stationMaster) => stationMaster.prefecture === prefecture)
+      .filter((element, index, self) => self.findIndex((e) => e.area === element.area) === index)
+      .map((stationMaster) => {
+        return stationMaster.area;
+      });
+    //絞った情報をエリアのステートに代入し、更新する
+    return findAreas;
+  };
+
   const changeShopArea = (e: ChangeEvent<HTMLSelectElement>) => {
     const selectedArea = e.target.value;
     //選ばれたエリアを条件に駅名を絞る
-    const findStations = stationMasters
-      .filter((stationMaster) => stationMaster.area == selectedArea)
-      .map((stationMaster) => {
-        return stationMaster.station;
-      });
+    const findStations = searchStationByArea(selectedArea, stationMasters);
     //絞った情報を駅名のステートに代入し、更新する
     setStations(findStations);
     //店舗情報の内容を更新
     const newShopInfo = Object.assign({}, shopInfo);
     newShopInfo.area = selectedArea;
     setShopInfo(newShopInfo);
+  };
+
+  const searchStationByArea = (area: string, stationMasters: StationMaster[]): string[] => {
+    //選ばれたエリアを条件に駅名を絞る
+    const findStations = stationMasters
+      .filter((stationMaster) => stationMaster.area === area)
+      .map((stationMaster) => {
+        return stationMaster.station;
+      });
+    return findStations;
   };
 
   const changeShopStation = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -115,11 +143,8 @@ export const ShopInfoEdit: React.FC = () => {
     const response = await Axios.put(`shop_info/${id}`, shopInfo);
     if (response.status !== 200) {
       alert('更新に失敗しました');
-      // history.push('/');
       return;
     }
-
-    // history.push('/');
   };
 
   const deleteClick = async () => {
@@ -150,7 +175,6 @@ export const ShopInfoEdit: React.FC = () => {
           <tr>
             <td>都道府県</td>
             <td>
-              {/* <input type="text" value={shopInfo.prefecture} onChange={changedPrefecture} /> */}
               <select name="都道府県" value={shopInfo.prefecture} className="formInput" onChange={changeShopPrefecture}>
                 {prefectures.map((prefecture) => {
                   return (
@@ -165,7 +189,6 @@ export const ShopInfoEdit: React.FC = () => {
           <tr>
             <td>エリア</td>
             <td>
-              {/* <input type="text" value={shopInfo.area} onChange={changedArea} /> */}
               <select name="エリア" value={shopInfo.area} className="formInput" onChange={changeShopArea}>
                 {areas.map((area) => {
                   return (
@@ -180,7 +203,6 @@ export const ShopInfoEdit: React.FC = () => {
           <tr>
             <td>最寄駅</td>
             <td>
-              {/* <input type="text" value={shopInfo.station} onChange={changedStation} /> */}
               <select name="最寄り駅" value={shopInfo.station} onChange={changeShopStation} className="formInput">
                 {stations.map((station) => {
                   return (
