@@ -12,12 +12,6 @@ button {
   text-align: center;
   border: 3px solid #5f5f5f;
   border-radius: 5px;
-  background-color: #5f5f5f;
-  color: #fff;
-  transition: 0.3s all;
-}
-button:hover {
-  border: 3px solid #5f5f5f;
   background-color: #efefef;
   color: #2f2f2f;
 }
@@ -58,4 +52,3 @@ button:hover {
 .buttonCenter {
   text-align: center;
 } 
-

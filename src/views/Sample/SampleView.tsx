@@ -4,7 +4,7 @@ import headerImage from 'src/pictures/businessBackground2.jpg';
 
 export const SampleView: React.FC = () => {
   return (
-    <div>
+    <>
       <img src={headerImage} className="backgroundImage" />
       <div className="onImage">
         <div className="logo">🍴tiffin🍴</div>
@@ -20,8 +20,18 @@ export const SampleView: React.FC = () => {
               <button>ログイン</button>
             </Link>
           </div>
+          <div className="buttonCenter">
+            <Link to="/shop_accounts_edit">
+              <button>アカウントの編集</button>
+            </Link>
+          </div>
+          <div className="buttonCenter">
+            <Link to="/shop_info_edit">
+              <button>店舗の編集</button>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
