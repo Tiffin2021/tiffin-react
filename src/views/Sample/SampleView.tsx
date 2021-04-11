@@ -28,7 +28,7 @@ export const SampleView: React.FC = () => {
         <p>
           {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
         </p>
-        <p>loginShopAccountState : {loginShopAccountState ? 'true' : 'false'}</p>
+        <p>login : {loginShopAccountState ? 'true' : 'false'}</p>
         <button onClick={clickedPlusButton}>+</button>
         <button onClick={clickedMinusButton}>-</button>
       </div>

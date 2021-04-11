@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
+import './Login.css';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
+import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountloginShopAccountStateContext';
 import { ShopAccount } from 'src/model/ShopAccount';
 import { Link } from 'react-router-dom';
@@ -44,16 +46,36 @@ export const Login: React.FC = () => {
 
   return (
     <>
-      <h1>Login Page!!</h1>
-      <input type="email" value={email} placeholder="メールアドレス" onChange={changeEmail} />
-      <input type="password" value={pass} placeholder="パスワード" onChange={changePass} />
-      <p>
-        {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
-      </p>
-      <p>loginShopAccountState : {loginShopAccountState ? 'true' : 'false'}</p>
-      <button onClick={loginAccount}>Login</button>
-      <button onClick={logoutAccount}>Logout</button>
-      <Link to="/">Home</Link>
+      <img src={backgroundImage} className="backgroundImage" />
+      <div className="onImage">
+        <div className="logo">🍴tiffin🍴</div>
+        <div className="backgroundForm">
+          <h2 className="pageTitle">ログイン</h2>
+          <div className="formItem">
+            <input
+              type="email"
+              className="formInput"
+              value={email}
+              placeholder="メールアドレス"
+              onChange={changeEmail}
+            />
+            <input type="password" className="formInput" value={pass} placeholder="パスワード" onChange={changePass} />
+          </div>
+          <p>
+            {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
+          </p>
+          <p>loginShopAccountState : {loginShopAccountState ? 'true' : 'false'}</p>
+          <div>
+            <button className="buttonCenter" onClick={loginAccount}>
+              Login
+            </button>
+            <button className="buttonCenter" onClick={logoutAccount}>
+              Logout
+            </button>
+          </div>
+          <Link to="/">Home</Link>
+        </div>
+      </div>
     </>
   );
 };
