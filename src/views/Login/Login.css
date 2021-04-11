@@ -37,7 +37,7 @@ button:hover {
   font-size: 30px;
 }
 .backgroundForm {
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   margin: 0px auto;
   padding-top: 10px;
@@ -57,5 +57,4 @@ button:hover {
 }
 .buttonCenter {
   text-align: center;
-} 
-
+}

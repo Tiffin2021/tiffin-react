@@ -1,35 +1,37 @@
-import React, { useContext } from 'react';
 import './SampleView.css';
-import { SampleCounterContext } from 'src/store/contexts/SampleCounterContext';
 import { Link } from 'react-router-dom';
+import headerImage from 'src/pictures/businessBackground2.jpg';
 
 export const SampleView: React.FC = () => {
-  // カウンターコンテキストで定義している、stateとsetState関数を呼び出す。
-  // useContextでグローバルに定義している、createContextで作成された
-  // (どのコンポーネントでも使える、useStateのセットが手に入るイメージ)
-  const { count, setCount } = useContext(SampleCounterContext);
-
-  /** +ボタンが押されたときに カウントを1プラスする */
-  const clickedPlusButton = () => setCount(count + 1);
-
-  /** -ボタンが押されたとき カウントを1マイナスする */
-  const clickedMinusButton = () => setCount(count - 1);
-
   return (
     <>
-      <h1>tiffin</h1>
-      <p></p>
-      <Link to="/shop_accounts_edit">アカウントの編集</Link>
-      <p></p>
-      <Link to="/shop_info_edit">店舗の編集</Link>
-      <h1>Home</h1>
-      <h2>Counter</h2>
-      <div>
-        <p>{count}</p>
-        <button onClick={clickedPlusButton}>+</button>
-        <button onClick={clickedMinusButton}>-</button>
+      <img src={headerImage} className="backgroundImage" />
+      <div className="onImage">
+        <div className="logo">🍴tiffin🍴</div>
+        <div className="backgroundForm">
+          <h1 className="pageTitle">Home</h1>
+          <div className="buttonCenter">
+            <Link to="/shopAccountRegister">
+              <button>新規登録</button>
+            </Link>
+          </div>
+          <div className="buttonCenter">
+            <Link to="/login">
+              <button>ログイン</button>
+            </Link>
+          </div>
+          <div className="buttonCenter">
+            <Link to="/shop_accounts_edit">
+              <button>アカウントの編集</button>
+            </Link>
+          </div>
+          <div className="buttonCenter">
+            <Link to="/shop_info_edit">
+              <button>店舗の編集</button>
+            </Link>
+          </div>
+        </div>
       </div>
-      <Link to="/about">Aboutに移動しても、カウンターの値が保持されているはず！</Link>
     </>
   );
 };
