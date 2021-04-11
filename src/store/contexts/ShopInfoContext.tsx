@@ -13,10 +13,12 @@ const initialShopInfo: ShopInfo = {
   shop_accounts_id: 0,
   name: '',
   address: '',
+  prefecture: '',
+  area: '',
   station: '',
   tel: '',
-  opentime: '',
-  closetime: '',
+  opentime: 0,
+  closetime: 0,
 };
 
 /** 店舗情報のContext */
