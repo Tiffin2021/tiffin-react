@@ -14,8 +14,10 @@ export const SampleView: React.FC = () => {
             <Link to="/shopAccountRegister">
               <button>新規登録</button>
             </Link>
+          </div>
+          <div className="buttonCenter">
             <Link to="/login">
-              <button>Login</button>
+              <button>ログイン</button>
             </Link>
           </div>
         </div>

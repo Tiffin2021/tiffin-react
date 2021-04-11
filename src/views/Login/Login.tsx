@@ -61,10 +61,6 @@ export const Login: React.FC = () => {
             />
             <input type="password" className="formInput" value={pass} placeholder="パスワード" onChange={changePass} />
           </div>
-          <p>
-            {shopAccount.id} : {shopAccount.email} : {shopAccount.pass}
-          </p>
-          <p>loginShopAccountState : {loginShopAccountState ? 'true' : 'false'}</p>
           <div>
             <button className="buttonCenter" onClick={loginAccount}>
               Login
