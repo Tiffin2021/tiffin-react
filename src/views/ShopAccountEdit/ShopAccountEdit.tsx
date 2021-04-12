@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import './ShopAccountEdit.css';
 import Axios from 'axios';
 import { ShopAccount } from 'src/model/ShopAccount';
+import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Link } from 'react-router-dom';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 
@@ -47,30 +48,26 @@ export const ShopAccountEdit: React.FC = () => {
 
   return (
     <>
-      <h1>アカウント情報の編集</h1>
-      <form>
-        <table>
-          <tr>
-            <td>Email</td>
-            <td>
-              <input type="text" value={shopAccount.email} onChange={changedEmail} />
-            </td>
-          </tr>
-          <tr>
-            <td>パスワード</td>
-            <td>
-              <input type="text" value={shopAccount.pass} onChange={changedPass} />
-            </td>
-          </tr>
-        </table>
-      </form>
-
-      <br />
-      <button onClick={updateClick}>更新</button>
-      <button onClick={deleteClick}>このアカウントを削除</button>
-      <br />
-      <br />
-      <Link to="/">戻る</Link>
+      <img src={backgroundImage} className="backgroundImage" />
+      <div className="onImage">
+        <div className="logo">🍴tiffin🍴</div>
+        <div className="backgroundForm">
+          <h2 className="pageTitle">アカウント情報の編集</h2>
+          <div className="formItem">
+            <input type="email" className="formInput" value={shopAccount.email} onChange={changedEmail} />
+            <input type="password" className="formInput" value={shopAccount.pass} onChange={changedPass} />
+          </div>
+          <div>
+            <button className="buttonCenter" onClick={updateClick}>
+              更新
+            </button>
+            <button className="buttonCenter" onClick={deleteClick}>
+              このアカウントの削除
+            </button>
+          </div>
+          <Link to="/">Home</Link>
+        </div>
+      </div>
     </>
   );
 };

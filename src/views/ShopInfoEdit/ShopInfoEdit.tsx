@@ -2,6 +2,7 @@ import React, { useEffect, useState, ChangeEvent } from 'react';
 import './ShopInfoEdit.css';
 import Axios from 'axios';
 import { ShopInfo } from 'src/model/ShopInfo';
+import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Link } from 'react-router-dom';
 import { initialShopInfo } from 'src/store/contexts/ShopInfoContext';
 import { TimeMaster } from 'src/model/Master/TimeMaster';
@@ -157,101 +158,80 @@ export const ShopInfoEdit: React.FC = () => {
 
   return (
     <>
-      <h1>店舗情報の編集</h1>
-      <form>
-        <table>
-          <tr>
-            <td>店舗名</td>
-            <td>
-              <input type="text" value={shopInfo.name} onChange={changedName} />
-            </td>
-          </tr>
-          <tr>
-            <td>住所</td>
-            <td>
-              <input type="text" value={shopInfo.address} onChange={changedAddress} />
-            </td>
-          </tr>
-          <tr>
-            <td>都道府県</td>
-            <td>
-              <select name="都道府県" value={shopInfo.prefecture} className="formInput" onChange={changeShopPrefecture}>
-                {prefectures.map((prefecture) => {
-                  return (
-                    <option key={prefecture} value={prefecture}>
-                      {prefecture}
-                    </option>
-                  );
-                })}
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>エリア</td>
-            <td>
-              <select name="エリア" value={shopInfo.area} className="formInput" onChange={changeShopArea}>
-                {areas.map((area) => {
-                  return (
-                    <option key={area} value={area}>
-                      {area}
-                    </option>
-                  );
-                })}
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>最寄駅</td>
-            <td>
-              <select name="最寄り駅" value={shopInfo.station} onChange={changeShopStation} className="formInput">
-                {stations.map((station) => {
-                  return (
-                    <option key={station} value={station}>
-                      {station}
-                    </option>
-                  );
-                })}
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>TEL</td>
-            <td>
-              <input type="text" value={shopInfo.tel} onChange={changedTel} />
-            </td>
-          </tr>
-          <tr>
-            <td>営業時間</td>
-            <td>
-              <select name="開店時間" value={shopInfo.opentime} onChange={changeShopOpen}>
-                {openTimeMasters.map((time) => {
-                  return (
-                    <option key={time.id} value={time.time}>
-                      {time.time}
-                    </option>
-                  );
-                })}
-              </select>
-              <select name="閉店時間" value={shopInfo.closetime} onChange={changeShopClose}>
-                {closeTimeMasters.map((time) => {
-                  return (
-                    <option key={time.id} value={time.time}>
-                      {time.time}
-                    </option>
-                  );
-                })}
-              </select>
-            </td>
-          </tr>
-        </table>
-      </form>
-
-      <br />
-      <button onClick={updateClick}>更新</button>
-      <button onClick={deleteClick}>この店舗を削除</button>
-      <br />
-      <br />
-      <Link to="/">戻る</Link>
+      <img src={backgroundImage} className="backgroundImage" />
+      <div className="onImage">
+        <div className="logo">🍴tiffin🍴</div>
+        <div className="backgroundForm">
+          <h2 className="pageTitle">店舗情報の編集</h2>
+          <div className="formItem">
+            <div>店舗名</div>
+            <input type="text" className="formInput" value={shopInfo.name} onChange={changedName} />
+            <div>住所</div>
+            <input type="text" className="formInput" value={shopInfo.address} onChange={changedAddress} />
+            <div>都道府県</div>
+            <select name="都道府県" value={shopInfo.prefecture} className="formInput" onChange={changeShopPrefecture}>
+              {prefectures.map((prefecture) => {
+                return (
+                  <option key={prefecture} value={prefecture}>
+                    {prefecture}
+                  </option>
+                );
+              })}
+            </select>
+            <div>エリア</div>
+            <select name="エリア" value={shopInfo.area} className="formInput" onChange={changeShopArea}>
+              {areas.map((area) => {
+                return (
+                  <option key={area} value={area}>
+                    {area}
+                  </option>
+                );
+              })}
+            </select>
+            <div>最寄駅</div>
+            <select name="最寄り駅" value={shopInfo.station} onChange={changeShopStation} className="formInput">
+              {stations.map((station) => {
+                return (
+                  <option key={station} value={station}>
+                    {station}
+                  </option>
+                );
+              })}
+            </select>
+            <div>TEL</div>
+            <input type="text" value={shopInfo.tel} onChange={changedTel} className="formInput" />
+            <div>開店時間</div>
+            <select name="開店時間" value={shopInfo.opentime} onChange={changeShopOpen} className="formInput">
+              {openTimeMasters.map((time) => {
+                return (
+                  <option key={time.id} value={time.time}>
+                    {time.time}
+                  </option>
+                );
+              })}
+            </select>
+            <div>閉店時間</div>
+            <select name="閉店時間" value={shopInfo.closetime} onChange={changeShopClose} className="formInput">
+              {closeTimeMasters.map((time) => {
+                return (
+                  <option key={time.id} value={time.time}>
+                    {time.time}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div>
+            <button className="buttonCenter" onClick={updateClick}>
+              更新
+            </button>
+            <button className="buttonCenter" onClick={deleteClick}>
+              このアカウントの削除
+            </button>
+          </div>
+          <Link to="/">Home</Link>
+        </div>
+      </div>
     </>
   );
 };
