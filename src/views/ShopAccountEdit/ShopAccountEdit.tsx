@@ -3,12 +3,14 @@ import './ShopAccountEdit.css';
 import Axios from 'axios';
 import { ShopAccount } from 'src/model/ShopAccount';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
-import { Link } from 'react-router-dom';
-import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
+import { Link, useHistory } from 'react-router-dom';
+import { ShopAccountContext, initialShopAccount } from 'src/store/contexts/ShopAccountContext';
+import { initialShopInfo, ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
 
 export const ShopAccountEdit: React.FC = () => {
   const id = 2;
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
+  const { setShopInfo } = useContext(ShopInfoContext);
 
   useEffect(() => {
     (async () => {
@@ -16,6 +18,8 @@ export const ShopAccountEdit: React.FC = () => {
       setShopAccount(response.data);
     })();
   }, [id, setShopAccount]);
+
+  const history = useHistory();
 
   const changedEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newShopAccount = Object.assign({}, shopAccount);
@@ -38,12 +42,28 @@ export const ShopAccountEdit: React.FC = () => {
     }
   };
 
+  // const deleteClick = async () => {
+  //   // バックエンドと連携し、登録する
+  //   const shop: Shop = {
+  //     shopAccount: shopAccount,
+  //     shopInfo: shopInfo,
+  //   };
+  //   await Axios.post<Shop, AxiosResponse<string>>('shop', shop);
+  // };
+
+  // const deleteClick = async () => {
+  //   const response = await Axios.delete(`shop_accounts/${id}`);
+  //   if (response.status !== 200) {
+  //     alert('更新に失敗しました');
+  //     return;
+  //   }
+  // };
+
   const deleteClick = async () => {
-    const response = await Axios.delete(`shop_accounts/${id}`);
-    if (response.status !== 200) {
-      alert('更新に失敗しました');
-      return;
-    }
+    await Axios.delete(`shop/${id}`);
+    setShopAccount(initialShopAccount);
+    setShopInfo(initialShopInfo);
+    history.push('/');
   };
 
   return (

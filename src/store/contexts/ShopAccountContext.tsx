@@ -7,7 +7,7 @@ type ShopAccountContextProps = {
 };
 
 /** 店舗アカウントの初期値 */
-const initialShopAccount: ShopAccount = {
+export const initialShopAccount: ShopAccount = {
   id: 0,
   email: '',
   pass: '',
