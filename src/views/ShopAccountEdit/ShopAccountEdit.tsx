@@ -42,23 +42,6 @@ export const ShopAccountEdit: React.FC = () => {
     }
   };
 
-  // const deleteClick = async () => {
-  //   // バックエンドと連携し、登録する
-  //   const shop: Shop = {
-  //     shopAccount: shopAccount,
-  //     shopInfo: shopInfo,
-  //   };
-  //   await Axios.post<Shop, AxiosResponse<string>>('shop', shop);
-  // };
-
-  // const deleteClick = async () => {
-  //   const response = await Axios.delete(`shop_accounts/${id}`);
-  //   if (response.status !== 200) {
-  //     alert('更新に失敗しました');
-  //     return;
-  //   }
-  // };
-
   const deleteClick = async () => {
     await Axios.delete(`shop/${id}`);
     setShopAccount(initialShopAccount);

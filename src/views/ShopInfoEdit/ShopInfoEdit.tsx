@@ -148,14 +148,6 @@ export const ShopInfoEdit: React.FC = () => {
     }
   };
 
-  // const deleteClick = async () => {
-  //   const response = await Axios.delete(`shop_info/${id}`);
-  //   if (response.status !== 200) {
-  //     alert('更新に失敗しました');
-  //     return;
-  //   }
-  // };
-
   return (
     <>
       <img src={backgroundImage} className="backgroundImage" />
@@ -221,13 +213,10 @@ export const ShopInfoEdit: React.FC = () => {
               })}
             </select>
           </div>
-          <div>
+          <div className="buttonCenter">
             <button className="buttonCenter" onClick={updateClick}>
               更新
             </button>
-            {/* <button className="buttonCenter" onClick={deleteClick}>
-              このアカウントの削除
-            </button> */}
           </div>
           <Link to="/">Home</Link>
         </div>
