@@ -2,12 +2,15 @@ import React, { useEffect, useContext } from 'react';
 import './ShopAccountEdit.css';
 import Axios from 'axios';
 import { ShopAccount } from 'src/model/ShopAccount';
-import { Link } from 'react-router-dom';
-import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
+import backgroundImage from 'src/pictures/businessBackground.jpg';
+import { Link, useHistory } from 'react-router-dom';
+import { ShopAccountContext, initialShopAccount } from 'src/store/contexts/ShopAccountContext';
+import { initialShopInfo, ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
 
 export const ShopAccountEdit: React.FC = () => {
   const id = 2;
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
+  const { setShopInfo } = useContext(ShopInfoContext);
 
   useEffect(() => {
     (async () => {
@@ -15,6 +18,8 @@ export const ShopAccountEdit: React.FC = () => {
       setShopAccount(response.data);
     })();
   }, [id, setShopAccount]);
+
+  const history = useHistory();
 
   const changedEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newShopAccount = Object.assign({}, shopAccount);
@@ -38,39 +43,34 @@ export const ShopAccountEdit: React.FC = () => {
   };
 
   const deleteClick = async () => {
-    const response = await Axios.delete(`shop_accounts/${id}`);
-    if (response.status !== 200) {
-      alert('更新に失敗しました');
-      return;
-    }
+    await Axios.delete(`shop/${id}`);
+    setShopAccount(initialShopAccount);
+    setShopInfo(initialShopInfo);
+    history.push('/');
   };
 
   return (
     <>
-      <h1>アカウント情報の編集</h1>
-      <form>
-        <table>
-          <tr>
-            <td>Email</td>
-            <td>
-              <input type="text" value={shopAccount.email} onChange={changedEmail} />
-            </td>
-          </tr>
-          <tr>
-            <td>パスワード</td>
-            <td>
-              <input type="text" value={shopAccount.pass} onChange={changedPass} />
-            </td>
-          </tr>
-        </table>
-      </form>
-
-      <br />
-      <button onClick={updateClick}>更新</button>
-      <button onClick={deleteClick}>このアカウントを削除</button>
-      <br />
-      <br />
-      <Link to="/">戻る</Link>
+      <img src={backgroundImage} className="backgroundImage" />
+      <div className="onImage">
+        <div className="logo">🍴tiffin🍴</div>
+        <div className="backgroundForm">
+          <h2 className="pageTitle">アカウント情報の編集</h2>
+          <div className="formItem">
+            <input type="email" className="formInput" value={shopAccount.email} onChange={changedEmail} />
+            <input type="password" className="formInput" value={shopAccount.pass} onChange={changedPass} />
+          </div>
+          <div>
+            <button className="buttonCenter" onClick={updateClick}>
+              更新
+            </button>
+            <button className="buttonCenter" onClick={deleteClick}>
+              このアカウントの削除
+            </button>
+          </div>
+          <Link to="/">Home</Link>
+        </div>
+      </div>
     </>
   );
 };

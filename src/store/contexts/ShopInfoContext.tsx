@@ -8,7 +8,7 @@ type ShopInfoContextProps = {
 };
 
 /** 店舗情報の初期値 */
-const initialShopInfo: ShopInfo = {
+export const initialShopInfo: ShopInfo = {
   id: 0,
   shop_accounts_id: 0,
   name: '',
