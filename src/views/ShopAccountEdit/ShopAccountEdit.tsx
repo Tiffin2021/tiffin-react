@@ -6,18 +6,22 @@ import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Link, useHistory } from 'react-router-dom';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { initialShopInfo, ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
+import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountloginShopAccountStateContext';
 
 export const ShopAccountEdit: React.FC = () => {
-  const id = 2;
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
   const { setShopInfo } = useContext(ShopInfoContext);
+  const { setLoginShopAccountState } = useContext(LoginShopAccountStateContext);
+
+  const id = shopAccount.id;
 
   useEffect(() => {
     (async () => {
       const response = await Axios.get<ShopAccount>(`shop_accounts/${id}`);
       setShopAccount(response.data);
     })();
-  }, [id, setShopAccount]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const history = useHistory();
 
@@ -46,6 +50,7 @@ export const ShopAccountEdit: React.FC = () => {
     await Axios.delete(`shop/${id}`);
     setShopAccount(initialShopAccount);
     setShopInfo(initialShopInfo);
+    setLoginShopAccountState(false);
     history.push('/');
   };
 

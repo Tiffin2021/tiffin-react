@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ChangeEvent } from 'react';
+import React, { useEffect, useState, ChangeEvent, useContext } from 'react';
 import './ShopInfoEdit.css';
 import Axios from 'axios';
 import { ShopInfo } from 'src/model/ShopInfo';
@@ -7,10 +7,13 @@ import { Link } from 'react-router-dom';
 import { initialShopInfo } from 'src/store/contexts/ShopInfoContext';
 import { TimeMaster } from 'src/model/Master/TimeMaster';
 import { StationMaster } from 'src/model/Master/StationMaster';
+import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 
 export const ShopInfoEdit: React.FC = () => {
-  const id = 2;
   const [shopInfo, setShopInfo] = useState<ShopInfo>(initialShopInfo);
+  const { shopAccount } = useContext(ShopAccountContext);
+
+  const id = shopAccount.id;
 
   const initStationMasters: StationMaster[] = [];
   const initTimeMasters: TimeMaster[] = [];
