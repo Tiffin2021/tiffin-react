@@ -10,6 +10,7 @@ import { About } from './views/About/About';
 import { Login } from 'src/views/Login/Login';
 import { ShopAccountRegisterView } from './views/ShopAccountRegister/ShopAccountRegisterView';
 import { ShopInfoRegisterView } from './views/ShopInfoRegister/ShopInfoRegisterView';
+import { PhotoListByShop } from './views/PhotoListByShop/PhotoListByShop';
 
 Axios.defaults.baseURL = 'http://localhost:4000/api/';
 
@@ -25,6 +26,7 @@ const App: React.FC = () => {
           <Route path="/login" component={Login} />
           <Route path="/shopAccountRegister" component={ShopAccountRegisterView} />
           <Route path="/shopInfoRegister" component={ShopInfoRegisterView} />
+          <Route path="/photoListByShop" component={PhotoListByShop} />
         </Router>
       </Provider>
     </>

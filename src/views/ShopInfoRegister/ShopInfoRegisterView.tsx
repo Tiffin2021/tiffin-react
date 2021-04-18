@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import './ShopInfoRegisterView.css';
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
@@ -27,6 +26,8 @@ export const ShopInfoRegisterView: React.FC = () => {
   const [stationMasters, setStationMasters] = useState(initStationMasters);
   const [openTimeMasters, setOpenTimeMasters] = useState(initTimeMasters);
   const [closeTimeMasters, setCloseTimeMasters] = useState(initTimeMasters);
+  const [areas, setAreas] = useState<string[]>([]);
+  const [stations, setStations] = useState<string[]>([]);
 
   //マスターテーブル取得
   useEffect(() => {
@@ -65,7 +66,6 @@ export const ShopInfoRegisterView: React.FC = () => {
     setShopInfo(newShopInfo);
   };
 
-  const [areas, setAreas] = useState(['選択してください']);
   const changeShopPrefecture = (e: ChangeEvent<HTMLSelectElement>) => {
     //選ばれた都道府県を取得
     const selectedPrefecture = e.target.value;
@@ -78,13 +78,14 @@ export const ShopInfoRegisterView: React.FC = () => {
       });
     //絞った情報をエリアのステートに代入し、更新する
     setAreas(findAreas);
+    //駅名が入力されていたらそれも空にする
+    setStations([]);
     //店舗情報の内容を更新
     const newShopInfo = Object.assign({}, shopInfo);
     newShopInfo.prefecture = selectedPrefecture;
     setShopInfo(newShopInfo);
   };
 
-  const [stations, setStations] = useState(['選択してください']);
   const changeShopArea = (e: ChangeEvent<HTMLSelectElement>) => {
     const selectedArea = e.target.value;
     //選ばれたエリアを条件に駅名を絞る
