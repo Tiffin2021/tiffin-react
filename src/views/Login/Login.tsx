@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import './Login.css';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
-import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountloginShopAccountStateContext';
+import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
 import { ShopAccount } from 'src/model/ShopAccount';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';

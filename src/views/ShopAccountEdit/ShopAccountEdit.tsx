@@ -6,7 +6,7 @@ import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Link, useHistory } from 'react-router-dom';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { initialShopInfo, ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
-import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountloginShopAccountStateContext';
+import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
 
 export const ShopAccountEdit: React.FC = () => {
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);

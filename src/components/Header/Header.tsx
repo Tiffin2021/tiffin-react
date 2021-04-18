@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountloginShopAccountStateContext';
+import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { initialShopAccount } from 'src/model/ShopAccount';
 
