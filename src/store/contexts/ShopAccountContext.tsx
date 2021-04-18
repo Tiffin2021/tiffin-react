@@ -1,16 +1,9 @@
 import React, { createContext, useState } from 'react';
-import { ShopAccount } from 'src/model/ShopAccount';
+import { ShopAccount, initialShopAccount } from 'src/model/ShopAccount';
 
 type ShopAccountContextProps = {
   shopAccount: ShopAccount;
   setShopAccount: React.Dispatch<React.SetStateAction<ShopAccount>>;
-};
-
-/** 店舗アカウントの初期値 */
-export const initialShopAccount: ShopAccount = {
-  id: 0,
-  email: '',
-  pass: '',
 };
 
 /** 店舗アカウントのContext */

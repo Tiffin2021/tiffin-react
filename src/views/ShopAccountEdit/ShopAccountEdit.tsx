@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from 'react';
 import './ShopAccountEdit.css';
 import Axios from 'axios';
-import { ShopAccount } from 'src/model/ShopAccount';
+import { ShopAccount, initialShopAccount } from 'src/model/ShopAccount';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Link, useHistory } from 'react-router-dom';
-import { ShopAccountContext, initialShopAccount } from 'src/store/contexts/ShopAccountContext';
+import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { initialShopInfo, ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
 
 export const ShopAccountEdit: React.FC = () => {
