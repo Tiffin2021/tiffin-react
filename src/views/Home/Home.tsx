@@ -1,13 +1,15 @@
-import './SampleView.css';
+import React from 'react';
+import './Home.css';
 import { Link } from 'react-router-dom';
 import headerImage from 'src/pictures/businessBackground2.jpg';
+import { Header } from 'src/components/Header/Header';
 
-export const SampleView: React.FC = () => {
+export const Home: React.FC = () => {
   return (
     <>
       <img src={headerImage} className="backgroundImage" />
       <div className="onImage">
-        <div className="logo">🍴tiffin🍴</div>
+        <Header />
         <div className="backgroundForm">
           <h1 className="pageTitle">Home</h1>
           <div className="buttonCenter">

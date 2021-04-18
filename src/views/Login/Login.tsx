@@ -4,14 +4,17 @@ import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountloginShopAccountStateContext';
 import { ShopAccount } from 'src/model/ShopAccount';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { Header } from 'src/components/Header/Header';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
   const { loginShopAccountState, setLoginShopAccountState } = useContext(LoginShopAccountStateContext);
+
+  const history = useHistory();
 
   const changeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -32,6 +35,7 @@ export const Login: React.FC = () => {
     newShopAccount.pass = pass;
     setShopAccount(newShopAccount);
     setLoginShopAccountState(true);
+    history.push(`/`);
   };
 
   const logoutAccount = () => {
@@ -48,7 +52,7 @@ export const Login: React.FC = () => {
     <>
       <img src={backgroundImage} className="backgroundImage" />
       <div className="onImage">
-        <div className="logo">🍴tiffin🍴</div>
+        <Header />
         <div className="backgroundForm">
           <h2 className="pageTitle">ログイン</h2>
           <div className="formItem">
@@ -69,7 +73,6 @@ export const Login: React.FC = () => {
               Logout
             </button>
           </div>
-          <Link to="/">Home</Link>
         </div>
       </div>
     </>
