@@ -57,5 +57,18 @@ button:hover {
 }
 .buttonCenter {
   text-align: center;
-} 
-
+}
+.photo-list{
+	display: flex;
+	flex-wrap:wrap;
+}
+.photo-list li {
+	width: calc(100%/3);/*←画像を横に3つ並べる場合*/
+	padding:0 5px;/*←画像の左右に5pxの余白を入れる場合*/
+	box-sizing:border-box;
+}
+.photo-list li img {
+	max-width:100%; /*画像のはみだしを防ぐ*/
+	height: auto; /*画像の縦横比を維持 */
+	border:solid 1px #ccc; /*←画像を1pxのグレーの枠線で囲む指定の場合*/
+}
