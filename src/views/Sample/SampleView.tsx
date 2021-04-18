@@ -30,6 +30,11 @@ export const SampleView: React.FC = () => {
               <button>店舗の編集</button>
             </Link>
           </div>
+          <div className="buttonCenter">
+            <Link to="/photoListByShop">
+              <button>メニュー一覧</button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

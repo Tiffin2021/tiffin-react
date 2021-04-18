@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import './ShopInfoRegisterView.css';
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
