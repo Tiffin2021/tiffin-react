@@ -19,9 +19,26 @@ export const Header: React.FC = () => {
   const loginViews = () => {
     if (loginShopAccountState == true) {
       return (
-        <div className="headerButton">
-          <button onClick={logoutAccount}>ログアウト</button>
-        </div>
+        <>
+          <div className="headerButton">
+            <Link to="/shop_accounts_edit">
+              <button>アカウントの編集</button>
+            </Link>
+          </div>
+          <div className="headerButton">
+            <Link to="/shop_info_edit">
+              <button>店舗の編集</button>
+            </Link>
+          </div>
+          <div className="headerButton">
+            <Link to="/photoListByShop">
+              <button>メニュー一覧</button>
+            </Link>
+          </div>
+          <div className="headerButton">
+            <button onClick={logoutAccount}>ログアウト</button>
+          </div>
+        </>
       );
     } else {
       return (
