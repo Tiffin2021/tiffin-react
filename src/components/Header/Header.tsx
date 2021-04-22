@@ -17,68 +17,39 @@ export const Header: React.FC = () => {
     setLoginShopAccountState(false);
   };
 
-  const loginViews = () => {
-    if (loginShopAccountState == true) {
-      return (
-        <>
-          <div className="headerButton">
-            <Link to="/shop_accounts_edit">
-              <button>アカウントの編集</button>
-            </Link>
-          </div>
-          <div className="headerButton">
-            <Link to="/shop_info_edit">
-              <button>店舗の編集</button>
-            </Link>
-          </div>
-          <div className="headerButton">
-            <Link to="/photoListByShop">
-              <button>メニュー一覧</button>
-            </Link>
-          </div>
-          <div className="headerButton">
-            <button onClick={logoutAccount}>ログアウト</button>
-          </div>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <div className="headerButton">
-            <Link to="/shopAccountRegister">
-              <button>新規登録</button>
-            </Link>
-          </div>
-          <div className="headerButton">
-            <Link to="/login">
-              <button>ログイン</button>
-            </Link>
-          </div>
-        </>
-      );
-    }
-  };
   return (
     <div className="headerBack">
       <div className="headerLogo" onClick={() => history.push('/')}>
         🍴tiffin🍴
       </div>
-      {loginViews()}
-      {() => {
-        if (loginShopAccountState == true) {
-          return (
-            <>
-              <div>true</div>
-            </>
-          );
-        } else {
-          return (
-            <>
-              <div>false</div>
-            </>
-          );
-        }
-      }}()
+      <div className="headerButtonArea">
+        {loginShopAccountState && (
+          <>
+            <div className="headerButton">
+              <Link to="/photoListByShop">
+                <button>メニュー一覧</button>
+              </Link>
+            </div>
+            <div className="headerButton">
+              <button onClick={logoutAccount}>ログアウト</button>
+            </div>
+          </>
+        )}
+        {!loginShopAccountState && (
+          <>
+            <div className="headerButton">
+              <Link to="/shopAccountRegister">
+                <button>新規登録</button>
+              </Link>
+            </div>
+            <div className="headerButton">
+              <Link to="/login">
+                <button>ログイン</button>
+              </Link>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };
