@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './Home.css';
+import style from './Home.module.css';
 import { Link } from 'react-router-dom';
 import headerImage from 'src/pictures/businessBackground2.jpg';
 import { Header } from 'src/components/Header/Header';
@@ -12,19 +12,24 @@ export const Home: React.FC = () => {
     if (loginShopAccountState == true) {
       return (
         <>
-          <div className="buttonCenter">
+          <div className={style.buttonCenter}>
             <Link to="/shop_accounts_edit">
-              <button>アカウントの編集</button>
+              <button className={style.homeButton}>アカウントの編集</button>
             </Link>
           </div>
-          <div className="buttonCenter">
+          <div className={style.buttonCenter}>
             <Link to="/shop_info_edit">
-              <button>店舗の編集</button>
+              <button className={style.homeButton}>店舗の編集</button>
             </Link>
           </div>
-          <div className="buttonCenter">
+          <div className={style.buttonCenter}>
             <Link to="/photoListByShop">
-              <button>メニュー一覧</button>
+              <button className={style.homeButton}>メニュー一覧</button>
+            </Link>
+          </div>
+          <div className={style.buttonCenter}>
+            <Link to="/PhotoUpdate">
+              <button className={style.homeButton}>画像アップロード</button>
             </Link>
           </div>
         </>
@@ -32,14 +37,14 @@ export const Home: React.FC = () => {
     } else {
       return (
         <>
-          <div className="buttonCenter">
+          <div className={style.buttonCenter}>
             <Link to="/shopAccountRegister">
-              <button>新規登録</button>
+              <button className={style.homeButton}>新規登録</button>
             </Link>
           </div>
-          <div className="buttonCenter">
+          <div className={style.buttonCenter}>
             <Link to="/login">
-              <button>ログイン</button>
+              <button className={style.homeButton}>ログイン</button>
             </Link>
           </div>
         </>
@@ -48,11 +53,11 @@ export const Home: React.FC = () => {
   };
   return (
     <>
-      <img src={headerImage} className="backgroundImage" />
-      <div className="onImage">
-        <Header />
-        <div className="backgroundForm">
-          <h1 className="pageTitle">Home</h1>
+      <Header />
+      <img src={headerImage} className={style.backgroundImage} />
+      <div className={style.onImage}>
+        <div className={style.backgroundForm}>
+          <h1 className={style.pageTitle}>Home</h1>
           {homeViews()}
         </div>
       </div>

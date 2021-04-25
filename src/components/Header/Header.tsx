@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './Header.css';
+import style from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
@@ -18,35 +18,29 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <div className="headerBack">
-      <div className="headerLogo" onClick={() => history.push('/')}>
+    <div className={style.headerBack}>
+      <div className={style.headerLogo} onClick={() => history.push('/')}>
         🍴tiffin🍴
       </div>
-      <div className="headerButtonArea">
+      <div className={style.headerButtonArea}>
         {loginShopAccountState && (
           <>
-            <div className="headerButton">
-              <Link to="/photoListByShop">
-                <button>メニュー一覧</button>
-              </Link>
-            </div>
-            <div className="headerButton">
-              <button onClick={logoutAccount}>ログアウト</button>
-            </div>
+            <Link to="/photoListByShop">
+              <button className={style.headerButton}>メニュー一覧</button>
+            </Link>
+            <button className={style.headerButton} onClick={logoutAccount}>
+              ログアウト
+            </button>
           </>
         )}
         {!loginShopAccountState && (
           <>
-            <div className="headerButton">
-              <Link to="/shopAccountRegister">
-                <button>新規登録</button>
-              </Link>
-            </div>
-            <div className="headerButton">
-              <Link to="/login">
-                <button>ログイン</button>
-              </Link>
-            </div>
+            <Link to="/shopAccountRegister">
+              <button className={style.headerButton}>新規登録</button>
+            </Link>
+            <Link to="/login">
+              <button className={style.headerButton}>ログイン</button>
+            </Link>
           </>
         )}
       </div>
