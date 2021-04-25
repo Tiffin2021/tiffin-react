@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import style from './PhotoRegisterSample.module.css';
-import { initPhoto } from 'src/model/Photo';
+import Axios, { AxiosResponse } from 'axios';
+import { Photo, initPhoto } from 'src/model/Photo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Header } from 'src/components/Header/Header';
 
@@ -36,6 +37,9 @@ export const PhotoRegisterSample: React.FC = () => {
   const [photo, setPhoto] = useState(initPhoto);
   // Base64形式の文字列を格納するState
   const [base64, setBase64] = useState<string>('');
+
+  // 店舗詳細ID、決め打ち
+  const shopInfoId = 1;
 
   useEffect(() => {
     (async () => {
@@ -98,7 +102,12 @@ export const PhotoRegisterSample: React.FC = () => {
   };
 
   const registerClick = async () => {
-    //HTTPリクエスト
+    // TODO: shopInfoIdを1で決め打ちしているが、後にIDはクエリから取得するようにする
+    const newPhoto = Object.assign({}, photo);
+    newPhoto.shop_info_id = shopInfoId;
+
+    // バックエンドにリクエスト
+    await Axios.post<Photo, AxiosResponse<number>>('photos', newPhoto);
     // await Axios.post<Photo, AxiosResponse<string>>('photos', photo);
   };
 
