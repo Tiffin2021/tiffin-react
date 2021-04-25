@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from './PhotoUpdate.module.css';
+import style from './PhotoUpload.module.css';
 import { useHistory } from 'react-router-dom';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import axios from 'axios';
