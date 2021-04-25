@@ -28,6 +28,11 @@ export const Home: React.FC = () => {
             </Link>
           </div>
           <div className={style.buttonCenter}>
+            <Link to="/photo_register_sample">
+              <button className={style.btn}>メニューを追加(竹内ver)</button>
+            </Link>
+          </div>
+          <div className={style.buttonCenter}>
             <Link to="/PhotoUpload">
               <button className={style.btn}>画像アップロード</button>
             </Link>
