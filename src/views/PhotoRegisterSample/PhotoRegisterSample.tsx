@@ -33,12 +33,12 @@ const isJpegOrPng = (file: File): boolean => {
 };
 
 export const PhotoRegisterSample: React.FC = () => {
-  //後からログイン情報のshopAccountIDを取得
+  // 後からログイン情報のshopAccountIDを取得
   const [photo, setPhoto] = useState(initPhoto);
   // Base64形式の文字列を格納するState
   const [base64, setBase64] = useState<string>('');
 
-  // 店舗詳細ID、決め打ち
+  // TODO: 店舗詳細ID決め打ちなので、後で修正する
   const shopInfoId = 1;
 
   useEffect(() => {
@@ -106,9 +106,11 @@ export const PhotoRegisterSample: React.FC = () => {
     const newPhoto = Object.assign({}, photo);
     newPhoto.shop_info_id = shopInfoId;
 
+    // Base64文字列をセットする
+    newPhoto.base64Image = base64;
+
     // バックエンドにリクエスト
     await Axios.post<Photo, AxiosResponse<number>>('photos', newPhoto);
-    // await Axios.post<Photo, AxiosResponse<string>>('photos', photo);
   };
 
   return (

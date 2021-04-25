@@ -10,7 +10,7 @@ export type Photo = {
   opentime: number;
   closetime: number;
   shop_info_id: number;
-  img?: File;
+  base64Image?: string;
 };
 export const initPhoto: Photo = {
   id: 0,
