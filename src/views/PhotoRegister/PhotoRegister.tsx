@@ -44,24 +44,24 @@ export const PhotoRegister: React.FC = () => {
   };
 
   const registerClick = async () => {
-    const header = {
-      headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        'Access-Control-Allow-Origin': '*',
-      },
-    };
-    const data = new FormData();
-    data.append('file', image!);
-    const imgUri = 'photos';
-    Axios.post(imgUri, data, header)
-      .then((res) => {
-        console.info('画像のアップロードが完了しました');
-      })
-      .catch((err) => {
-        console.info('画像のアップロードに失敗しました');
-      });
+    // const header = {
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=UTF-8',
+    //     'Access-Control-Allow-Origin': '*',
+    //   },
+    // };
+    // const data = new FormData();
+    // data.append('file', image!);
+    // const imgUri = 'photos';
+    // Axios.post(imgUri, data, header)
+    //   .then((res) => {
+    //     console.info('画像のアップロードが完了しました');
+    //   })
+    //   .catch((err) => {
+    //     console.info('画像のアップロードに失敗しました');
+    //   });
     //HTTPリクエスト
-    // await Axios.post<Photo, AxiosResponse<string>>('photos', photo);
+    await Axios.post<Photo, AxiosResponse<string>>(`photos/${shopAccountId}`, photo);
   };
 
   return (
@@ -70,7 +70,6 @@ export const PhotoRegister: React.FC = () => {
         <Header />
         <img src={backgroundImage} className={style.backgroundImage} />
         <div className={style.onImage}>
-          
           <div className={style.backgroundForm}>
             <h2 className={style.pageTitle}>メニューを追加</h2>
             <div className={style.formItem}>
