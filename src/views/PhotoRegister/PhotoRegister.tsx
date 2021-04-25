@@ -70,7 +70,6 @@ export const PhotoRegister: React.FC = () => {
         <Header />
         <img src={backgroundImage} className={style.backgroundImage} />
         <div className={style.onImage}>
-          
           <div className={style.backgroundForm}>
             <h2 className={style.pageTitle}>メニューを追加</h2>
             <div className={style.formItem}>
