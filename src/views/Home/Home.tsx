@@ -27,6 +27,11 @@ export const Home: React.FC = () => {
               <button>メニュー一覧</button>
             </Link>
           </div>
+          <div className="buttonCenter">
+            <Link to="/photoRegister">
+              <button>メニューを追加</button>
+            </Link>
+          </div>
         </>
       );
     } else {

@@ -1,27 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './PhotoListByShop.css';
 import Axios from 'axios';
-import { Photo } from 'src/model/Photo';
+import { Photo, initPhoto } from 'src/model/Photo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 
 export const PhotoListByShop: React.FC = () => {
   //店舗情報IDを仮置き/店舗アカウントでも検索可能だが一旦仕様を要相談
   const shopInfoID = 1;
-  const initPhotoList: Photo[] = [
-    {
-      id: 0,
-      pass: '',
-      genre: '',
-      prefecture: '',
-      area: '',
-      station: '',
-      price: 0,
-      menu: '',
-      opentime: 0,
-      closetime: 0,
-      shop_info_id: 0,
-    },
-  ];
+  const initPhotoList: Photo[] = [initPhoto];
   const [photoList, setPhotoList] = useState(initPhotoList);
 
   useEffect(() => {
