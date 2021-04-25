@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import './Login.css';
+import './Login.module.css';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
