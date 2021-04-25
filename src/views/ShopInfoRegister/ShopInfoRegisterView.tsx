@@ -1,4 +1,4 @@
-import './ShopInfoRegisterView.css';
+import style from './ShopInfoRegisterView.module.css';
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
@@ -8,6 +8,7 @@ import { TimeMaster } from 'src/model/Master/TimeMaster';
 import { ShopAccount } from 'src/model/ShopAccount';
 import { ShopInfo } from 'src/model/ShopInfo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
+import { Header } from 'src/components/Header/Header';
 
 type Shop = {
   shopAccount: ShopAccount;
@@ -132,19 +133,19 @@ export const ShopInfoRegisterView: React.FC = () => {
   return (
     <>
       <div>
-        <img src={backgroundImage} className="backgroundImage" />
-        <div className="onImage">
-          <div className="logo">🍴tiffin🍴</div>
-          <div className="backgroundForm">
-            <h2 className="pageTitle">新規店舗登録②</h2>
-            <div className="formItem">
+        <Header />
+        <img src={backgroundImage} className={style.backgroundImage} />
+        <div className={style.onImage}>
+          <div className={style.backgroundForm}>
+            <h2 className={style.pageTitle}>新規店舗登録②</h2>
+            <div className={style.formItem}>
               <div>店舗名</div>
-              <input placeholder="店舗名" className="formInput" onChange={changeShopName} />
+              <input placeholder="店舗名" className={style.formInput} onChange={changeShopName} />
             </div>
 
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>開店時間</div>
-              <select name="開店時間" className="formInput" onChange={changeShopOpen}>
+              <select name="開店時間" className={style.formInput} onChange={changeShopOpen}>
                 <option key="選択してください" value="選択してください">
                   選択してください
                 </option>
@@ -158,9 +159,9 @@ export const ShopInfoRegisterView: React.FC = () => {
               </select>
             </div>
 
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>閉店時間</div>
-              <select name="閉店時間" className="formInput" onChange={changeShopClose}>
+              <select name="閉店時間" className={style.formInput} onChange={changeShopClose}>
                 <option key="選択してください" value="選択してください">
                   選択してください
                 </option>
@@ -174,9 +175,9 @@ export const ShopInfoRegisterView: React.FC = () => {
               </select>
             </div>
 
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>都道府県</div>
-              <select name="都道府県" className="formInput" onChange={changeShopPrefecture}>
+              <select name="都道府県" className={style.formInput} onChange={changeShopPrefecture}>
                 <option key="選択してください" value="選択してください">
                   選択してください
                 </option>
@@ -190,9 +191,9 @@ export const ShopInfoRegisterView: React.FC = () => {
               </select>
             </div>
 
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>エリア</div>
-              <select name="エリア" className="formInput" onChange={changeShopArea}>
+              <select name="エリア" className={style.formInput} onChange={changeShopArea}>
                 <option key="選択してください" value="選択してください">
                   選択してください
                 </option>
@@ -206,9 +207,9 @@ export const ShopInfoRegisterView: React.FC = () => {
               </select>
             </div>
 
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>最寄り駅</div>
-              <select name="最寄り駅" onChange={changeShopStation} className="formInput">
+              <select name="最寄り駅" onChange={changeShopStation} className={style.formInput}>
                 <option key="選択してください" value="選択してください">
                   選択してください
                 </option>
@@ -222,18 +223,20 @@ export const ShopInfoRegisterView: React.FC = () => {
               </select>
             </div>
 
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>住所</div>
-              <input type="address" placeholder="住所" className="formInput" onChange={changeShopAddress} />
+              <input type="address" placeholder="住所" className={style.formInput} onChange={changeShopAddress} />
             </div>
 
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>電話番号</div>
-              <input type="tel" placeholder="電話番号" className="formInput" onChange={changeShopTel} />
+              <input type="tel" placeholder="電話番号" className={style.formInput} onChange={changeShopTel} />
             </div>
 
-            <div className="buttonCenter">
-              <button onClick={clickRegister}>登録</button>
+            <div className={style.buttonCenter}>
+              <button className={style.btn} onClick={clickRegister}>
+                登録
+              </button>
             </div>
           </div>
         </div>

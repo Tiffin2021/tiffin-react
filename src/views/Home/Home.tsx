@@ -14,22 +14,27 @@ export const Home: React.FC = () => {
         <>
           <div className={style.buttonCenter}>
             <Link to="/shop_accounts_edit">
-              <button className={style.homeButton}>アカウントの編集</button>
+              <button className={style.btn}>アカウントの編集</button>
             </Link>
           </div>
           <div className={style.buttonCenter}>
             <Link to="/shop_info_edit">
-              <button className={style.homeButton}>店舗の編集</button>
+              <button className={style.btn}>店舗の編集</button>
             </Link>
           </div>
           <div className={style.buttonCenter}>
             <Link to="/photoListByShop">
-              <button className={style.homeButton}>メニュー一覧</button>
+              <button className={style.btn}>メニュー一覧</button>
             </Link>
           </div>
           <div className={style.buttonCenter}>
             <Link to="/PhotoUpload">
-              <button className={style.homeButton}>画像アップロード</button>
+              <button className={style.btn}>画像アップロード</button>
+            </Link>
+          </div>
+          <div className={style.buttonCenter}>
+            <Link to="/photoRegister">
+              <button className={style.btn}>メニューを追加</button>
             </Link>
           </div>
         </>
@@ -39,12 +44,12 @@ export const Home: React.FC = () => {
         <>
           <div className={style.buttonCenter}>
             <Link to="/shopAccountRegister">
-              <button className={style.homeButton}>新規登録</button>
+              <button className={style.btn}>新規登録</button>
             </Link>
           </div>
           <div className={style.buttonCenter}>
             <Link to="/login">
-              <button className={style.homeButton}>ログイン</button>
+              <button className={style.btn}>ログイン</button>
             </Link>
           </div>
         </>

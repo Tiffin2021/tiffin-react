@@ -1,8 +1,9 @@
-import './ShopAccountRegisterView.css';
+import style from './ShopAccountRegisterView.module.css';
 import React, { useContext, useState } from 'react';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Link } from 'react-router-dom';
+import { Header } from 'src/components/Header/Header';
 
 export const ShopAccountRegisterView: React.FC = () => {
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
@@ -36,31 +37,31 @@ export const ShopAccountRegisterView: React.FC = () => {
   };
   return (
     <div>
-      <img src={backgroundImage} className="backgroundImage" />
-      <div className="onImage">
-        <div className="logo">🍴tiffin🍴</div>
-        <div className="backgroundForm">
-          <h2 className="pageTitle">新規店舗登録①</h2>
+      <Header />
+      <img src={backgroundImage} className={style.backgroundImage} />
+      <div className={style.onImage}>
+        <div className={style.backgroundForm}>
+          <h2 className={style.pageTitle}>新規店舗登録①</h2>
           <div>
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>メールアドレス</div>
-              <input type="email" className="formInput" placeholder="メールアドレス" onChange={changeMail} />
+              <input type="email" className={style.formInput} placeholder="メールアドレス" onChange={changeMail} />
             </div>
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>パスワード</div>
-              <input type="password" className="formInput" placeholder="パスワード" onChange={changePass} />
+              <input type="password" className={style.formInput} placeholder="パスワード" onChange={changePass} />
             </div>
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>パスワードの確認</div>
-              <input type="password" className="formInput" placeholder="パスワードの確認" onChange={passCheck} />
+              <input type="password" className={style.formInput} placeholder="パスワードの確認" onChange={passCheck} />
             </div>
           </div>
-          <div className="buttonCenter">
+          <div className={style.buttonCenter}>
             {(() => {
               if (show === true) {
                 return (
                   <Link to="/shopInfoRegister">
-                    <button>次へ</button>
+                    <button className={style.btn}>次へ</button>
                   </Link>
                 );
               }

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import './Login.module.css';
+import style from './Login.module.css';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
@@ -50,26 +50,32 @@ export const Login: React.FC = () => {
 
   return (
     <>
-      <img src={backgroundImage} className="backgroundImage" />
-      <div className="onImage">
-        <Header />
-        <div className="backgroundForm">
-          <h2 className="pageTitle">ログイン</h2>
-          <div className="formItem">
+      <Header />
+      <img src={backgroundImage} className={style.backgroundImage} />
+      <div className={style.onImage}>
+        <div className={style.backgroundForm}>
+          <h2 className={style.pageTitle}>ログイン</h2>
+          <div className={style.formItem}>
             <input
               type="email"
-              className="formInput"
+              className={style.formInput}
               value={email}
               placeholder="メールアドレス"
               onChange={changeEmail}
             />
-            <input type="password" className="formInput" value={pass} placeholder="パスワード" onChange={changePass} />
+            <input
+              type="password"
+              className={style.formInput}
+              value={pass}
+              placeholder="パスワード"
+              onChange={changePass}
+            />
           </div>
-          <div>
-            <button className="buttonCenter" onClick={loginAccount}>
+          <div className="buttonCenter">
+            <button className={style.btn} onClick={loginAccount}>
               Login
             </button>
-            <button className="buttonCenter" onClick={logoutAccount}>
+            <button className={style.btn} onClick={logoutAccount}>
               Logout
             </button>
           </div>
