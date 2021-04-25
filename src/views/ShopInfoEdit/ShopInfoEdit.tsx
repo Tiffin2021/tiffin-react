@@ -1,5 +1,5 @@
 import React, { useEffect, useState, ChangeEvent, useContext } from 'react';
-import './ShopInfoEdit.css';
+import style from './ShopInfoEdit.module.css';
 import Axios from 'axios';
 import { ShopInfo } from 'src/model/ShopInfo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
@@ -8,6 +8,7 @@ import { initialShopInfo } from 'src/store/contexts/ShopInfoContext';
 import { TimeMaster } from 'src/model/Master/TimeMaster';
 import { StationMaster } from 'src/model/Master/StationMaster';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
+import { Header } from 'src/components/Header/Header';
 
 export const ShopInfoEdit: React.FC = () => {
   const [shopInfo, setShopInfo] = useState<ShopInfo>(initialShopInfo);
@@ -153,18 +154,24 @@ export const ShopInfoEdit: React.FC = () => {
 
   return (
     <>
-      <img src={backgroundImage} className="backgroundImage" />
-      <div className="onImage">
-        <div className="logo">🍴tiffin🍴</div>
-        <div className="backgroundForm">
-          <h2 className="pageTitle">店舗情報の編集</h2>
-          <div className="formItem">
+      <Header />
+      <img src={backgroundImage} className={style.backgroundImage} />
+      <div className={style.onImage}>
+        
+        <div className={style.backgroundForm}>
+          <h2 className={style.pageTitle}>店舗情報の編集</h2>
+          <div className={style.formItem}>
             <div>店舗名</div>
-            <input type="text" className="formInput" value={shopInfo.name} onChange={changedName} />
+            <input type="text" className={style.formInput} value={shopInfo.name} onChange={changedName} />
             <div>住所</div>
-            <input type="text" className="formInput" value={shopInfo.address} onChange={changedAddress} />
+            <input type="text" className={style.formInput} value={shopInfo.address} onChange={changedAddress} />
             <div>都道府県</div>
-            <select name="都道府県" value={shopInfo.prefecture} className="formInput" onChange={changeShopPrefecture}>
+            <select
+              name="都道府県"
+              value={shopInfo.prefecture}
+              className={style.formInput}
+              onChange={changeShopPrefecture}
+            >
               {prefectures.map((prefecture) => {
                 return (
                   <option key={prefecture} value={prefecture}>
@@ -174,7 +181,7 @@ export const ShopInfoEdit: React.FC = () => {
               })}
             </select>
             <div>エリア</div>
-            <select name="エリア" value={shopInfo.area} className="formInput" onChange={changeShopArea}>
+            <select name="エリア" value={shopInfo.area} className={style.formInput} onChange={changeShopArea}>
               {areas.map((area) => {
                 return (
                   <option key={area} value={area}>
@@ -184,7 +191,7 @@ export const ShopInfoEdit: React.FC = () => {
               })}
             </select>
             <div>最寄駅</div>
-            <select name="最寄り駅" value={shopInfo.station} onChange={changeShopStation} className="formInput">
+            <select name="最寄り駅" value={shopInfo.station} onChange={changeShopStation} className={style.formInput}>
               {stations.map((station) => {
                 return (
                   <option key={station} value={station}>
@@ -194,9 +201,9 @@ export const ShopInfoEdit: React.FC = () => {
               })}
             </select>
             <div>TEL</div>
-            <input type="text" value={shopInfo.tel} onChange={changedTel} className="formInput" />
+            <input type="text" value={shopInfo.tel} onChange={changedTel} className={style.formInput} />
             <div>開店時間</div>
-            <select name="開店時間" value={shopInfo.opentime} onChange={changeShopOpen} className="formInput">
+            <select name="開店時間" value={shopInfo.opentime} onChange={changeShopOpen} className={style.formInput}>
               {openTimeMasters.map((time) => {
                 return (
                   <option key={time.id} value={time.time}>
@@ -206,7 +213,7 @@ export const ShopInfoEdit: React.FC = () => {
               })}
             </select>
             <div>閉店時間</div>
-            <select name="閉店時間" value={shopInfo.closetime} onChange={changeShopClose} className="formInput">
+            <select name="閉店時間" value={shopInfo.closetime} onChange={changeShopClose} className={style.formInput}>
               {closeTimeMasters.map((time) => {
                 return (
                   <option key={time.id} value={time.time}>
@@ -216,8 +223,8 @@ export const ShopInfoEdit: React.FC = () => {
               })}
             </select>
           </div>
-          <div className="buttonCenter">
-            <button className="buttonCenter" onClick={updateClick}>
+          <div className={style.buttonCenter}>
+            <button className={style.btn} onClick={updateClick}>
               更新
             </button>
           </div>

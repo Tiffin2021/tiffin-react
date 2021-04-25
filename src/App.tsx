@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Axios from 'axios';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Home } from 'src/views/Home/Home';

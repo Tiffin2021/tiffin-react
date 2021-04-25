@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './PhotoRegister.css';
+import style from './PhotoRegister.module.css';
 import Axios, { AxiosResponse } from 'axios';
 import { Photo, initPhoto } from 'src/model/Photo';
 import { ShopInfo, initShopInfo } from 'src/model/ShopInfo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
+import { Header } from 'src/components/Header/Header';
 
 export const PhotoRegister: React.FC = () => {
   //後からログイン情報のshopAccountIDを取得
@@ -66,24 +67,25 @@ export const PhotoRegister: React.FC = () => {
   return (
     <>
       <div>
-        <img src={backgroundImage} className="backgroundImage" />
-        <div className="onImage">
-          <div className="logo">🍴tiffin🍴</div>
-          <div className="backgroundForm">
-            <h2 className="pageTitle">メニューを追加</h2>
-            <div className="formItem">
+        <Header />
+        <img src={backgroundImage} className={style.backgroundImage} />
+        <div className={style.onImage}>
+          
+          <div className={style.backgroundForm}>
+            <h2 className={style.pageTitle}>メニューを追加</h2>
+            <div className={style.formItem}>
               <div>メニュー名</div>
-              <input type="text" className="formInput" onChange={changeName} />
+              <input type="text" className={style.formInput} onChange={changeName} />
             </div>
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>ジャンル</div>
-              <input type="text" className="formInput" onChange={changeGenre} />
+              <input type="text" className={style.formInput} onChange={changeGenre} />
             </div>
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>金額</div>
-              <input type="number" className="formInput" onChange={changePrice} />
+              <input type="number" className={style.formInput} onChange={changePrice} />
             </div>
-            <div className="formItem">
+            <div className={style.formItem}>
               <div>画像</div>
               <input
                 type="file"
@@ -91,8 +93,10 @@ export const PhotoRegister: React.FC = () => {
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => getImage(e)}
               />
             </div>
-            <div className="buttonCenter">
-              <button onClick={registerClick}>送信する</button>
+            <div className={style.buttonCenter}>
+              <button className={style.btn} onClick={registerClick}>
+                送信する
+              </button>
             </div>
           </div>
         </div>

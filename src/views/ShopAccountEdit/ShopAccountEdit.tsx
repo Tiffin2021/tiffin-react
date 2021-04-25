@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import './ShopAccountEdit.css';
+import style from './ShopAccountEdit.module.css';
 import Axios from 'axios';
 import { ShopAccount, initialShopAccount } from 'src/model/ShopAccount';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
@@ -7,6 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { initialShopInfo, ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
+import { Header } from 'src/components/Header/Header';
 
 export const ShopAccountEdit: React.FC = () => {
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
@@ -56,20 +57,22 @@ export const ShopAccountEdit: React.FC = () => {
 
   return (
     <>
-      <img src={backgroundImage} className="backgroundImage" />
-      <div className="onImage">
-        <div className="logo">🍴tiffin🍴</div>
-        <div className="backgroundForm">
-          <h2 className="pageTitle">アカウント情報の編集</h2>
-          <div className="formItem">
-            <input type="email" className="formInput" value={shopAccount.email} onChange={changedEmail} />
-            <input type="password" className="formInput" value={shopAccount.pass} onChange={changedPass} />
+      <Header />
+      <img src={backgroundImage} className={style.backgroundImage} />
+      <div className={style.onImage}>
+        <div className={style.backgroundForm}>
+          <h2 className={style.pageTitle}>アカウント情報の編集</h2>
+          <div className={style.formItem}>
+            <input type="email" className={style.formInput} value={shopAccount.email} onChange={changedEmail} />
+            <input type="password" className={style.formInput} value={shopAccount.pass} onChange={changedPass} />
           </div>
-          <div>
-            <button className="buttonCenter" onClick={updateClick}>
+          <div className={style.buttonCenter}>
+            <button className={style.btn} onClick={updateClick}>
               更新
             </button>
-            <button className="buttonCenter" onClick={deleteClick}>
+          </div>
+          <div className={style.buttonCenter}>
+            <button className={style.btn} onClick={deleteClick}>
               このアカウントの削除
             </button>
           </div>

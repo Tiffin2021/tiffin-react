@@ -1,7 +1,7 @@
-/* body {
+body {
   margin: 0%;
 }
-button {
+.btn {
   margin: 30px auto;
   padding: 8px;
   border: none;
@@ -16,11 +16,11 @@ button {
   color: #fff;
   transition: 0.3s all;
 }
-button:hover {
+.btn:hover {
   border: 3px solid #5f5f5f;
   background-color: #efefef;
   color: #2f2f2f;
-} */
+}
 .backgroundImage {
   width: 100%;
   height: 100%;
@@ -29,6 +29,7 @@ button:hover {
   position: absolute;
   width: 100%;
   height: 100%;
+  margin: 100px auto 0px auto;
   top: 0%;
   left: 0%;
 }
@@ -57,4 +58,18 @@ button:hover {
 }
 .buttonCenter {
   text-align: center;
+}
+.photoList{
+	display: flex;
+	flex-wrap:wrap;
+}
+.photoList li {
+	width: calc(100%/3);/*←画像を横に3つ並べる場合*/
+	padding:0 5px;/*←画像の左右に5pxの余白を入れる場合*/
+	box-sizing:border-box;
+}
+.photoList li img {
+	max-width:100%; /*画像のはみだしを防ぐ*/
+	height: auto; /*画像の縦横比を維持 */
+	border:solid 1px #ccc; /*←画像を1pxのグレーの枠線で囲む指定の場合*/
 }

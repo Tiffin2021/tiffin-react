@@ -16,16 +16,16 @@ export const PhotoUpload: React.FC = () => {
 
   return (
     <>
-      <img src={backgroundImage} className="backgroundImage" />
-      <div className="onImage">
-        <Header />
-        <div className="backgroundForm">
-          <h2 className="pageTitle">画像アップロード</h2>
-          <div className="formItem">
-            <input type="file" className="formInput" value={photoDate} onChange={changeEmail} />
+      <Header />
+      <img src={backgroundImage} className={style.backgroundImage} />
+      <div className={style.onImage}>
+        <div className={style.backgroundForm}>
+          <h2 className={style.pageTitle}>画像アップロード</h2>
+          <div className={style.formItem}>
+            <input type="file" className={style.formInput} value={photoDate} onChange={changeEmail} />
           </div>
           <div>
-            <button className={style.buttonTest} onClick={photoUpload}>
+            <button className={style.btn} onClick={photoUpload}>
               Update
             </button>
           </div>
