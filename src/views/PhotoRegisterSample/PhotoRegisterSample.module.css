@@ -1,0 +1,60 @@
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+}
+.onImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 100px auto 0px auto;
+  top: 0%;
+  left: 0%;
+}
+.logo {
+  margin: 10px;
+  font-size: 30px;
+}
+.backgroundForm {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  margin: 100px auto 0px auto;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  width: 60%;
+}
+.pageTitle {
+  text-align: center;
+}
+.formItem {
+  margin-top: 20px;
+  margin-left: 25%;
+}
+.formInput {
+  margin-left: 10%;
+  width: 50%;
+}
+.uploadButton {
+  margin: 30px auto;
+  padding: 8px;
+  border: none;
+  box-sizing: border-box;
+  width: 50%;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  border: 3px solid #60c7f0;
+  border-radius: 5px;
+  background-color: #60c7f0;
+  color: #fff;
+  transition: 0.3s all;
+}
+.uploadButton:hover {
+  border: 3px solid #60c7f0;
+  background-color: #efefef;
+  color: #60c7f0;
+}
+.previewImage {
+  display: block;
+  margin: 20px auto;
+  width: 50%;
+}
