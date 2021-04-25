@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import style from './PhotoUpload.module.css';
-import { useHistory } from 'react-router-dom';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
-import axios from 'axios';
 import { Header } from 'src/components/Header/Header';
 
-export const PhotoUpdate: React.FC = () => {
+export const PhotoUpload: React.FC = () => {
   const [photoDate, setPhotoDate] = useState('');
-  const history = useHistory();
-
   const changeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhotoDate(e.target.value);
   };
 
-  const photoUpdate = async () => {
+  const photoUpload = async () => {
     console.info(photoDate);
     //history.push(`/`);
   };
@@ -29,8 +25,7 @@ export const PhotoUpdate: React.FC = () => {
             <input type="file" className="formInput" value={photoDate} onChange={changeEmail} />
           </div>
           <div>
-            {/* <button className="buttonCenter buttonTest" onClick={photoUpdate}> */}
-            <button className={style.buttonTest} onClick={photoUpdate}>
+            <button className={style.buttonTest} onClick={photoUpload}>
               Update
             </button>
           </div>
