@@ -28,7 +28,7 @@ export const Home: React.FC = () => {
             </Link>
           </div>
           <div className={style.buttonCenter}>
-            <Link to="/PhotoUpdate">
+            <Link to="/PhotoUpload">
               <button className={style.homeButton}>画像アップロード</button>
             </Link>
           </div>
