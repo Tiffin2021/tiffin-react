@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { initialShopAccount } from 'src/model/ShopAccount';
-import { render } from '@testing-library/react';
 
 export const Header: React.FC = () => {
   const { setShopAccount } = useContext(ShopAccountContext);
