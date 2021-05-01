@@ -157,7 +157,6 @@ export const ShopInfoEdit: React.FC = () => {
       <Header />
       <img src={backgroundImage} className={style.backgroundImage} />
       <div className={style.onImage}>
-        
         <div className={style.backgroundForm}>
           <h2 className={style.pageTitle}>店舗情報の編集</h2>
           <div className={style.formItem}>

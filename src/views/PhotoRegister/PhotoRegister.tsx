@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import style from './PhotoRegister.module.css';
 import Axios, { AxiosResponse } from 'axios';
 import { Photo, initPhoto } from 'src/model/Photo';
-import { ShopInfo, initShopInfo } from 'src/model/ShopInfo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Header } from 'src/components/Header/Header';
 import { initGenreMaster, GenreMaster } from 'src/model/Master/GenreMaster';
@@ -43,6 +42,14 @@ export const PhotoRegister: React.FC = () => {
     if (!e.target.files) return;
     const img: File = e.target.files[0];
     setImage(img);
+    const reader = new FileReader();
+    reader.readAsDataURL(img);
+    reader.onload = function () {
+      console.info(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.info('Error: ', error);
+    };
   };
 
   const registerClick = async () => {
