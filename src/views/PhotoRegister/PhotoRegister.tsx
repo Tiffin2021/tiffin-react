@@ -5,6 +5,7 @@ import { Photo, initPhoto } from 'src/model/Photo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Header } from 'src/components/Header/Header';
 import { initGenreMaster, GenreMaster } from 'src/model/Master/GenreMaster';
+import { useHistory } from 'react-router-dom';
 
 export const PhotoRegister: React.FC = () => {
   //後からログイン情報のshopAccountIDを取得
@@ -18,6 +19,8 @@ export const PhotoRegister: React.FC = () => {
       setGenreMasters(genres.data);
     })();
   }, [setGenreMasters]);
+
+  const history = useHistory();
 
   const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newPhoto = Object.assign({}, photo);
@@ -54,6 +57,7 @@ export const PhotoRegister: React.FC = () => {
 
   const registerClick = async () => {
     await Axios.post<Photo, AxiosResponse<string>>(`photos/${shopAccountId}`, photo);
+    history.push('/');
   };
 
   return (
