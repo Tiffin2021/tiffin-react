@@ -95,6 +95,7 @@ export const PhotoRegister: React.FC = () => {
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => getImage(e)}
               />
             </div>
+            <img src={photo.img} />
             <div className={style.buttonCenter}>
               <button className={style.btn} onClick={registerClick}>
                 送信する
