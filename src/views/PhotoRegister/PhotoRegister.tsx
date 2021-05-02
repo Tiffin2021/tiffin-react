@@ -22,6 +22,33 @@ export const PhotoRegister: React.FC = () => {
 
   const history = useHistory();
 
+  // ファイルがJPEG、PNG形式であるかを検証する
+  // NOTE: isImageとかで共通化にしなかったのには理由があります。
+  // NOTE: 共通化してしまうと、その他の画像の拡張子(gif, svgとか)に対応することになったときに
+  // NOTE：この画面だけのために、この関数を利用している全てに影響が出てしまうためです。
+  const isJpegOrPng = (file: File): boolean => {
+    // ファイル名をすべて小文字にする
+    const fileName = file.name.toLowerCase();
+
+    // 拡張子の検証をする
+
+    // JPEGファイルの検証
+    if (fileName.match(/\.(jpg)$/i)) {
+      return true;
+    }
+    // JPEGファイルの検証
+    if (fileName.match(/\.(jpeg)$/i)) {
+      return true;
+    }
+    // PNGファイルの検証
+    if (fileName.match(/\.(png)$/i)) {
+      return true;
+    }
+
+    // JPEG、PNG以外の拡張子はfalseを返却
+    return false;
+  };
+
   const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newPhoto = Object.assign({}, photo);
     newPhoto.menu = e.target.value;
@@ -43,6 +70,10 @@ export const PhotoRegister: React.FC = () => {
   const getImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const file = e.target.files[0];
+      // JPEG, PNG以外の拡張子の場合はエラー
+      if (!isJpegOrPng(file)) {
+        return alert('JPEG, PNG以外の画像形式は使用できません');
+      }
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = function () {
