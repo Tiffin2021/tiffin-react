@@ -90,6 +90,7 @@ export const PhotoRegister: React.FC = () => {
             <div className={style.formItem}>
               <div>画像</div>
               <input
+                className={style.formInput}
                 type="file"
                 accept="image/*,.png,.jpg,.jpeg,.gif"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => getImage(e)}
