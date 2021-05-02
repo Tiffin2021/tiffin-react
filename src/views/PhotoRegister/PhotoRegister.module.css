@@ -59,3 +59,7 @@ body {
 .buttonCenter {
   text-align: center;
 }
+.preview {
+  width: 65%;
+  height: 300px;
+}
