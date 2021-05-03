@@ -10,7 +10,7 @@ export type Photo = {
   opentime: number;
   closetime: number;
   shop_info_id: number;
-  img?: File;
+  imgBase64?: string;
 };
 export const initPhoto: Photo = {
   id: 0,
@@ -23,5 +23,5 @@ export const initPhoto: Photo = {
   menu: '',
   opentime: 0,
   closetime: 0,
-  shop_info_id: 0,
+  shop_info_id: 1,
 };
