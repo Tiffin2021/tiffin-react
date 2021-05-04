@@ -33,10 +33,6 @@ body {
   top: 0%;
   left: 0%;
 }
-.logo {
-  margin: 10px;
-  font-size: 30px;
-}
 .backgroundForm {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
@@ -52,7 +48,7 @@ body {
   margin-top: 20px;
   margin-left: 25%;
 }
-.formInput {
+.formText {
   margin-left: 10%;
   width: 50%;
 }

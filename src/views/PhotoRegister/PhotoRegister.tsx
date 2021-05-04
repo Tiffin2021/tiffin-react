@@ -2,16 +2,15 @@ import React, { useEffect, useState } from 'react';
 import style from './PhotoRegister.module.css';
 import Axios, { AxiosResponse } from 'axios';
 import { Photo, initPhoto } from 'src/model/Photo';
-import { ShopInfo, initShopInfo } from 'src/model/ShopInfo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Header } from 'src/components/Header/Header';
 import { initGenreMaster, GenreMaster } from 'src/model/Master/GenreMaster';
+import { useHistory } from 'react-router-dom';
 
 export const PhotoRegister: React.FC = () => {
   //後からログイン情報のshopAccountIDを取得
   const shopAccountId = 1;
   const [photo, setPhoto] = useState(initPhoto);
-  const [image, setImage] = useState<File>();
   const [genreMasters, setGenreMasters] = useState([initGenreMaster]);
 
   useEffect(() => {
@@ -20,6 +19,35 @@ export const PhotoRegister: React.FC = () => {
       setGenreMasters(genres.data);
     })();
   }, [setGenreMasters]);
+
+  const history = useHistory();
+
+  // ファイルがJPEG、PNG形式であるかを検証する
+  // NOTE: isImageとかで共通化にしなかったのには理由があります。
+  // NOTE: 共通化してしまうと、その他の画像の拡張子(gif, svgとか)に対応することになったときに
+  // NOTE：この画面だけのために、この関数を利用している全てに影響が出てしまうためです。
+  const isJpegOrPng = (file: File): boolean => {
+    // ファイル名をすべて小文字にする
+    const fileName = file.name.toLowerCase();
+
+    // 拡張子の検証をする
+
+    // JPEGファイルの検証
+    if (fileName.match(/\.(jpg)$/i)) {
+      return true;
+    }
+    // JPEGファイルの検証
+    if (fileName.match(/\.(jpeg)$/i)) {
+      return true;
+    }
+    // PNGファイルの検証
+    if (fileName.match(/\.(png)$/i)) {
+      return true;
+    }
+
+    // JPEG、PNG以外の拡張子はfalseを返却
+    return false;
+  };
 
   const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newPhoto = Object.assign({}, photo);
@@ -40,30 +68,27 @@ export const PhotoRegister: React.FC = () => {
   };
 
   const getImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-    const img: File = e.target.files[0];
-    setImage(img);
+    if (e.target.files) {
+      const file = e.target.files[0];
+      // JPEG, PNG以外の拡張子の場合はエラー
+      if (!isJpegOrPng(file)) {
+        return alert('JPEG, PNG以外の画像形式は使用できません');
+      }
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        if (typeof reader.result === 'string') {
+          const newPhoto = Object.assign({}, photo);
+          newPhoto.img = reader.result;
+          setPhoto(newPhoto);
+        }
+      };
+    }
   };
 
   const registerClick = async () => {
-    // const header = {
-    //   headers: {
-    //     'Content-Type': 'application/json;charset=UTF-8',
-    //     'Access-Control-Allow-Origin': '*',
-    //   },
-    // };
-    // const data = new FormData();
-    // data.append('file', image!);
-    // const imgUri = 'photos';
-    // Axios.post(imgUri, data, header)
-    //   .then((res) => {
-    //     console.info('画像のアップロードが完了しました');
-    //   })
-    //   .catch((err) => {
-    //     console.info('画像のアップロードに失敗しました');
-    //   });
-    //HTTPリクエスト
     await Axios.post<Photo, AxiosResponse<string>>(`photos/${shopAccountId}`, photo);
+    history.push('/');
   };
 
   return (
@@ -100,10 +125,14 @@ export const PhotoRegister: React.FC = () => {
             <div className={style.formItem}>
               <div>画像</div>
               <input
+                className={style.formInput}
                 type="file"
                 accept="image/*,.png,.jpg,.jpeg,.gif"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => getImage(e)}
               />
+            </div>
+            <div className={style.formItem}>
+              <img className={style.preview} src={photo.img} />
             </div>
             <div className={style.buttonCenter}>
               <button className={style.btn} onClick={registerClick}>
