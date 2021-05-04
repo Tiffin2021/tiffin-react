@@ -5,6 +5,7 @@ import { Photo, initPhoto } from 'src/model/Photo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Header } from 'src/components/Header/Header';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
+import { useHistory } from 'react-router-dom';
 
 export const PhotoListByShop: React.FC = () => {
   const { shopAccount } = useContext(ShopAccountContext);
@@ -19,6 +20,8 @@ export const PhotoListByShop: React.FC = () => {
     })();
   }, [shopAccount.id, setPhotoList]);
 
+  const history = useHistory();
+
   return (
     <>
       <div>
@@ -30,7 +33,19 @@ export const PhotoListByShop: React.FC = () => {
             <ul className={style.photoList}>
               {photoList.map((photo) => {
                 return (
-                  <li key={photo.id}>
+                  //   <TodoItem
+                  //   key={todo.id}
+                  //   todo={todo}
+                  //   onClick={() => {
+                  //     return history.push(`/edit/${todo.id}`);
+                  //   }}
+                  // />
+                  <li
+                    key={photo.id}
+                    onClick={() => {
+                      return history.push(`/photo/detail/${photo.id}`);
+                    }}
+                  >
                     <img src={photo.pass} />
                     <div>{photo.menu}</div>
                   </li>
