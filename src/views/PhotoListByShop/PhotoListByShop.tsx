@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import style from './PhotoListByShop.module.css';
 import Axios from 'axios';
 import { Photo, initPhoto } from 'src/model/Photo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Header } from 'src/components/Header/Header';
+import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 
 export const PhotoListByShop: React.FC = () => {
+  const { shopAccount } = useContext(ShopAccountContext);
   //店舗情報IDを仮置き/店舗アカウントでも検索可能だが一旦仕様を要相談
-  const shopInfoID = 1;
   const initPhotoList: Photo[] = [initPhoto];
   const [photoList, setPhotoList] = useState(initPhotoList);
 
   useEffect(() => {
     (async () => {
-      const response = await Axios.get<Photo[]>(`photos/shopInfoID/${shopInfoID}`);
+      const response = await Axios.get<Photo[]>(`photos/shopAccountID/${shopAccount.id}`);
       setPhotoList(response.data);
     })();
-  }, [shopInfoID, setPhotoList]);
+  }, [shopAccount.id, setPhotoList]);
 
   return (
     <>
