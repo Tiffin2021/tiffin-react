@@ -237,7 +237,7 @@ export const ShopInfoRegisterView: React.FC = () => {
               <input type="tel" placeholder="電話番号" className={style.formInput} onChange={changeShopTel} />
             </div>
 
-            <div className={style.buttonCenter}>
+            <div className={style.btnCenter}>
               <button className={style.btn} onClick={clickRegister}>
                 登録
               </button>

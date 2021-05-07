@@ -66,12 +66,12 @@ export const ShopAccountEdit: React.FC = () => {
             <input type="email" className={style.formInput} value={shopAccount.email} onChange={changedEmail} />
             <input type="password" className={style.formInput} value={shopAccount.pass} onChange={changedPass} />
           </div>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             <button className={style.btn} onClick={updateClick}>
               更新
             </button>
           </div>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             <button className={style.btn} onClick={deleteClick}>
               このアカウントの削除
             </button>
