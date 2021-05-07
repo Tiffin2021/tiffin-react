@@ -9,6 +9,7 @@ import { ShopAccount } from 'src/model/ShopAccount';
 import { ShopInfo } from 'src/model/ShopInfo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Header } from 'src/components/Header/Header';
+import { useHistory } from 'react-router-dom';
 
 type Shop = {
   shopAccount: ShopAccount;
@@ -39,6 +40,8 @@ export const ShopInfoRegisterView: React.FC = () => {
       setOpenTimeMasters(times.data);
     })();
   }, [setStationMasters, setOpenTimeMasters]);
+
+  const history = useHistory();
 
   //都道府県名の重複を含まないMasterを作成し、それに対しmap関数を用いて、都道府県名の一覧を作る
   const prefectures = stationMasters
@@ -128,6 +131,7 @@ export const ShopInfoRegisterView: React.FC = () => {
       shopInfo: shopInfo,
     };
     await Axios.post<Shop, AxiosResponse<string>>('shop', shop);
+    history.push('/');
   };
 
   return (
