@@ -46,7 +46,7 @@ export const PhotoListByShop: React.FC = () => {
                       return history.push(`/photo/detail/${photo.id}`);
                     }}
                   >
-                    <img src={photo.pass} />
+                    <img src={photo.path} />
                     <div>{photo.menu}</div>
                   </li>
                 );

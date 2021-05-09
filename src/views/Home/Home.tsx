@@ -12,27 +12,27 @@ export const Home: React.FC = () => {
     if (loginShopAccountState == true) {
       return (
         <>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             <Link to="/shop_accounts_edit">
               <button className={style.btn}>アカウントの編集</button>
             </Link>
           </div>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             <Link to="/shop_info_edit">
               <button className={style.btn}>店舗の編集</button>
             </Link>
           </div>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             <Link to="/photoListByShop">
               <button className={style.btn}>メニュー一覧</button>
             </Link>
           </div>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             <Link to="/PhotoUpload">
               <button className={style.btn}>画像アップロード</button>
             </Link>
           </div>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             <Link to="/photoRegister">
               <button className={style.btn}>メニューを追加</button>
             </Link>
@@ -42,12 +42,12 @@ export const Home: React.FC = () => {
     } else {
       return (
         <>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             <Link to="/shopAccountRegister">
               <button className={style.btn}>新規登録</button>
             </Link>
           </div>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             <Link to="/login">
               <button className={style.btn}>ログイン</button>
             </Link>

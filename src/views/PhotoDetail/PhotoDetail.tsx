@@ -51,9 +51,9 @@ export const PhotoDetail: React.FC = () => {
           </div>
           <div className={style.formItem}>
             <div>画像</div>
-            <img className={(style.preview, style.formText)} src={photo.pass} />
+            <img className={(style.preview, style.formText)} src={photo.path} />
           </div>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             <button className={style.btn} onClick={deleteClick}>
               削除する
             </button>

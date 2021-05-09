@@ -222,7 +222,7 @@ export const ShopInfoEdit: React.FC = () => {
               })}
             </select>
           </div>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             <button className={style.btn} onClick={updateClick}>
               更新
             </button>

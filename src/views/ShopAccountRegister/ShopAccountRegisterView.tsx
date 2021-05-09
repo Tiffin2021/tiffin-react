@@ -56,7 +56,7 @@ export const ShopAccountRegisterView: React.FC = () => {
               <input type="password" className={style.formInput} placeholder="パスワードの確認" onChange={passCheck} />
             </div>
           </div>
-          <div className={style.buttonCenter}>
+          <div className={style.btnCenter}>
             {(() => {
               if (show === true) {
                 return (
