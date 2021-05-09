@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { Home } from 'src/views/Home/Home';
 import { ShopInfoEdit } from 'src/views/ShopInfoEdit/ShopInfoEdit';
 import { ShopAccountEdit } from 'src/views/ShopAccountEdit/ShopAccountEdit';
@@ -14,6 +14,7 @@ import { PhotoRegister } from './views/PhotoRegister/PhotoRegister';
 import { PhotoUpload } from './views/PhotoUpload/PhotoUpload';
 import { PhotoDetail } from './views/PhotoDetail/PhotoDetail';
 
+//ここをEC2のURLに変更する
 Axios.defaults.baseURL = 'http://localhost:4000/api/';
 
 const App: React.FC = () => {
