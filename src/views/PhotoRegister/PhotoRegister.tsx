@@ -134,7 +134,7 @@ export const PhotoRegister: React.FC = () => {
             <div className={style.formItem}>
               <img className={style.preview} src={photo.img} />
             </div>
-            <div className={style.buttonCenter}>
+            <div className={style.btnCenter}>
               <button className={style.btn} onClick={registerClick}>
                 送信する
               </button>
