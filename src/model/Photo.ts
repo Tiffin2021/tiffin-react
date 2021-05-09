@@ -1,6 +1,6 @@
 export type Photo = {
   id: number;
-  pass: string;
+  path: string;
   genre: string;
   prefecture: string;
   area: string;
@@ -14,7 +14,7 @@ export type Photo = {
 };
 export const initPhoto: Photo = {
   id: 0,
-  pass: '',
+  path: '',
   genre: '',
   prefecture: '',
   area: '',
