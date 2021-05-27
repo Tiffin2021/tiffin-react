@@ -15,8 +15,8 @@ import { PhotoUpload } from './views/PhotoUpload/PhotoUpload';
 import { PhotoDetail } from './views/PhotoDetail/PhotoDetail';
 
 //ここをEC2のURLに変更する
-// Axios.defaults.baseURL = 'http://localhost:4000/api/';
-Axios.defaults.baseURL = 'http://13.115.158.163:4000/api/';
+Axios.defaults.baseURL = 'http://localhost:4000/api/';
+// Axios.defaults.baseURL = 'http://54.250.180.48:4000/api/';
 
 const App: React.FC = () => {
   return (
