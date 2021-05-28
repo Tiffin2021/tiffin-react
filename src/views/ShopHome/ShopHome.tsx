@@ -5,7 +5,7 @@ import headerImage from 'src/pictures/businessBackground2.jpg';
 import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
 
-export const Home: React.FC = () => {
+export const ShopHome: React.FC = () => {
   const { loginShopAccountState } = useContext(LoginShopAccountStateContext);
 
   const homeViews = () => {
