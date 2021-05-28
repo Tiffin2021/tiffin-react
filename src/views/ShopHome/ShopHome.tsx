@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import style from './Home.module.css';
+import style from './ShopHome.module.css';
 import { Link } from 'react-router-dom';
 import headerImage from 'src/pictures/businessBackground2.jpg';
 import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';

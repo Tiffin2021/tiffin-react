@@ -88,7 +88,7 @@ export const PhotoRegister: React.FC = () => {
 
   const registerClick = async () => {
     await Axios.post<Photo, AxiosResponse<string>>(`photos/${shopAccountId}`, photo);
-    history.push('/');
+    history.push('/shop');
   };
 
   return (

@@ -52,7 +52,7 @@ export const ShopAccountEdit: React.FC = () => {
     setShopAccount(initialShopAccount);
     setShopInfo(initialShopInfo);
     setLoginShopAccountState(false);
-    history.push('/');
+    history.push("/shop");
   };
 
   return (
@@ -76,7 +76,7 @@ export const ShopAccountEdit: React.FC = () => {
               このアカウントの削除
             </button>
           </div>
-          <Link to="/">Home</Link>
+          <Link to="/shop">Home</Link>
         </div>
       </div>
     </>

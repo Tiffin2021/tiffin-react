@@ -131,7 +131,7 @@ export const ShopInfoRegisterView: React.FC = () => {
       shopInfo: shopInfo,
     };
     await Axios.post<Shop, AxiosResponse<string>>('shop', shop);
-    history.push('/');
+    history.push("/shop");
   };
 
   return (

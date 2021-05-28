@@ -227,7 +227,7 @@ export const ShopInfoEdit: React.FC = () => {
               更新
             </button>
           </div>
-          <Link to="/">Home</Link>
+          <Link to="/shop">Home</Link>
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import { Home } from 'src/views/Home/Home';
+import { Home } from 'src/views/ShopHome/ShopHome';
 import { ShopInfoEdit } from 'src/views/ShopInfoEdit/ShopInfoEdit';
 import { ShopAccountEdit } from 'src/views/ShopAccountEdit/ShopAccountEdit';
 import { Provider } from 'src/store/Provider';
@@ -22,7 +22,7 @@ const App: React.FC = () => {
     <>
       <Provider>
         <Router>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/shop" component={Home} />
           <Route path="/shop_accounts_edit" component={ShopAccountEdit} />
           <Route path="/shop_info_edit" component={ShopInfoEdit} />
           <Route path="/login" component={Login} />

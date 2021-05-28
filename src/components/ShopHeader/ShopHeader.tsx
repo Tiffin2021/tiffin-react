@@ -18,7 +18,7 @@ export const ShopHeader: React.FC = () => {
 
   return (
     <div className={style.headerBack}>
-      <div className={style.headerLogo} onClick={() => history.push('/')}>
+      <div className={style.headerLogo} onClick={() => history.push("/shop")}>
         🍴tiffin🍴
       </div>
       <div className={style.headerButtonArea}>

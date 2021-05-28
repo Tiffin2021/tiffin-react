@@ -35,7 +35,7 @@ export const Login: React.FC = () => {
     newShopAccount.pass = pass;
     setShopAccount(newShopAccount);
     setLoginShopAccountState(true);
-    history.push(`/`);
+    history.push('/shop');
   };
 
   const logoutAccount = () => {
