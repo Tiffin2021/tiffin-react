@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { initialShopInfo, ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
-import { Header } from 'src/components/Header/Header';
+import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 
 export const ShopAccountEdit: React.FC = () => {
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
@@ -57,7 +57,7 @@ export const ShopAccountEdit: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <ShopHeader />
       <img src={backgroundImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>

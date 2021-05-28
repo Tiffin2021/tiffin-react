@@ -3,7 +3,7 @@ import style from './PhotoRegister.module.css';
 import Axios, { AxiosResponse } from 'axios';
 import { Photo, initPhoto } from 'src/model/Photo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
-import { Header } from 'src/components/Header/Header';
+import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 import { initGenreMaster, GenreMaster } from 'src/model/Master/GenreMaster';
 import { useHistory } from 'react-router-dom';
 
@@ -94,7 +94,7 @@ export const PhotoRegister: React.FC = () => {
   return (
     <>
       <div>
-        <Header />
+        <ShopHeader />
         <img src={backgroundImage} className={style.backgroundImage} />
         <div className={style.onImage}>
           <div className={style.backgroundForm}>

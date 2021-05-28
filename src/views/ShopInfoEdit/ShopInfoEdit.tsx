@@ -8,7 +8,7 @@ import { initialShopInfo } from 'src/store/contexts/ShopInfoContext';
 import { TimeMaster } from 'src/model/Master/TimeMaster';
 import { StationMaster } from 'src/model/Master/StationMaster';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
-import { Header } from 'src/components/Header/Header';
+import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 
 export const ShopInfoEdit: React.FC = () => {
   const [shopInfo, setShopInfo] = useState<ShopInfo>(initialShopInfo);
@@ -154,7 +154,7 @@ export const ShopInfoEdit: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <ShopHeader />
       <img src={backgroundImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>

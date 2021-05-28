@@ -6,7 +6,7 @@ import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccoun
 import { ShopAccount } from 'src/model/ShopAccount';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import { Header } from 'src/components/Header/Header';
+import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -50,7 +50,7 @@ export const Login: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <ShopHeader />
       <img src={backgroundImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import style from './Home.module.css';
 import { Link } from 'react-router-dom';
 import headerImage from 'src/pictures/businessBackground2.jpg';
-import { Header } from 'src/components/Header/Header';
+import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
 
 export const Home: React.FC = () => {
@@ -58,7 +58,7 @@ export const Home: React.FC = () => {
   };
   return (
     <>
-      <Header />
+      <ShopHeader />
       <img src={headerImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>

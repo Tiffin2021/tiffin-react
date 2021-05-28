@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Axios from 'axios';
-import { Header } from 'src/components/Header/Header';
+import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 import { initPhoto, Photo } from 'src/model/Photo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
@@ -32,7 +32,7 @@ export const PhotoDetail: React.FC = () => {
 
   return (
     <div>
-      <Header />
+      <ShopHeader />
       <img src={backgroundImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>

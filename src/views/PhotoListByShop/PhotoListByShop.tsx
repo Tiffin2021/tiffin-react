@@ -3,7 +3,7 @@ import style from './PhotoListByShop.module.css';
 import Axios from 'axios';
 import { Photo, initPhoto } from 'src/model/Photo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
-import { Header } from 'src/components/Header/Header';
+import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { useHistory } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ export const PhotoListByShop: React.FC = () => {
   return (
     <>
       <div>
-        <Header />
+        <ShopHeader />
         <img src={backgroundImage} className={style.backgroundImage} />
         <div className={style.onImage}>
           <div className={style.backgroundForm}>

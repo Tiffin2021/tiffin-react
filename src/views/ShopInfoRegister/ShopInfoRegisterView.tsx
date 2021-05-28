@@ -8,7 +8,7 @@ import { TimeMaster } from 'src/model/Master/TimeMaster';
 import { ShopAccount } from 'src/model/ShopAccount';
 import { ShopInfo } from 'src/model/ShopInfo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
-import { Header } from 'src/components/Header/Header';
+import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 import { useHistory } from 'react-router-dom';
 
 type Shop = {
@@ -137,7 +137,7 @@ export const ShopInfoRegisterView: React.FC = () => {
   return (
     <>
       <div>
-        <Header />
+        <ShopHeader />
         <img src={backgroundImage} className={style.backgroundImage} />
         <div className={style.onImage}>
           <div className={style.backgroundForm}>

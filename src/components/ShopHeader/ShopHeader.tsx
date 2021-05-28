@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import style from './Header.module.css';
+import style from './ShopHeader.module.css';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { initialShopAccount } from 'src/model/ShopAccount';
 
-export const Header: React.FC = () => {
+export const ShopHeader: React.FC = () => {
   const { setShopAccount } = useContext(ShopAccountContext);
   const { loginShopAccountState, setLoginShopAccountState } = useContext(LoginShopAccountStateContext);
   const history = useHistory();

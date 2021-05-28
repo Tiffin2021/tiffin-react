@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import style from './PhotoUpload.module.css';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
-import { Header } from 'src/components/Header/Header';
+import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 
 export const PhotoUpload: React.FC = () => {
   const [photoDate, setPhotoDate] = useState('');
@@ -16,7 +16,7 @@ export const PhotoUpload: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <ShopHeader />
       <img src={backgroundImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>
