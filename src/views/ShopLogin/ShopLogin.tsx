@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import style from './Login.module.css';
+import style from './ShopLogin.module.css';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 
-export const Login: React.FC = () => {
+export const ShopLogin: React.FC = () => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);

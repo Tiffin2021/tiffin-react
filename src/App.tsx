@@ -5,7 +5,7 @@ import { Home } from 'src/views/ShopHome/ShopHome';
 import { ShopInfoEdit } from 'src/views/ShopInfoEdit/ShopInfoEdit';
 import { ShopAccountEdit } from 'src/views/ShopAccountEdit/ShopAccountEdit';
 import { Provider } from 'src/store/Provider';
-import { Login } from 'src/views/Login/Login';
+import { ShopLogin } from 'src/views/ShopLogin/ShopLogin';
 import { ShopAccountRegisterView } from './views/ShopAccountRegister/ShopAccountRegisterView';
 import { ShopInfoRegisterView } from './views/ShopInfoRegister/ShopInfoRegisterView';
 import { PhotoListByShop } from './views/PhotoListByShop/PhotoListByShop';
@@ -25,7 +25,7 @@ const App: React.FC = () => {
           <Route exact path="/shop" component={Home} />
           <Route path="/shop_accounts_edit" component={ShopAccountEdit} />
           <Route path="/shop_info_edit" component={ShopInfoEdit} />
-          <Route path="/login" component={Login} />
+          <Route path="/login" component={ShopLogin} />
           <Route path="/shopAccountRegister" component={ShopAccountRegisterView} />
           <Route path="/shopInfoRegister" component={ShopInfoRegisterView} />
           <Route path="/photoListByShop" component={PhotoListByShop} />
