@@ -1,16 +1,16 @@
 import React from 'react';
 import Axios from 'axios';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import { ShopHome } from 'src/views/ShopHome/ShopHome';
-import { ShopInfoEdit } from 'src/views/ShopInfoEdit/ShopInfoEdit';
-import { ShopAccountEdit } from 'src/views/ShopAccountEdit/ShopAccountEdit';
+import { ShopHome } from 'src/views/Shop/ShopHome/ShopHome';
+import { ShopInfoEdit } from 'src/views/Shop/ShopInfoEdit/ShopInfoEdit';
+import { ShopAccountEdit } from 'src/views/Shop/ShopAccountEdit/ShopAccountEdit';
 import { Provider } from 'src/store/Provider';
-import { ShopLogin } from 'src/views/ShopLogin/ShopLogin';
-import { ShopAccountRegisterView } from './views/ShopAccountRegister/ShopAccountRegisterView';
-import { ShopInfoRegisterView } from './views/ShopInfoRegister/ShopInfoRegisterView';
-import { PhotoListByShop } from './views/PhotoListByShop/PhotoListByShop';
-import { PhotoRegister } from './views/PhotoRegister/PhotoRegister';
-import { PhotoDetail } from './views/PhotoDetail/PhotoDetail';
+import { ShopLogin } from 'src/views/Shop/ShopLogin/ShopLogin';
+import { ShopAccountRegisterView } from './views/Shop/ShopAccountRegister/ShopAccountRegisterView';
+import { ShopInfoRegisterView } from './views/Shop/ShopInfoRegister/ShopInfoRegisterView';
+import { PhotoListByShop } from './views/Shop/PhotoListByShop/PhotoListByShop';
+import { PhotoRegister } from './views/Shop/PhotoRegister/PhotoRegister';
+import { PhotoDetail } from './views/Shop/PhotoDetail/PhotoDetail';
 
 //ここをEC2のURLに変更する
 Axios.defaults.baseURL = 'http://localhost:4000/api/';
