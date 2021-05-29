@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import style from './PhotoRegister.module.css';
 import Axios, { AxiosResponse } from 'axios';
 import { Photo, initPhoto } from 'src/model/Photo';
@@ -6,12 +6,13 @@ import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 import { initGenreMaster, GenreMaster } from 'src/model/Master/GenreMaster';
 import { useHistory } from 'react-router-dom';
+import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 
 export const PhotoRegister: React.FC = () => {
   //後からログイン情報のshopAccountIDを取得
-  const shopAccountId = 1;
   const [photo, setPhoto] = useState(initPhoto);
   const [genreMasters, setGenreMasters] = useState([initGenreMaster]);
+  const { shopAccount } = useContext(ShopAccountContext);
 
   useEffect(() => {
     (async () => {
@@ -87,7 +88,7 @@ export const PhotoRegister: React.FC = () => {
   };
 
   const registerClick = async () => {
-    await Axios.post<Photo, AxiosResponse<string>>(`photos/${shopAccountId}`, photo);
+    await Axios.post<Photo, AxiosResponse<string>>(`photos/${shopAccount.id}`, photo);
     history.push('/shop');
   };
 

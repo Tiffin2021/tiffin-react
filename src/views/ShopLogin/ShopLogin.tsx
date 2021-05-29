@@ -30,8 +30,6 @@ export const ShopLogin: React.FC = () => {
     const id = response.data;
     const newShopAccount = Object.assign({}, shopAccount);
     newShopAccount.id = id;
-    newShopAccount.email = email;
-    newShopAccount.pass = pass;
     setShopAccount(newShopAccount);
     setLoginShopAccountState(true);
     history.push('/shop');
