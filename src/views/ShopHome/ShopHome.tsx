@@ -19,17 +19,12 @@ export const ShopHome: React.FC = () => {
           </div>
           <div className={style.btnCenter}>
             <Link to="/shop_info_edit">
-              <button className={style.btn}>店舗の編集</button>
+              <button className={style.btn}>店舗情報の編集</button>
             </Link>
           </div>
           <div className={style.btnCenter}>
             <Link to="/photoListByShop">
               <button className={style.btn}>メニュー一覧</button>
-            </Link>
-          </div>
-          <div className={style.btnCenter}>
-            <Link to="/PhotoUpload">
-              <button className={style.btn}>画像アップロード</button>
             </Link>
           </div>
           <div className={style.btnCenter}>
@@ -62,7 +57,7 @@ export const ShopHome: React.FC = () => {
       <img src={headerImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>
-          <h1 className={style.pageTitle}>Home</h1>
+          <h1 className={style.pageTitle}>ShopHome</h1>
           {homeViews()}
         </div>
       </div>

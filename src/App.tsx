@@ -10,7 +10,6 @@ import { ShopAccountRegisterView } from './views/ShopAccountRegister/ShopAccount
 import { ShopInfoRegisterView } from './views/ShopInfoRegister/ShopInfoRegisterView';
 import { PhotoListByShop } from './views/PhotoListByShop/PhotoListByShop';
 import { PhotoRegister } from './views/PhotoRegister/PhotoRegister';
-import { PhotoUpload } from './views/PhotoUpload/PhotoUpload';
 import { PhotoDetail } from './views/PhotoDetail/PhotoDetail';
 
 //ここをEC2のURLに変更する
@@ -30,7 +29,6 @@ const App: React.FC = () => {
           <Route path="/shopInfoRegister" component={ShopInfoRegisterView} />
           <Route path="/photoListByShop" component={PhotoListByShop} />
           <Route path="/photoRegister" component={PhotoRegister} />
-          <Route path="/PhotoUpload" component={PhotoUpload} />
           <Route path="/photo/detail/:id" component={PhotoDetail} />
         </Router>
       </Provider>
