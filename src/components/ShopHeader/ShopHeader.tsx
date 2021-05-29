@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import style from './ShopHeader.module.css';
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';

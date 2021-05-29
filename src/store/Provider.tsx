@@ -1,7 +1,6 @@
 import React from 'react';
 import { ShopAccountContextProvider } from 'src/store/contexts/ShopAccountContext';
 import { ShopInfoContextProvider } from 'src/store/contexts/ShopInfoContext';
-import { SampleCounterContextProvider } from 'src/store/contexts/SampleCounterContext';
 import { LoginShopAccountStateContextProvider } from 'src/store/contexts/LoginShopAccountStateContext';
 
 /**
@@ -18,9 +17,7 @@ export const Provider: React.FC = ({ children }) => {
   return (
     <ShopAccountContextProvider>
       <ShopInfoContextProvider>
-        <SampleCounterContextProvider>
-          <LoginShopAccountStateContextProvider>{children}</LoginShopAccountStateContextProvider>
-        </SampleCounterContextProvider>
+        <LoginShopAccountStateContextProvider>{children}</LoginShopAccountStateContextProvider>
       </ShopInfoContextProvider>
     </ShopAccountContextProvider>
   );

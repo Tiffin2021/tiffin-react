@@ -8,7 +8,6 @@ import { TimeMaster } from 'src/model/Master/TimeMaster';
 import { StationMaster } from 'src/model/Master/StationMaster';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
-import { useHistory } from 'react-router-dom';
 
 export const ShopInfoEdit: React.FC = () => {
   const [shopInfo, setShopInfo] = useState<ShopInfo>(initialShopInfo);
@@ -47,8 +46,6 @@ export const ShopInfoEdit: React.FC = () => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const history = useHistory();
 
   const prefectures = stationMasters
     .filter((element, index, self) => self.findIndex((e) => e.prefecture === element.prefecture) === index)
