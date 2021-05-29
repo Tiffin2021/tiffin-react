@@ -3,7 +3,7 @@ import style from './ShopAccountEdit.module.css';
 import Axios from 'axios';
 import { ShopAccount, initialShopAccount } from 'src/model/ShopAccount';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { initialShopInfo, ShopInfoContext } from 'src/store/contexts/ShopInfoContext';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
@@ -52,7 +52,7 @@ export const ShopAccountEdit: React.FC = () => {
     setShopAccount(initialShopAccount);
     setShopInfo(initialShopInfo);
     setLoginShopAccountState(false);
-    history.push("/shop");
+    history.push('/shop');
   };
 
   return (
@@ -64,6 +64,8 @@ export const ShopAccountEdit: React.FC = () => {
           <h2 className={style.pageTitle}>アカウント情報の編集</h2>
           <div className={style.formItem}>
             <input type="email" className={style.formInput} value={shopAccount.email} onChange={changedEmail} />
+          </div>
+          <div className={style.formItem}>
             <input type="password" className={style.formInput} value={shopAccount.pass} onChange={changedPass} />
           </div>
           <div className={style.btnCenter}>
@@ -71,12 +73,11 @@ export const ShopAccountEdit: React.FC = () => {
               更新
             </button>
           </div>
-          <div className={style.btnCenter}>
-            <button className={style.btn} onClick={deleteClick}>
-              このアカウントの削除
-            </button>
-          </div>
-          <Link to="/shop">Home</Link>
+        </div>
+        <div className={style.btnCenter}>
+          <button className={style.btnDanger} onClick={deleteClick}>
+            このアカウントの削除
+          </button>
         </div>
       </div>
     </>

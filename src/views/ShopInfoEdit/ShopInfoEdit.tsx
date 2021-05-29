@@ -3,12 +3,12 @@ import style from './ShopInfoEdit.module.css';
 import Axios from 'axios';
 import { ShopInfo } from 'src/model/ShopInfo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
-import { Link } from 'react-router-dom';
 import { initialShopInfo } from 'src/store/contexts/ShopInfoContext';
 import { TimeMaster } from 'src/model/Master/TimeMaster';
 import { StationMaster } from 'src/model/Master/StationMaster';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
+import { useHistory } from 'react-router-dom';
 
 export const ShopInfoEdit: React.FC = () => {
   const [shopInfo, setShopInfo] = useState<ShopInfo>(initialShopInfo);
@@ -47,6 +47,8 @@ export const ShopInfoEdit: React.FC = () => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const history = useHistory();
 
   const prefectures = stationMasters
     .filter((element, index, self) => self.findIndex((e) => e.prefecture === element.prefecture) === index)
@@ -162,8 +164,32 @@ export const ShopInfoEdit: React.FC = () => {
           <div className={style.formItem}>
             <div>店舗名</div>
             <input type="text" className={style.formInput} value={shopInfo.name} onChange={changedName} />
-            <div>住所</div>
-            <input type="text" className={style.formInput} value={shopInfo.address} onChange={changedAddress} />
+          </div>
+          <div className={style.formItem}>
+            <div>開店時間</div>
+            <select name="開店時間" value={shopInfo.opentime} onChange={changeShopOpen} className={style.formInput}>
+              {openTimeMasters.map((time) => {
+                return (
+                  <option key={time.id} value={time.time}>
+                    {time.time}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className={style.formItem}>
+            <div>閉店時間</div>
+            <select name="閉店時間" value={shopInfo.closetime} onChange={changeShopClose} className={style.formInput}>
+              {closeTimeMasters.map((time) => {
+                return (
+                  <option key={time.id} value={time.time}>
+                    {time.time}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className={style.formItem}>
             <div>都道府県</div>
             <select
               name="都道府県"
@@ -179,6 +205,8 @@ export const ShopInfoEdit: React.FC = () => {
                 );
               })}
             </select>
+          </div>
+          <div className={style.formItem}>
             <div>エリア</div>
             <select name="エリア" value={shopInfo.area} className={style.formInput} onChange={changeShopArea}>
               {areas.map((area) => {
@@ -189,6 +217,8 @@ export const ShopInfoEdit: React.FC = () => {
                 );
               })}
             </select>
+          </div>
+          <div className={style.formItem}>
             <div>最寄駅</div>
             <select name="最寄り駅" value={shopInfo.station} onChange={changeShopStation} className={style.formInput}>
               {stations.map((station) => {
@@ -199,35 +229,20 @@ export const ShopInfoEdit: React.FC = () => {
                 );
               })}
             </select>
-            <div>TEL</div>
+          </div>
+          <div className={style.formItem}>
+            <div>住所</div>
+            <input type="text" className={style.formInput} value={shopInfo.address} onChange={changedAddress} />
+          </div>
+          <div className={style.formItem}>
+            <div>電話番号</div>
             <input type="text" value={shopInfo.tel} onChange={changedTel} className={style.formInput} />
-            <div>開店時間</div>
-            <select name="開店時間" value={shopInfo.opentime} onChange={changeShopOpen} className={style.formInput}>
-              {openTimeMasters.map((time) => {
-                return (
-                  <option key={time.id} value={time.time}>
-                    {time.time}
-                  </option>
-                );
-              })}
-            </select>
-            <div>閉店時間</div>
-            <select name="閉店時間" value={shopInfo.closetime} onChange={changeShopClose} className={style.formInput}>
-              {closeTimeMasters.map((time) => {
-                return (
-                  <option key={time.id} value={time.time}>
-                    {time.time}
-                  </option>
-                );
-              })}
-            </select>
           </div>
           <div className={style.btnCenter}>
             <button className={style.btn} onClick={updateClick}>
               更新
             </button>
           </div>
-          <Link to="/shop">Home</Link>
         </div>
       </div>
     </>

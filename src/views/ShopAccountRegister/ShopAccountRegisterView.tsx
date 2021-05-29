@@ -4,11 +4,14 @@ import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { Link } from 'react-router-dom';
 import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
+import { useHistory } from 'react-router-dom';
 
 export const ShopAccountRegisterView: React.FC = () => {
   const { shopAccount, setShopAccount } = useContext(ShopAccountContext);
   let secondPass = '';
   const [show, setShow] = useState(false);
+
+  const history = useHistory();
 
   const showButton = () => {
     if (shopAccount.pass === secondPass && secondPass != '') {

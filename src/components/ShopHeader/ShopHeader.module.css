@@ -26,7 +26,7 @@
 }
 .headerButtonArea {
   display: inline-block;
-  width: 250px;
+  margin-right: 10px;
   float: right;
 }
 .headerLogo {

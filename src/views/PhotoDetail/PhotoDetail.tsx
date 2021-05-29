@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Axios from 'axios';
 import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
 import { initPhoto, Photo } from 'src/model/Photo';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
-import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import style from './PhotoDetail.module.css';
 import { useHistory } from 'react-router-dom';
 

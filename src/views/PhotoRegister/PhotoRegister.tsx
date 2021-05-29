@@ -136,7 +136,7 @@ export const PhotoRegister: React.FC = () => {
             </div>
             <div className={style.btnCenter}>
               <button className={style.btn} onClick={registerClick}>
-                送信する
+                追加する
               </button>
             </div>
           </div>

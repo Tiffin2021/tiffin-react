@@ -3,7 +3,6 @@ import style from './ShopLogin.module.css';
 import { ShopAccountContext } from 'src/store/contexts/ShopAccountContext';
 import backgroundImage from 'src/pictures/businessBackground.jpg';
 import { LoginShopAccountStateContext } from 'src/store/contexts/LoginShopAccountStateContext';
-import { ShopAccount } from 'src/model/ShopAccount';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { ShopHeader } from 'src/components/ShopHeader/ShopHeader';
@@ -38,16 +37,6 @@ export const ShopLogin: React.FC = () => {
     history.push('/shop');
   };
 
-  const logoutAccount = () => {
-    const delShopAccount: ShopAccount = {
-      id: 0,
-      email: '',
-      pass: '',
-    };
-    setShopAccount(delShopAccount);
-    setLoginShopAccountState(false);
-  };
-
   return (
     <>
       <ShopHeader />
@@ -63,6 +52,8 @@ export const ShopLogin: React.FC = () => {
               placeholder="メールアドレス"
               onChange={changeEmail}
             />
+          </div>
+          <div className={style.formItem}>
             <input
               type="password"
               className={style.formInput}
@@ -73,10 +64,7 @@ export const ShopLogin: React.FC = () => {
           </div>
           <div className="buttonCenter">
             <button className={style.btn} onClick={loginAccount}>
-              Login
-            </button>
-            <button className={style.btn} onClick={logoutAccount}>
-              Logout
+              ログイン
             </button>
           </div>
         </div>

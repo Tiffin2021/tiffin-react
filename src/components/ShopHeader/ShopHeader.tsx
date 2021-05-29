@@ -14,33 +14,22 @@ export const ShopHeader: React.FC = () => {
   const logoutAccount = () => {
     setShopAccount(initialShopAccount);
     setLoginShopAccountState(false);
+    history.push('/shop');
   };
 
   return (
     <div className={style.headerBack}>
-      <div className={style.headerLogo} onClick={() => history.push("/shop")}>
+      <div className={style.headerLogo} onClick={() => history.push('/shop')}>
         🍴tiffin🍴
       </div>
       <div className={style.headerButtonArea}>
+        <button className={style.headerButton} onClick={() => history.push('/shop')}>
+          戻る
+        </button>
         {loginShopAccountState && (
-          <>
-            <Link to="/photoListByShop">
-              <button className={style.headerButton}>メニュー一覧</button>
-            </Link>
-            <button className={style.headerButton} onClick={logoutAccount}>
-              ログアウト
-            </button>
-          </>
-        )}
-        {!loginShopAccountState && (
-          <>
-            <Link to="/shopAccountRegister">
-              <button className={style.headerButton}>新規登録</button>
-            </Link>
-            <Link to="/login">
-              <button className={style.headerButton}>ログイン</button>
-            </Link>
-          </>
+          <button className={style.headerButton} onClick={logoutAccount}>
+            ログアウト
+          </button>
         )}
       </div>
     </div>

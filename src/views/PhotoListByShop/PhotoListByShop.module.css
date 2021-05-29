@@ -2,7 +2,7 @@ body {
   margin: 0%;
 }
 .btn {
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
   padding: 8px;
   border: none;
   box-sizing: border-box;
@@ -59,17 +59,17 @@ body {
 .btnCenter {
   text-align: center;
 }
-.photoList{
-	display: flex;
-	flex-wrap:wrap;
+.photoList {
+  display: flex;
+  flex-wrap: wrap;
 }
 .photoList li {
-	width: calc(100%/3);/*←画像を横に3つ並べる場合*/
-	padding:0 5px;/*←画像の左右に5pxの余白を入れる場合*/
-	box-sizing:border-box;
+  width: calc(100% / 3); /*←画像を横に3つ並べる場合*/
+  padding: 0 5px; /*←画像の左右に5pxの余白を入れる場合*/
+  box-sizing: border-box;
 }
 .photoList li img {
-	max-width:100%; /*画像のはみだしを防ぐ*/
-	height: auto; /*画像の縦横比を維持 */
-	border:solid 1px #ccc; /*←画像を1pxのグレーの枠線で囲む指定の場合*/
+  max-width: 100%; /*画像のはみだしを防ぐ*/
+  height: auto; /*画像の縦横比を維持 */
+  border: solid 1px #ccc; /*←画像を1pxのグレーの枠線で囲む指定の場合*/
 }

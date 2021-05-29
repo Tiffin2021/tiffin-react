@@ -57,7 +57,7 @@ export const ShopHome: React.FC = () => {
       <img src={headerImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>
-          <h1 className={style.pageTitle}>ShopHome</h1>
+          <h1 className={style.pageTitle}>店舗ホーム</h1>
           {homeViews()}
         </div>
       </div>
