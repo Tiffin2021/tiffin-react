@@ -33,21 +33,16 @@ export const PhotoListByShop: React.FC = () => {
             <ul className={style.photoList}>
               {photoList.map((photo) => {
                 return (
-                  //   <TodoItem
-                  //   key={todo.id}
-                  //   todo={todo}
-                  //   onClick={() => {
-                  //     return history.push(`/edit/${todo.id}`);
-                  //   }}
-                  // />
                   <li
                     key={photo.id}
                     onClick={() => {
                       return history.push(`/photo/detail/${photo.id}`);
                     }}
                   >
-                    <img src={photo.path} />
-                    <div>{photo.menu}</div>
+                    <div className={style.photoItem}>
+                      <img src={photo.path} />
+                      <div>{photo.menu}</div>
+                    </div>
                   </li>
                 );
               })}

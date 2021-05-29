@@ -63,10 +63,18 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+.photoItem {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  padding: 15px;
+  height: 100%;
+  box-sizing: border-box;
+}
 .photoList li {
   width: calc(100% / 3); /*←画像を横に3つ並べる場合*/
   padding: 0 5px; /*←画像の左右に5pxの余白を入れる場合*/
   box-sizing: border-box;
+  list-style-type: none;
 }
 .photoList li img {
   max-width: 100%; /*画像のはみだしを防ぐ*/
