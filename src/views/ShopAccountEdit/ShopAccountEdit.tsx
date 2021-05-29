@@ -61,7 +61,7 @@ export const ShopAccountEdit: React.FC = () => {
       <img src={backgroundImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>
-          <h2 className={style.pageTitle}>アカウント情報の編集</h2>
+          <h1 className={style.pageTitle}>アカウント情報の編集</h1>
           <div className={style.formItem}>
             <input type="email" className={style.formInput} value={shopAccount.email} onChange={changedEmail} />
           </div>

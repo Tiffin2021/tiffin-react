@@ -43,7 +43,7 @@ export const ShopLogin: React.FC = () => {
       <img src={backgroundImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>
-          <h2 className={style.pageTitle}>ログイン</h2>
+          <h1 className={style.pageTitle}>ログイン</h1>
           <div className={style.formItem}>
             <input
               type="email"

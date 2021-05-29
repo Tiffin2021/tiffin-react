@@ -160,7 +160,7 @@ export const ShopInfoEdit: React.FC = () => {
       <img src={backgroundImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>
-          <h2 className={style.pageTitle}>店舗情報の編集</h2>
+          <h1 className={style.pageTitle}>店舗情報の編集</h1>
           <div className={style.formItem}>
             <div>店舗名</div>
             <input type="text" className={style.formInput} value={shopInfo.name} onChange={changedName} />

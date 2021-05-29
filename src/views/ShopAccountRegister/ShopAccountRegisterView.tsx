@@ -44,7 +44,7 @@ export const ShopAccountRegisterView: React.FC = () => {
       <img src={backgroundImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>
-          <h2 className={style.pageTitle}>新規店舗登録①</h2>
+          <h1 className={style.pageTitle}>新規店舗登録①</h1>
           <div>
             <div className={style.formItem}>
               <div>メールアドレス</div>

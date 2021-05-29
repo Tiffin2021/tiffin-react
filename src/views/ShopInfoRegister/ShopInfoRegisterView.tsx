@@ -141,7 +141,7 @@ export const ShopInfoRegisterView: React.FC = () => {
         <img src={backgroundImage} className={style.backgroundImage} />
         <div className={style.onImage}>
           <div className={style.backgroundForm}>
-            <h2 className={style.pageTitle}>新規店舗登録②</h2>
+            <h1 className={style.pageTitle}>新規店舗登録②</h1>
             <div className={style.formItem}>
               <div>店舗名</div>
               <input placeholder="店舗名" className={style.formInput} onChange={changeShopName} />

@@ -35,7 +35,7 @@ export const PhotoDetail: React.FC = () => {
       <img src={backgroundImage} className={style.backgroundImage} />
       <div className={style.onImage}>
         <div className={style.backgroundForm}>
-          <h2 className={style.pageTitle}>メニュー詳細</h2>
+          <h1 className={style.pageTitle}>メニュー詳細</h1>
           <div className={style.formItem}>
             <div>メニュー名</div>
             <p className={style.formText}>{photo.menu}</p>

@@ -98,7 +98,7 @@ export const PhotoRegister: React.FC = () => {
         <img src={backgroundImage} className={style.backgroundImage} />
         <div className={style.onImage}>
           <div className={style.backgroundForm}>
-            <h2 className={style.pageTitle}>メニューを追加</h2>
+            <h1 className={style.pageTitle}>メニューを追加</h1>
             <div className={style.formItem}>
               <div>メニュー名</div>
               <input type="text" className={style.formInput} onChange={changeName} />

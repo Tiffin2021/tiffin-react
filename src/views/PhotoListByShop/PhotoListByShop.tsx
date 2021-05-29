@@ -29,7 +29,7 @@ export const PhotoListByShop: React.FC = () => {
         <img src={backgroundImage} className={style.backgroundImage} />
         <div className={style.onImage}>
           <div className={style.backgroundForm}>
-            <h2 className={style.pageTitle}>メニュー一覧</h2>
+            <h1 className={style.pageTitle}>メニュー一覧</h1>
             <ul className={style.photoList}>
               {photoList.map((photo) => {
                 return (

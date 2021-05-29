@@ -1,6 +1,9 @@
 body {
   margin: 0%;
 }
+ul {
+  padding-inline-start: 0;
+}
 .btn {
   margin: 30px auto 0 auto;
   padding: 8px;
@@ -41,12 +44,12 @@ body {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   margin: 0px auto;
-  padding-top: 10px;
-  padding-bottom: 30px;
+  padding: 10px 30px 30px 30px;
   width: 60%;
 }
 .pageTitle {
   text-align: center;
+  margin-bottom: 70px;
 }
 .formItem {
   margin-top: 20px;
@@ -72,7 +75,7 @@ body {
 }
 .photoList li {
   width: calc(100% / 3); /*←画像を横に3つ並べる場合*/
-  padding: 0 5px; /*←画像の左右に5pxの余白を入れる場合*/
+  padding: 0 10px; /*←画像の左右に5pxの余白を入れる場合*/
   box-sizing: border-box;
   list-style-type: none;
 }
